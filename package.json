@@ -1,0 +1,26 @@
+{
+  "name": "mozzex-bot",
+  "version": "1.0.0",
+  "description": "Mozzex Official Discord Bot - Memecoin Trading, Invites, Verification, Tickets & Embed Publisher",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js",
+    "setup-server": "node scripts/setup-server.js",
+    "publish-embeds": "node scripts/publish-embeds.js"
+  },
+  "keywords": [
+    "discord",
+    "trading",
+    "memecoins",
+    "solana",
+    "invite-tracker",
+    "tickets"
+  ],
+  "author": "Mozzex Team",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  }
+}
