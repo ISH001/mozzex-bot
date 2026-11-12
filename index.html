@@ -239,7 +239,7 @@
       </a>
 
       <!-- Desktop Tab Bar (STRICTLY NO EMOJIS, Elegant Luxury Typography) -->
-      <nav class="hidden lg:flex items-center space-x-1 p-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold tracking-wider font-sora">
+      <nav class="hidden md:flex items-center space-x-1 p-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold tracking-wider font-sora shadow-inner">
         <button onclick="switchTab('invest')" id="tab-btn-invest" class="tab-button px-4 py-2 rounded-full transition-all text-white bg-white/10 border border-white/20 shadow-sm">
           Invest
         </button>
@@ -274,7 +274,7 @@
         </a>
 
         <!-- Luxury Mobile Burger Button -->
-        <button onclick="toggleMobileMenu()" aria-label="Toggle Navigation" class="lg:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition focus:outline-none">
+        <button onclick="toggleMobileMenu()" aria-label="Toggle Navigation" class="md:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition focus:outline-none">
           <svg id="burger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -287,7 +287,7 @@
     </div>
 
     <!-- Mobile Slide-Down Menu Overlay (Zero Emojis, Pure Obsidian Glass) -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-[#07070A]/98 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all duration-300">
+    <div id="mobile-menu" class="hidden md:hidden bg-[#07070A]/98 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all duration-300">
       <div class="flex flex-col space-y-3 font-sora text-sm font-semibold tracking-wider">
         <button onclick="mobileNav('invest')" class="text-left py-2.5 px-3 rounded-lg text-white hover:bg-white/5 transition">
           Invest
@@ -344,7 +344,7 @@
         </h1>
 
         <p class="text-gray-400 text-sm sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed mb-8">
-          You allocate the capital and duration. Our verified desk executes disciplined on-chain trades. Watch every buy and sell live on your private <strong class="text-white">FOMO profile</strong>. We split net profits 50/50 and keep strict risk controls.
+          You choose your investment package. We trade on your behalf using strict rules and years of market experience. Track every single buy and sell live on the <strong class="text-white">FOMO trading platform & app</strong> directly from your phone. We split net profits 50/50, and we cut trades early at our strict 30% stop-loss to protect your money.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -398,9 +398,7 @@
             <div class="zm-diff-card-recommended">
               <div>
                 <div class="flex items-center space-x-3.5 mb-6">
-                  <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-sora font-black text-sm shadow-lg shadow-white/30 flex-shrink-0">
-                    M
-                  </div>
+                  <img src="assets/server-logo.png" alt="Mozzex Capital Logo" class="w-12 h-12 rounded-xl border-2 border-white/30 shadow-lg shadow-white/20 object-cover flex-shrink-0">
                   <div>
                     <div class="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-300">RECOMMENDED</div>
                     <h3 class="font-sora font-extrabold text-white text-xl">Mozzex Capital</h3>
@@ -410,27 +408,27 @@
                 <div class="space-y-4 text-xs">
                   <div class="flex items-start space-x-3">
                     <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
-                    <span class="text-gray-200"><strong>100% Live FOMO Tracking:</strong> Every entry, exit, and PnL verifiable on-chain in real-time.</span>
+                    <span class="text-gray-200"><strong>Live on the FOMO App:</strong> Watch every single buy, sell, and balance update live on the FOMO trading platform from your phone. Zero secret trades.</span>
                   </div>
                   <div class="flex items-start space-x-3">
                     <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
-                    <span class="text-gray-200"><strong>Zero Emotion Trading:</strong> Disciplined algorithmic execution with pre-calculated risk limits.</span>
+                    <span class="text-gray-200"><strong>Zero Emotion Trading:</strong> We trade on your behalf using strict rules and years of experience. No panic selling, no emotional chasing.</span>
                   </div>
                   <div class="flex items-start space-x-3">
                     <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
-                    <span class="text-gray-200"><strong>Strict Stop-Loss Protection:</strong> Hard risk floor cuts trades during adverse runs to preserve majority of principal.</span>
+                    <span class="text-gray-200"><strong>Strict 30% Stop-Loss Protection:</strong> If a trade goes against us, we cut it at a 30% loss to save ~70% of your capital. You never lose your whole balance.</span>
                   </div>
                   <div class="flex items-start space-x-3">
                     <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
-                    <span class="text-gray-200"><strong>Customer Cashout Autonomy:</strong> In profit, you choose whether to cash out immediately or let it run.</span>
+                    <span class="text-gray-200"><strong>You Choose When to Cash Out:</strong> Whenever the account is in profit, you decide when to take your money out or let it keep growing.</span>
                   </div>
                   <div class="flex items-start space-x-3">
                     <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
-                    <span class="text-gray-200"><strong>50/50 Profit Split:</strong> We only earn when you win. Zero upfront management fees.</span>
+                    <span class="text-gray-200"><strong>50/50 Net Profit Split:</strong> We only make money when you make money. Zero upfront management charges.</span>
                   </div>
                   <div class="flex items-start space-x-3">
                     <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
-                    <span class="text-gray-200"><strong>Direct Founders Line:</strong> Private 1-on-1 Discord tickets with Claxy & Mozzari.</span>
+                    <span class="text-gray-200"><strong>Direct Talk with Founders:</strong> Private 1-on-1 Discord support tickets directly with Claxy & Mozzari.</span>
                   </div>
                 </div>
               </div>
@@ -692,13 +690,13 @@
           <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
             <div>
               <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
-                ONE-TIME PAYMENT • LIFETIME ACCESS • NO SUBSCRIPTIONS
+                ONE-TIME PAYMENT • LIFETIME ACCESS • NO SUBSCRIPTIONS EVER
               </span>
               <h2 class="text-3xl sm:text-4xl font-sora font-extrabold text-white mt-3">
                 Mozzex VIP Lifetime Pass
               </h2>
               <p class="text-gray-400 text-sm mt-1 max-w-xl">
-                Trade independently with the exact tools, bots, and real-time alerts our desk uses daily.
+                Want to trade yourself? Get our private trench tools, anti-rug scanners, real-time coin calls & 1-on-1 mentorship for life.
               </p>
             </div>
             <div class="text-left md:text-right flex-shrink-0">
@@ -711,36 +709,36 @@
             <div class="space-y-3">
               <div class="flex items-start space-x-2.5">
                 <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>All 3 Mozzex Books Included FREE:</strong> $60 standalone value delivered immediately.</span>
+                <span><strong>All 3 Mozzex Books Included FREE:</strong> $60 value included at zero extra cost. Start with solid knowledge before risking your money.</span>
               </div>
               <div class="flex items-start space-x-2.5">
                 <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>Photon & BullX Sniper Presets:</strong> Pre-tuned anti-MEV bribe parameters for sub-second fills.</span>
+                <span><strong>Axiom Best Trenching Setup:</strong> Our private configuration specifically tuned to scan tokens fast and find winning runners early in the memecoin trenches.</span>
               </div>
               <div class="flex items-start space-x-2.5">
                 <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>Axiom & DexScreener Filters:</strong> Private parameters that eliminate 99% of dead tokens.</span>
+                <span><strong>Private Anti-Rug Protection Tools:</strong> Built-in contract scanners that check liquidity and code so you never get rugged, trapped, or honeypotted.</span>
               </div>
             </div>
             <div class="space-y-3">
               <div class="flex items-start space-x-2.5">
                 <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>Real-Time VIP Alpha Calls:</strong> Access to '#vip-alpha' with recommended entry MC, TP and SL.</span>
+                <span><strong>Coins We Personally Buy:</strong> We share the exact coins we are personally buying with our own capital in '#vip-alpha', backed by heavy research and our market experience.</span>
               </div>
               <div class="flex items-start space-x-2.5">
                 <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>Private Low-Latency RPCs:</strong> Dedicated endpoints so your transactions never fail in congestion.</span>
+                <span><strong>Always Buy The Right Ticker:</strong> Setup and filters that verify the real token contract address instantly so you never get tricked by fake copycats.</span>
               </div>
               <div class="flex items-start space-x-2.5">
                 <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>1-on-1 Step-by-Step Mentorship:</strong> Direct walkthroughs with founders Claxy & Mozzari.</span>
+                <span><strong>1-on-1 Step-by-Step Setup:</strong> Founders Claxy & Mozzari personally help you set up your wallets, trading tools, and the FOMO trading platform on Discord.</span>
               </div>
             </div>
           </div>
 
           <div class="text-center pt-4">
             <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full sm:w-auto inline-block px-10 py-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-xl shadow-white/10">
-              Claim VIP Lifetime Pass ($50)
+              Claim Lifetime VIP Pass ($50)
             </a>
           </div>
         </div>
@@ -1084,7 +1082,7 @@
                 </div>
                 <div class="flex items-start space-x-2 text-gray-300">
                   <span class="text-white font-bold font-mono">03.</span>
-                  <span><strong>Sub-Second Bot Tuning:</strong> Photon & BullX anti-MEV bribe settings, gas prioritization, and fast node tips.</span>
+                  <span><strong>Fast Trench Tool Setup:</strong> Private trading tool setup, custom fast node endpoints, and methods to execute before the crowd.</span>
                 </div>
                 <div class="flex items-start space-x-2 text-gray-300">
                   <span class="text-white font-bold font-mono">04.</span>
@@ -1223,23 +1221,24 @@
               </ul>
             </div>
             <div>
-              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-3">2. The Best Trading Tools Suite</h4>
+              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-3">2. Private Trading Tools & Trench Setup</h4>
               <ul class="space-y-2 text-xs text-gray-300">
-                <li>• <strong>Photon & BullX Presets:</strong> Pre-tuned anti-MEV bribe settings for sub-second fills.</li>
-                <li>• <strong>Axiom & DexScreener Filters:</strong> Private filters to eliminate 99% of dead tokens.</li>
-                <li>• <strong>Private Low-Latency RPCs:</strong> Direct endpoints so transactions never fail.</li>
+                <li>• <strong>Axiom Best Trenching Setup:</strong> Custom setup specifically tuned to scan tokens fast and find winning runners early in the memecoin trenches.</li>
+                <li>• <strong>Private Anti-Rug Protection Tools:</strong> Scanners that check smart contracts and liquidity locks so you never get rugged or trapped.</li>
+                <li>• <strong>Always Buy The Right Ticker:</strong> Tools and filters that verify the real token contract address instantly so you never buy fake scam copycats.</li>
+                <li>• <strong>Fast Private Network Nodes:</strong> Dedicated direct endpoints so your transactions never fail during high volume.</li>
               </ul>
             </div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-white/10 mb-8">
             <div>
-              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">3. VIP Insider Alpha Calls</h4>
-              <p class="text-xs text-gray-400 leading-relaxed">Direct access to '#vip-alpha' channel with real-time early alerts before tokens pump, with recommended entry Market Cap, targets, and stop losses.</p>
+              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">3. Coins We Personally Buy</h4>
+              <p class="text-xs text-gray-400 leading-relaxed">Direct access to our private '#vip-alpha' channel where we share the exact coins we are personally buying with our own capital, backed by heavy research, market experience, and clear entry/exit plans.</p>
             </div>
             <div>
               <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">4. 1-on-1 Step-by-Step Setup</h4>
-              <p class="text-xs text-gray-400 leading-relaxed">Our mentors personally walk you through setting up your wallets, trading bots, and FOMO profile so you can trade with confidence from day one.</p>
+              <p class="text-xs text-gray-400 leading-relaxed">Founders Claxy & Mozzari personally guide you in a private ticket to set up your wallet, trading tools, and the FOMO trading platform so you are ready to trade with confidence.</p>
             </div>
           </div>
 
@@ -1259,11 +1258,11 @@
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
         <div class="text-center mb-16">
           <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
-            Institutional Pedigree
+            Who We Are
           </span>
           <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-3">About Mozzex Capital</h2>
           <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-3">
-            Bridging quantitative on-chain forensics, high-speed sniper execution, and hands-free wealth management.
+            Hands-free trading with strict risk discipline. Founded by Claxy & Mozzari.
           </p>
         </div>
 
@@ -1271,10 +1270,10 @@
           <div class="max-w-3xl mx-auto text-center sm:text-left">
             <h3 class="text-2xl font-sora font-bold text-white mb-4">Our Core Philosophy</h3>
             <p class="text-gray-300 text-sm leading-relaxed mb-4">
-              The on-chain memecoin market represents the most asymmetric financial opportunity in modern crypto. Yet, more than 95% of newcomers lose their capital due to developer honeypots, emotional panic selling, and predatory sniper bots.
+              The on-chain memecoin market can be very profitable, but more than 95% of people lose money due to emotional panic selling, scam tokens, and bad entries.
             </p>
             <p class="text-gray-400 text-sm leading-relaxed">
-              <strong>Mozzex Capital was founded to level the playing field.</strong> We manage client capital with ruthless discipline. We don't ask you to stare at charts or learn code. Instead, we deploy our proprietary execution desks, execute trades transparently on FOMO, cut losses strictly at pre-defined risk floors, and split net profits 50/50.
+              <strong>Mozzex Capital was founded to fix that.</strong> You don't need to stare at charts all day or guess. We trade on your behalf using strict rules and market experience. Every trade is tracked live on the FOMO trading platform, we cut bad trades at our 30% stop-loss to protect your funds, and we split net profits 50/50.
             </p>
           </div>
         </div>
