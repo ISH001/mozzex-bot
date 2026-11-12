@@ -8,10 +8,10 @@
   <link rel="icon" type="image/png" href="assets/server-logo.png">
   <meta name="theme-color" content="#C0C0C0">
 
-  <!-- Google Fonts: Sora & Plus Jakarta Sans -->
+  <!-- Google Fonts: Sora, Plus Jakarta Sans, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -35,7 +35,8 @@
             },
             fontFamily: {
               sora: ['"Sora"', 'sans-serif'],
-              sans: ['"Plus Jakarta Sans"', 'sans-serif']
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace']
             }
           }
         }
@@ -46,15 +47,16 @@
   <style>
     :root {
       --silver-glow: rgba(192, 192, 192, 0.15);
-      --border-light: rgba(255, 255, 255, 0.12);
+      --border-light: rgba(255, 255, 255, 0.10);
+      --border-hover: rgba(255, 255, 255, 0.28);
     }
     body {
       background-color: #07070A;
       color: #E2E8F0;
       font-family: 'Sora', sans-serif;
       overflow-x: hidden;
-      selection-background-color: #FFFFFF;
-      selection-color: #000000;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     ::selection {
       background: #FFFFFF;
@@ -73,46 +75,50 @@
 
     .luxury-card {
       background: rgba(12, 12, 16, 0.75);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border-light);
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .luxury-card:hover {
-      border-color: rgba(255, 255, 255, 0.35);
       transform: translateY(-3px);
-      box-shadow: 0 20px 40px -15px rgba(255, 255, 255, 0.05);
+      border-color: var(--border-hover);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 255, 255, 0.05);
     }
 
     .silver-badge {
-      background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.20);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.03) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: #FFFFFF;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.04);
     }
 
     .chrome-gradient {
-      background: linear-gradient(180deg, #FFFFFF 0%, #C0C0C0 60%, #7A7A85 100%);
+      background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 50%, #94A3B8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .bg-grid-subtle {
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
       background-size: 32px 32px;
     }
 
-    /* Zylgmart Comparison Widget Styling (Clean Desktop & Mobile VS Placement) */
+    /* Comparison Widget Styling */
     .zm-diff-grid-wrap {
       position: relative;
-      max-width: 960px;
+      max-width: 1040px;
       margin: 0 auto;
     }
     .zm-diff-grid {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
-      gap: 16px;
+      gap: 20px;
       position: relative;
-      align-items: center;
+      align-items: stretch;
     }
     .zm-vs-badge-wrap {
       display: flex;
@@ -121,19 +127,20 @@
       z-index: 25;
     }
     .zm-vs-badge {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: #FFFFFF;
       border: 3px solid #07070A;
       color: #07070A;
       font-size: 13px;
-      font-weight: 900;
+      font-weight: 800;
+      font-family: 'Sora', sans-serif;
       letter-spacing: 0.05em;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 32px rgba(255, 255, 255, 0.5), 0 10px 25px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4), 0 10px 25px rgba(0, 0, 0, 0.8);
       user-select: none;
       flex-shrink: 0;
     }
@@ -144,24 +151,24 @@
         gap: 0;
       }
       .zm-vs-badge-wrap {
-        margin: -26px auto;
+        margin: -25px auto;
         position: relative;
         z-index: 30;
       }
     }
 
     .zm-diff-card-recommended {
-      background: linear-gradient(180deg, rgba(20, 20, 26, 0.95) 0%, rgba(13, 13, 16, 0.95) 100%);
-      border: 1.5px solid rgba(192, 192, 192, 0.40);
+      background: linear-gradient(180deg, rgba(18, 18, 24, 0.95) 0%, rgba(12, 12, 16, 0.95) 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
       border-radius: 24px;
       padding: 36px 32px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 0 35px rgba(192, 192, 192, 0.08), 0 20px 50px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 0 35px rgba(192, 192, 192, 0.08), 0 20px 50px rgba(0, 0, 0, 0.7);
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .zm-diff-card-recommended::before {
       content: "";
@@ -173,13 +180,13 @@
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
     }
     .zm-diff-card-recommended:hover {
-      border-color: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 0 50px rgba(192, 192, 192, 0.15), 0 24px 60px rgba(0, 0, 0, 0.75);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 45px rgba(192, 192, 192, 0.15), 0 24px 60px rgba(0, 0, 0, 0.8);
       transform: translateY(-2px);
     }
 
     .zm-diff-card-avoid {
-      background: rgba(12, 12, 14, 0.65);
+      background: rgba(12, 12, 15, 0.65);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       padding: 36px 32px;
@@ -187,37 +194,34 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-      opacity: 0.85;
-      transition: opacity 0.3s ease;
+      opacity: 0.88;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .zm-diff-card-avoid:hover {
-      opacity: 0.95;
+      opacity: 0.98;
     }
 
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #07070A; }
     ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.18);
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0.38);
+      background: rgba(255, 255, 255, 0.35);
     }
 
-    /* Scoped hidden rules so responsive nav classes are never overridden */
+    /* Scoped hidden rules */
     .tab-view.hidden, #mobile-menu.hidden {
       display: none !important;
     }
-    .tab-view {
-      opacity: 1 !important;
-      animation: tabFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
 
-    /* Dedicated Desktop Navigation: Integrated directly into header (Twin Lines Design) */
+    /* Dedicated Desktop Navigation: Integrated directly into header */
     .desktop-nav-bar {
       display: flex !important;
       align-items: center;
-      gap: 12px;
+      height: 100%;
+      gap: 2px;
       background: transparent !important;
       border: none !important;
       border-radius: 0 !important;
@@ -231,82 +235,134 @@
 
     .tab-button {
       position: relative;
-      padding: 10px 14px 14px 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 0 16px;
       font-family: 'Sora', sans-serif;
       font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.02em;
-      color: #9CA3AF;
+      letter-spacing: 0.015em;
+      color: #94A3B8;
       background: transparent !important;
       border: none !important;
-      transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
+      outline: none;
       cursor: pointer;
       white-space: nowrap;
-    }
-    .tab-button:hover {
-      color: #FFFFFF;
-      transform: translateY(-1px);
-    }
-    .tab-button.active, .tab-button.tab-active {
-      color: #FFFFFF !important;
-      font-weight: 700;
-      text-shadow: 0 0 16px rgba(255, 255, 255, 0.45);
+      transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
     }
 
-    /* Twin Lines Underline Design (Twin White Lines With Luminous Spread) */
-    .tab-button::after {
-      content: "";
-      position: absolute;
-      bottom: 4px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: #FFFFFF;
-      border-radius: 2px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 4px #FFFFFF;
-      transform: translateX(-50%);
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-      opacity: 0;
-      pointer-events: none;
-    }
+    /* Apple/Linear subtle hover micro-pill */
     .tab-button::before {
       content: "";
       position: absolute;
-      bottom: 0px;
-      left: 50%;
-      width: 0;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 1px;
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.35);
-      transform: translateX(-50%);
-      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      top: 50%;
+      left: 4px;
+      right: 4px;
+      height: 36px;
+      transform: translateY(-50%);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       opacity: 0;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+      pointer-events: none;
+    }
+    .tab-button:hover::before {
+      opacity: 1;
+    }
+    .tab-button.active::before, .tab-button.tab-active::before {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .tab-button:hover {
+      color: #FFFFFF;
+    }
+
+    .tab-button.active, .tab-button.tab-active {
+      color: #FFFFFF !important;
+      font-weight: 600;
+    }
+
+    /* Single Razor-Thin (2px) Silver-White Luminous Active Indicator Flush With Bottom Border */
+    .tab-button::after {
+      content: "";
+      position: absolute;
+      bottom: -1px; /* Flush with header's border-b */
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, #FFFFFF 50%, rgba(255, 255, 255, 0.3) 100%);
+      border-radius: 2px 2px 0 0;
+      box-shadow: 0 -1px 8px rgba(255, 255, 255, 0.8), 0 0 16px rgba(192, 192, 192, 0.5);
+      opacity: 0;
+      transform: scaleX(0.3);
+      transform-origin: center;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
     }
 
     .tab-button.active::after, .tab-button.tab-active::after {
-      width: calc(100% - 16px);
       opacity: 1;
-    }
-    .tab-button.active::before, .tab-button.tab-active::before {
-      width: calc(100% - 8px);
-      opacity: 0.8;
+      transform: scaleX(1);
     }
     .tab-button:hover:not(.active)::after {
-      width: calc(100% - 24px);
       opacity: 0.35;
+      transform: scaleX(0.65);
     }
 
-    /* Sitewide Smooth Motion & Micro-Interactions */
-    html {
-      scroll-behavior: smooth;
+    /* Range Slider Styling */
+    input[type=range].luxury-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      outline: none;
+      transition: background 0.2s ease;
+    }
+    input[type=range].luxury-slider:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    input[type=range].luxury-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 3px solid #07070A;
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.8), 0 2px 8px rgba(0, 0, 0, 0.8);
+      cursor: grab;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    input[type=range].luxury-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.95), 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+    input[type=range].luxury-slider::-webkit-slider-thumb:active {
+      transform: scale(1.2);
+      cursor: grabbing;
+      box-shadow: 0 0 22px #FFFFFF, 0 2px 12px rgba(0, 0, 0, 1);
+    }
+    input[type=range].luxury-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 3px solid #07070A;
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.8), 0 2px 8px rgba(0, 0, 0, 0.8);
+      cursor: grab;
     }
 
+    /* Motion & Transitions */
     @keyframes tabFadeSlide {
       0% {
         opacity: 0;
-        transform: translateY(14px);
+        transform: translateY(10px);
       }
       100% {
         opacity: 1;
@@ -314,44 +370,27 @@
       }
     }
     .tab-view:not(.hidden) {
-      animation: tabFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .luxury-card {
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .luxury-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.35);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 255, 255, 0.08);
+      animation: tabFadeSlide 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     button, a {
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     button:active, a:active {
-      transform: scale(0.97) !important;
+      transform: scale(0.98);
     }
 
-    /* Mobile Responsive Breakpoint (Hide desktop bar, show burger button) */
+    /* Mobile Breakpoint */
     @media (max-width: 960px) {
       .desktop-nav-bar {
         display: none !important;
       }
       .mobile-burger-toggle {
         display: flex !important;
-      }
-    }
-    @keyframes tabFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
       }
     }
   </style>
@@ -362,17 +401,20 @@
   <canvas id="spotlight-canvas"></canvas>
 
   <!-- Sticky Navbar (Clean, Zero Emojis, Pure Luxury Typography) -->
-  <header class="sticky top-0 z-50 bg-[#07070A]/90 backdrop-blur-xl border-b border-white/10">
+  <header class="sticky top-0 z-50 bg-[#07070A]/85 backdrop-blur-2xl border-b border-white/[0.08]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Top Left: ONLY Logo and MOZZEX CAPITAL (as requested) -->
-      <a href="#invest" onclick="switchTab('invest')" class="flex items-center space-x-3.5 group">
-        <img src="assets/server-logo.png" alt="Mozzex Capital Logo" class="w-10 h-10 rounded-xl border border-white/20 shadow-md group-hover:border-white/50 transition object-cover">
+      <!-- Top Left: ONLY Logo and MOZZEX CAPITAL -->
+      <a href="#invest" onclick="switchTab('invest')" class="flex items-center space-x-3.5 group cursor-pointer">
+        <div class="relative">
+          <img src="assets/server-logo.png" alt="Mozzex Capital Logo" class="w-10 h-10 rounded-xl border border-white/20 shadow-md group-hover:border-white/50 transition-all duration-300 object-cover">
+          <div class="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+        </div>
         <span class="font-sora font-extrabold text-xl tracking-wider text-white">MOZZEX <span class="text-gray-400 font-light">CAPITAL</span></span>
       </a>
 
-      <!-- Desktop Tab Bar (STRICTLY NO EMOJIS, Always 100% Visible on Large Screens) -->
-      <nav class="desktop-nav-bar text-xs font-semibold tracking-wider font-sora">
+      <!-- Desktop Tab Bar (Integrated directly into header with single razor active indicator) -->
+      <nav class="desktop-nav-bar font-sora">
         <button onclick="switchTab('invest')" id="tab-btn-invest" class="tab-button active">
           Invest
         </button>
@@ -401,7 +443,7 @@
 
       <!-- Right Action & Hamburger for Mobile -->
       <div class="flex items-center space-x-3">
-        <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="hidden sm:flex px-5 py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 hover:scale-105 shadow-lg shadow-white/10 transition items-center space-x-2">
+        <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="hidden sm:inline-flex px-5 py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-white/10 transition items-center space-x-2">
           <span>Enter Discord</span>
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </a>
@@ -419,9 +461,9 @@
 
     </div>
 
-    <!-- Mobile Slide-Down Menu Overlay (Zero Emojis, Pure Obsidian Glass) -->
+    <!-- Mobile Slide-Down Menu Overlay -->
     <div id="mobile-menu" class="hidden md:hidden bg-[#07070A]/98 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all duration-300">
-      <div class="flex flex-col space-y-3 font-sora text-sm font-semibold tracking-wider">
+      <div class="flex flex-col space-y-2 font-sora text-sm font-semibold tracking-wider">
         <button onclick="mobileNav('invest')" class="text-left py-2.5 px-3 rounded-lg text-white hover:bg-white/5 transition">
           Invest
         </button>
@@ -466,51 +508,59 @@
       
       <!-- Hero Section -->
       <section class="relative pt-20 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center z-10">
-        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full silver-badge text-xs font-semibold tracking-wider uppercase mb-8">
-          <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-          <span>MANAGED CAPITAL • 100% LIVE ON FOMO • ZERO TRADING KNOWLEDGE REQUIRED</span>
+        <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full silver-badge text-xs font-semibold tracking-wider uppercase mb-8">
+          <span class="w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#ffffff] animate-pulse"></span>
+          <span class="text-gray-200">MANAGED CAPITAL • 100% LIVE ON FOMO • ZERO TRADING KNOWLEDGE REQUIRED</span>
         </div>
 
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-sora font-extrabold tracking-tight chrome-gradient leading-[1.1] mb-6">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-sora font-extrabold tracking-tight chrome-gradient leading-[1.12] mb-6">
           Institutional On-Chain Wealth, <br>
           <span class="text-white">Completely Hands-Free.</span>
         </h1>
 
-        <p class="text-gray-400 text-sm sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed mb-8">
+        <p class="text-gray-300 text-sm sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed mb-8">
           You choose your investment package. We trade on your behalf using strict rules and years of market experience. Track every single buy and sell live on the <strong class="text-white">FOMO trading platform & app</strong> directly from your phone. We split net profits 50/50, and we cut trades early at our strict 30% stop-loss to protect your money.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button onclick="switchTab('packages')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-bold text-sm bg-white text-black hover:bg-gray-200 hover:scale-105 shadow-xl shadow-white/10 transition">
+          <button onclick="switchTab('packages')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-bold text-sm bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:-translate-y-0.5 active:translate-y-0 shadow-xl shadow-white/10 transition">
             View Managed Packages ($10 - $1K+)
           </button>
-          <button onclick="scrollToWhyUs()" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-semibold text-sm border border-white/20 hover:border-white/50 text-white bg-white/5 hover:bg-white/10 transition">
+          <button onclick="scrollToWhyUs()" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-semibold text-sm border border-white/20 hover:border-white/50 text-white bg-white/[0.04] hover:bg-white/[0.08] backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0 transition">
             Why Mozzex Capital?
           </button>
         </div>
 
-        <!-- Metric Badges (Clean, No Emojis, No loud 30% badge) -->
+        <!-- Metric Badges -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-16">
-          <div class="luxury-card p-5 rounded-2xl text-center">
-            <div class="text-2xl font-sora font-bold text-white tracking-tight">50 / 50</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">Profit Split</div>
+          <div class="luxury-card p-5 sm:p-6 rounded-2xl text-center relative overflow-hidden group">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/40 transition"></div>
+            <div class="text-2xl sm:text-3xl font-sora font-extrabold text-white tracking-tight">50 / 50</div>
+            <div class="text-[11px] text-gray-400 mt-1 uppercase font-mono tracking-wider">Profit Split</div>
+            <div class="text-[10px] text-gray-500 font-mono mt-0.5">Desk / Client Share</div>
           </div>
-          <div class="luxury-card p-5 rounded-2xl text-center">
-            <div class="text-2xl font-sora font-bold text-white tracking-tight">100%</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">FOMO Tracking</div>
+          <div class="luxury-card p-5 sm:p-6 rounded-2xl text-center relative overflow-hidden group">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/40 transition"></div>
+            <div class="text-2xl sm:text-3xl font-sora font-extrabold text-white tracking-tight">100%</div>
+            <div class="text-[11px] text-gray-400 mt-1 uppercase font-mono tracking-wider">FOMO Tracking</div>
+            <div class="text-[10px] text-gray-500 font-mono mt-0.5">Live Phone Telemetry</div>
           </div>
-          <div class="luxury-card p-5 rounded-2xl text-center">
-            <div class="text-2xl font-sora font-bold text-white tracking-tight">Controlled</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">Stop-Loss Floor</div>
+          <div class="luxury-card p-5 sm:p-6 rounded-2xl text-center relative overflow-hidden group">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/40 transition"></div>
+            <div class="text-2xl sm:text-3xl font-sora font-extrabold text-white tracking-tight">Controlled</div>
+            <div class="text-[11px] text-gray-400 mt-1 uppercase font-mono tracking-wider">Stop-Loss Floor</div>
+            <div class="text-[10px] text-gray-500 font-mono mt-0.5">~70% Capital Guard</div>
           </div>
-          <div class="luxury-card p-5 rounded-2xl text-center">
-            <div class="text-2xl font-sora font-bold text-white tracking-tight">0% Fees</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">On Crypto Deposits</div>
+          <div class="luxury-card p-5 sm:p-6 rounded-2xl text-center relative overflow-hidden group">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/40 transition"></div>
+            <div class="text-2xl sm:text-3xl font-sora font-extrabold text-white tracking-tight">0% Fees</div>
+            <div class="text-[11px] text-gray-400 mt-1 uppercase font-mono tracking-wider">On Crypto Deposits</div>
+            <div class="text-[10px] text-gray-500 font-mono mt-0.5">Direct Desk Ingestion</div>
           </div>
         </div>
       </section>
 
-      <!-- WHY US (EXACT ZYLGMART COMPARISON WIDGET: US VS OTHERS) -->
+      <!-- WHY US (COMPARISON WIDGET: MOZZEX VS OTHERS) -->
       <section id="why-us" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10 border-t border-white/10">
         <div class="text-center mb-16">
           <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
@@ -531,49 +581,49 @@
             <div class="zm-diff-card-recommended">
               <div>
                 <div class="flex items-center space-x-3.5 mb-6">
-                  <img src="assets/server-logo.png" alt="Mozzex Capital Logo" class="w-12 h-12 rounded-xl border-2 border-white/30 shadow-lg shadow-white/20 object-cover flex-shrink-0">
+                  <img src="assets/server-logo.png" alt="Mozzex Capital Logo" class="w-12 h-12 rounded-xl border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.15)] object-cover flex-shrink-0">
                   <div>
-                    <div class="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-300">RECOMMENDED</div>
-                    <h3 class="font-sora font-extrabold text-white text-xl">Mozzex Capital</h3>
+                    <div class="inline-block px-2 py-0.5 rounded-full bg-white/10 border border-white/20 text-[10px] font-mono font-bold uppercase tracking-widest text-white mb-0.5">RECOMMENDED</div>
+                    <h3 class="font-sora font-extrabold text-white text-xl tracking-tight">Mozzex Capital</h3>
                   </div>
                 </div>
 
                 <div class="space-y-4 text-xs">
                   <div class="flex items-start space-x-3">
-                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 shadow-sm">✓</span>
                     <span class="text-gray-200"><strong>Live on the FOMO App:</strong> Watch every single buy, sell, and balance update live on the FOMO trading platform from your phone. Zero secret trades.</span>
                   </div>
                   <div class="flex items-start space-x-3">
-                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 shadow-sm">✓</span>
                     <span class="text-gray-200"><strong>Zero Emotion Trading:</strong> We trade on your behalf using strict rules and years of experience. No panic selling, no emotional chasing.</span>
                   </div>
                   <div class="flex items-start space-x-3">
-                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 shadow-sm">✓</span>
                     <span class="text-gray-200"><strong>Strict 30% Stop-Loss Protection:</strong> If a trade goes against us, we cut it at a 30% loss to save ~70% of your capital. You never lose your whole balance.</span>
                   </div>
                   <div class="flex items-start space-x-3">
-                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 shadow-sm">✓</span>
                     <span class="text-gray-200"><strong>You Choose When to Cash Out:</strong> Whenever the account is in profit, you decide when to take your money out or let it keep growing.</span>
                   </div>
                   <div class="flex items-start space-x-3">
-                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 shadow-sm">✓</span>
                     <span class="text-gray-200"><strong>50/50 Net Profit Split:</strong> We only make money when you make money. Zero upfront management charges.</span>
                   </div>
                   <div class="flex items-start space-x-3">
-                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 shadow-sm">✓</span>
                     <span class="text-gray-200"><strong>Direct Talk with Founders:</strong> Private 1-on-1 Discord support tickets directly with Claxy & Mozzari.</span>
                   </div>
                 </div>
               </div>
 
               <div class="mt-8 pt-6 border-t border-white/10 text-center">
-                <button onclick="switchTab('packages')" class="w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-lg shadow-white/10">
+                <button onclick="switchTab('packages')" class="w-full py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition shadow-lg shadow-white/10">
                   Choose Your Allocation Package
                 </button>
               </div>
             </div>
 
-            <!-- Floating Center VS Badge (Strictly Between Cards) -->
+            <!-- Floating Center VS Badge -->
             <div class="zm-vs-badge-wrap">
               <div class="zm-vs-badge">VS</div>
             </div>
@@ -582,12 +632,12 @@
             <div class="zm-diff-card-avoid">
               <div>
                 <div class="flex items-center space-x-3.5 mb-6">
-                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-500 flex items-center justify-center font-mono font-bold text-sm flex-shrink-0">
+                  <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center font-mono font-bold text-base flex-shrink-0">
                     ✕
                   </div>
                   <div>
-                    <div class="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500">AVOID</div>
-                    <h3 class="font-sora font-extrabold text-gray-400 text-xl">Trading Alone / Other Groups</h3>
+                    <div class="inline-block px-2 py-0.5 rounded-full bg-red-500/10 border border-red-500/20 text-[10px] font-mono font-bold uppercase tracking-widest text-red-400 mb-0.5">AVOID</div>
+                    <h3 class="font-sora font-extrabold text-gray-400 text-xl tracking-tight">Trading Alone / Other Groups</h3>
                   </div>
                 </div>
 
@@ -619,8 +669,8 @@
                 </div>
               </div>
 
-              <div class="mt-8 pt-6 border-t border-white/5 text-center">
-                <div class="text-[11px] font-mono text-gray-500 uppercase">High Risk • Unregulated • High Failure Rate</div>
+              <div class="mt-8 pt-6 border-t border-white/5 text-center flex items-center justify-center h-[50px] rounded-xl bg-red-500/[0.04] border border-red-500/10">
+                <div class="text-[11px] font-mono text-red-300 font-medium tracking-wide uppercase">High Risk • Unregulated • High Failure Rate</div>
               </div>
             </div>
 
@@ -647,7 +697,7 @@
               <span class="text-xs font-mono uppercase text-gray-400">1. Capital Allocation:</span>
               <span id="sliderValueText" class="text-2xl font-sora font-extrabold text-white">$100 USD</span>
             </div>
-            <input type="range" id="depositSlider" min="10" max="1000" step="10" value="100" class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white">
+            <input type="range" id="depositSlider" min="10" max="1000" step="10" value="100" class="luxury-slider">
             <div class="flex justify-between text-[10px] text-gray-500 font-mono mt-2">
               <span>$10 (Starter)</span>
               <span>$250 (Pro)</span>
@@ -655,13 +705,13 @@
               <span>$1,000+ (Whale)</span>
             </div>
             <!-- Quick Preset Pills -->
-            <div class="flex flex-wrap gap-2 mt-3 justify-center text-[11px] font-mono">
-              <button onclick="setSliderValue(25)" class="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$25</button>
-              <button onclick="setSliderValue(50)" class="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$50</button>
-              <button onclick="setSliderValue(100)" class="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$100</button>
-              <button onclick="setSliderValue(250)" class="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$250</button>
-              <button onclick="setSliderValue(500)" class="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$500</button>
-              <button onclick="setSliderValue(1000)" class="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$1,000</button>
+            <div class="flex flex-wrap gap-2 mt-3.5 justify-center text-[11px] font-mono">
+              <button onclick="setSliderValue(25)" id="preset-btn-25" class="preset-btn px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$25</button>
+              <button onclick="setSliderValue(50)" id="preset-btn-50" class="preset-btn px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$50</button>
+              <button onclick="setSliderValue(100)" id="preset-btn-100" class="preset-btn px-3 py-1 rounded-lg bg-white text-black font-bold border border-white transition">$100</button>
+              <button onclick="setSliderValue(250)" id="preset-btn-250" class="preset-btn px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$250</button>
+              <button onclick="setSliderValue(500)" id="preset-btn-500" class="preset-btn px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$500</button>
+              <button onclick="setSliderValue(1000)" id="preset-btn-1000" class="preset-btn px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition">$1,000</button>
             </div>
           </div>
 
@@ -710,7 +760,7 @@
               <div id="estClientNetProfit" class="text-lg font-sora font-bold text-white mt-1">+$10.00</div>
               <span class="text-[9px] text-gray-500 font-mono">Pure Net Profit</span>
             </div>
-            <div class="p-4 rounded-xl bg-white/10 border border-white/30 text-center shadow-lg shadow-white/5">
+            <div class="p-4 rounded-xl bg-white/10 border border-white/30 text-center shadow-lg shadow-white/5 relative overflow-hidden">
               <span class="text-[10px] uppercase font-mono text-white font-bold block">Your Total Payout</span>
               <div id="estClientPayout" class="text-xl font-sora font-extrabold text-white mt-1">$110.00</div>
               <span class="text-[9px] text-gray-300 font-mono">Principal + Net Profit</span>
@@ -723,14 +773,14 @@
           </div>
 
           <div class="text-center">
-            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block w-full sm:w-auto px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-lg shadow-white/10">
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block w-full sm:w-auto px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition shadow-lg shadow-white/10">
               Start This Allocation on Discord
             </a>
           </div>
         </div>
       </section>
 
-            <!-- PITCH 1: THE MOZZEX KNOWLEDGE E-BOOKS (5 MASTER VOLUMES + PDFS) -->
+      <!-- PITCH 1: THE MOZZEX KNOWLEDGE E-BOOKS (5 MASTER VOLUMES + PDFS) -->
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10 border-t border-white/10">
         <div class="text-center mb-12">
           <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
@@ -759,16 +809,16 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol1-degen-starter-blueprint.pdf" download="Mozzex-Vol01-The-Degen-Starter-Blueprint.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 01)</span>
+              <a href="ebooks/vol1-degen-starter-blueprint.pdf" download="Mozzex-Vol01-The-Degen-Starter-Blueprint.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol1-degen-starter-blueprint.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol1-degen-starter-blueprint.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online In Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
 
           <!-- Book 02 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
@@ -783,16 +833,16 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol2-anti-scam-rug-bible.pdf" download="Mozzex-Vol02-The-Anti-Scam---Rug-Bible.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 02)</span>
+              <a href="ebooks/vol2-anti-scam-rug-bible.pdf" download="Mozzex-Vol02-The-Anti-Scam---Rug-Bible.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol2-anti-scam-rug-bible.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol2-anti-scam-rug-bible.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online In Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
 
           <!-- Book 03 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
@@ -807,16 +857,16 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol3-mastering-fomo-copy-trading.pdf" download="Mozzex-Vol03-Mastering-FOMO---Copy-Trading.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 03)</span>
+              <a href="ebooks/vol3-mastering-fomo-copy-trading.pdf" download="Mozzex-Vol03-Mastering-FOMO---Copy-Trading.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol3-mastering-fomo-copy-trading.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol3-mastering-fomo-copy-trading.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online In Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
 
           <!-- Book 04 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
@@ -831,16 +881,16 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol4-trench-narrative-hunter.pdf" download="Mozzex-Vol04-The-10x-Trench---Narrative-Hunter.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 04)</span>
+              <a href="ebooks/vol4-trench-narrative-hunter.pdf" download="Mozzex-Vol04-The-10x-Trench---Narrative-Hunter.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol4-trench-narrative-hunter.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol4-trench-narrative-hunter.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online In Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
 
           <!-- Book 05 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
@@ -855,18 +905,19 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol5-master-exit-profit-system.pdf" download="Mozzex-Vol05-The-Master-Exit---Profit-Taking-System.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 05)</span>
+              <a href="ebooks/vol5-master-exit-profit-system.pdf" download="Mozzex-Vol05-The-Master-Exit---Profit-Taking-System.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol5-master-exit-profit-system.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol5-master-exit-profit-system.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online In Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
+
           <!-- 5-Book Master Bundle Card -->
-          <div class="luxury-card rounded-2xl p-6 border-2 border-white/30 flex flex-col justify-between bg-gradient-to-b from-white/[0.08] to-transparent">
+          <div class="luxury-card rounded-2xl p-6 border-2 border-white/35 flex flex-col justify-between bg-gradient-to-b from-white/[0.08] via-white/[0.02] to-transparent shadow-[0_0_35px_rgba(255,255,255,0.06)]">
             <div>
               <div class="inline-block px-2.5 py-0.5 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider mb-2">
                 BEST SELLER • SAVE $60
@@ -878,20 +929,20 @@
             </div>
             <div class="space-y-2 pt-2">
               <div class="text-2xl font-sora font-extrabold text-white mb-2">$40 <span class="text-xs font-normal text-gray-500 line-through">$100</span></div>
-              <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Master Vault PDF (45 Pages)</span>
+              <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Master Vault (45 Pages)</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-300 hover:text-white transition text-center block">
+              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition text-center block">
                 Order Pentology Ticket on Discord ($40) →
               </a>
             </div>
           </div>
-  
+
         </div>
 
         <div class="text-center">
-          <a href="ebooks/" class="inline-block px-8 py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider border border-white/20 hover:border-white text-white bg-white/5 hover:bg-white/10 transition">
+          <a href="ebooks/" class="inline-block px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider border border-white/20 hover:border-white text-white bg-white/5 hover:bg-white/10 transition">
             Explore The Full Knowledge Vault Library Portal →
           </a>
         </div>
@@ -899,7 +950,7 @@
 
       <!-- PITCH 2: LIFETIME VIP MEMBERSHIP PASS ($50 USD) -->
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10 border-t border-white/10">
-        <div class="luxury-card rounded-3xl p-8 sm:p-12 border-2 border-white/40 shadow-2xl relative overflow-hidden">
+        <div class="luxury-card rounded-3xl p-8 sm:p-12 border-2 border-white/35 shadow-2xl relative overflow-hidden">
           <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
             <div>
               <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
@@ -909,7 +960,7 @@
                 Mozzex VIP Lifetime Pass
               </h2>
               <p class="text-gray-400 text-sm mt-1 max-w-xl">
-                Want to trade yourself? Get our private trench tools, anti-rug scanners, real-time coin calls & 1-on-1 mentorship for life.
+                Want to trade yourself? Get our private trench tools, anti-rug scanners, real-time coin calls & direct 1-on-1 mentorship with founders Claxy & Mozzari for life.
               </p>
             </div>
             <div class="text-left md:text-right flex-shrink-0">
@@ -918,39 +969,49 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 text-xs text-gray-300">
-            <div class="space-y-3">
-              <div class="flex items-start space-x-2.5">
-                <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>All 5 Mozzex Books Included FREE:</strong> $100 value included at zero extra cost. Start with solid knowledge before risking your money.</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition">
+              <div class="flex items-center space-x-2 text-white font-sora font-bold text-xs mb-1.5">
+                <span class="w-4 h-4 rounded-full bg-white text-black flex items-center justify-center text-[10px] font-mono">✓</span>
+                <span>All 5 Books Included FREE ($100 Value)</span>
               </div>
-              <div class="flex items-start space-x-2.5">
-                <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>Axiom Best Trenching Setup:</strong> Our private configuration specifically tuned to scan tokens fast and find winning runners early in the memecoin trenches.</span>
-              </div>
-              <div class="flex items-start space-x-2.5">
-                <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>Private Anti-Rug Protection Tools:</strong> Built-in contract scanners that check liquidity and code so you never get rugged, trapped, or honeypotted.</span>
-              </div>
+              <p class="text-[11px] text-gray-400 leading-relaxed">Official publication-ready PDFs, print syllabus, and Notion workspaces for all 5 master handbooks.</p>
             </div>
-            <div class="space-y-3">
-              <div class="flex items-start space-x-2.5">
-                <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>Coins We Personally Buy:</strong> We share the exact coins we are personally buying with our own capital in '#vip-alpha', backed by heavy research and our market experience.</span>
+
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition">
+              <div class="flex items-center space-x-2 text-white font-sora font-bold text-xs mb-1.5">
+                <span class="w-4 h-4 rounded-full bg-white text-black flex items-center justify-center text-[10px] font-mono">✓</span>
+                <span>Axiom Best Trenching Setup</span>
               </div>
-              <div class="flex items-start space-x-2.5">
-                <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>Always Buy The Right Ticker:</strong> Setup and filters that verify the real token contract address instantly so you never get tricked by fake copycats.</span>
+              <p class="text-[11px] text-gray-400 leading-relaxed">Our private configuration tuned to scan tokens fast and find winning runners early in the trenches.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition">
+              <div class="flex items-center space-x-2 text-white font-sora font-bold text-xs mb-1.5">
+                <span class="w-4 h-4 rounded-full bg-white text-black flex items-center justify-center text-[10px] font-mono">✓</span>
+                <span>Private Anti-Rug Protection Tools</span>
               </div>
-              <div class="flex items-start space-x-2.5">
-                <span class="text-white font-bold font-mono">✓</span>
-                <span><strong>1-on-1 Step-by-Step Setup:</strong> Founders Claxy & Mozzari personally help you set up your wallets, trading tools, and the FOMO trading platform on Discord.</span>
+              <p class="text-[11px] text-gray-400 leading-relaxed">Contract scanners checking liquidity and developer code so you never get trapped or honeypotted.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition">
+              <div class="flex items-center space-x-2 text-white font-sora font-bold text-xs mb-1.5">
+                <span class="w-4 h-4 rounded-full bg-white text-black flex items-center justify-center text-[10px] font-mono">✓</span>
+                <span>Direct Founder Mentorship</span>
               </div>
+              <p class="text-[11px] text-gray-400 leading-relaxed">Founders Claxy & Mozzari personally help you set up wallets, trading tools, and the FOMO platform 1-on-1.</p>
             </div>
           </div>
 
-          <div class="text-center pt-4">
-            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full sm:w-auto inline-block px-10 py-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-xl shadow-white/10">
+          <!-- Highlighted Founder Direct Line Callout -->
+          <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/20 text-center mb-8">
+            <div class="text-xs font-sora font-semibold text-white">
+              Private 1-on-1 Founder Line: <span class="text-gray-300 font-normal">Both Claxy & Mozzari are personally active in your private Discord ticket to ensure your setup is bulletproof.</span>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full sm:w-auto inline-block px-10 py-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition shadow-xl shadow-white/10">
               Claim Lifetime VIP Pass ($50)
             </a>
           </div>
@@ -1032,7 +1093,7 @@
                 <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">At Any Profit Milestone</strong></div>
               </div>
             </div>
-            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white/20 transition text-center block">
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white hover:text-black transition text-center block">
               Start Starter ($10+)
             </a>
           </div>
@@ -1053,13 +1114,13 @@
                 <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">At Any Profit Milestone</strong></div>
               </div>
             </div>
-            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white/20 transition text-center block">
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white hover:text-black transition text-center block">
               Start Growth ($30+)
             </a>
           </div>
 
           <!-- Package 3 -->
-          <div class="luxury-card rounded-3xl p-7 flex flex-col justify-between border-2 border-white/40 shadow-xl relative overflow-hidden">
+          <div class="luxury-card rounded-3xl p-7 flex flex-col justify-between border-2 border-white/40 shadow-xl relative overflow-hidden bg-gradient-to-b from-white/[0.06] to-transparent">
             <div class="absolute top-3 right-3 px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-white text-black">POPULAR</div>
             <div>
               <div class="text-xs font-mono uppercase tracking-widest text-gray-400">Tier 03</div>
@@ -1075,7 +1136,7 @@
                 <div class="flex justify-between"><span class="text-gray-400">Alpha Calls:</span> <strong class="text-white">VIP Alpha Included</strong></div>
               </div>
             </div>
-            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-lg shadow-white/10">
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center block shadow-lg shadow-white/10">
               Start Pro ($100+)
             </a>
           </div>
@@ -1096,7 +1157,7 @@
                 <div class="flex justify-between"><span class="text-gray-400">Support:</span> <strong class="text-white">Direct Line to Founders</strong></div>
               </div>
             </div>
-            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white/20 transition text-center block">
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white hover:text-black transition text-center block">
               Start Whale ($500+)
             </a>
           </div>
@@ -1106,6 +1167,7 @@
 
     <!-- ========================================== -->
     <!-- TAB 3: PROPRIETARY E-BOOKS & MANUALS (ALL 5 VOLUMES + MASTER PDF) -->
+    <!-- ========================================== -->
     <div id="view-books" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
         <div class="text-center mb-16">
@@ -1135,16 +1197,16 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol1-degen-starter-blueprint.pdf" download="Mozzex-Vol01-The-Degen-Starter-Blueprint.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 01)</span>
+              <a href="ebooks/vol1-degen-starter-blueprint.pdf" download="Mozzex-Vol01-The-Degen-Starter-Blueprint.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol1-degen-starter-blueprint.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol1-degen-starter-blueprint.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online in Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
 
           <!-- Book 02 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
@@ -1159,16 +1221,16 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol2-anti-scam-rug-bible.pdf" download="Mozzex-Vol02-The-Anti-Scam---Rug-Bible.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 02)</span>
+              <a href="ebooks/vol2-anti-scam-rug-bible.pdf" download="Mozzex-Vol02-The-Anti-Scam---Rug-Bible.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol2-anti-scam-rug-bible.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol2-anti-scam-rug-bible.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online in Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
 
           <!-- Book 03 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
@@ -1183,16 +1245,16 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol3-mastering-fomo-copy-trading.pdf" download="Mozzex-Vol03-Mastering-FOMO---Copy-Trading.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 03)</span>
+              <a href="ebooks/vol3-mastering-fomo-copy-trading.pdf" download="Mozzex-Vol03-Mastering-FOMO---Copy-Trading.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol3-mastering-fomo-copy-trading.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol3-mastering-fomo-copy-trading.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online in Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
 
           <!-- Book 04 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
@@ -1207,16 +1269,16 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol4-trench-narrative-hunter.pdf" download="Mozzex-Vol04-The-10x-Trench---Narrative-Hunter.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 04)</span>
+              <a href="ebooks/vol4-trench-narrative-hunter.pdf" download="Mozzex-Vol04-The-10x-Trench---Narrative-Hunter.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol4-trench-narrative-hunter.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol4-trench-narrative-hunter.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online in Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
 
           <!-- Book 05 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
@@ -1231,18 +1293,19 @@
               </p>
             </div>
             <div class="space-y-2 pt-3 border-t border-white/10">
-              <a href="ebooks/vol5-master-exit-profit-system.pdf" download="Mozzex-Vol05-The-Master-Exit---Profit-Taking-System.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Official PDF (Vol. 05)</span>
+              <a href="ebooks/vol5-master-exit-profit-system.pdf" download="Mozzex-Vol05-The-Master-Exit---Profit-Taking-System.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/5">
+                <span>Download Official PDF</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="ebooks/vol5-master-exit-profit-system.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
-                Or Read Online In Browser →
+              <a href="ebooks/vol5-master-exit-profit-system.html" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition text-center flex items-center justify-center space-x-1.5">
+                <span>Read Online in Browser</span>
+                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
             </div>
           </div>
-  
+
           <!-- 5-Book Master Bundle Card -->
-          <div class="luxury-card rounded-2xl p-6 border-2 border-white/30 flex flex-col justify-between bg-gradient-to-b from-white/[0.08] to-transparent">
+          <div class="luxury-card rounded-2xl p-6 border-2 border-white/35 flex flex-col justify-between bg-gradient-to-b from-white/[0.08] via-white/[0.02] to-transparent shadow-[0_0_35px_rgba(255,255,255,0.06)]">
             <div>
               <div class="inline-block px-2.5 py-0.5 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider mb-2">
                 BEST SELLER • SAVE $60
@@ -1254,16 +1317,16 @@
             </div>
             <div class="space-y-2 pt-2">
               <div class="text-2xl font-sora font-extrabold text-white mb-2">$40 <span class="text-xs font-normal text-gray-500 line-through">$100</span></div>
-              <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
-                <span>Download Master Vault PDF (45 Pages)</span>
+              <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full py-2.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Master Vault (45 Pages)</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-300 hover:text-white transition text-center block">
+              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2 px-3 rounded-xl text-xs font-sora font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition text-center block">
                 Order Pentology Ticket on Discord ($40) →
               </a>
             </div>
           </div>
-  
+
         </div>
 
         <!-- Master Vault Compendium Feature Banner -->
@@ -1278,7 +1341,7 @@
             Looking to have the entire desk syllabus in one file to study offline or share? Download the official 45-page master PDF compendium covering all 5 volumes.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-xl shadow-white/10 flex items-center justify-center space-x-2">
+            <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition shadow-xl shadow-white/10 flex items-center justify-center space-x-2">
               <span>Download 45-Page Master Vault PDF</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
             </a>
@@ -1290,11 +1353,12 @@
       </section>
     </div>
 
+    <!-- ========================================== -->
     <!-- TAB 4: LIFETIME VIP MEMBERSHIP ($50 USD)   -->
     <!-- ========================================== -->
     <div id="view-vip" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
-        <div class="luxury-card rounded-3xl p-8 sm:p-14 border-2 border-white/40 shadow-2xl relative overflow-hidden">
+        <div class="luxury-card rounded-3xl p-8 sm:p-14 border-2 border-white/35 shadow-2xl relative overflow-hidden">
           <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
             <div>
               <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
@@ -1307,44 +1371,44 @@
             </div>
             <div class="text-left md:text-right">
               <div class="text-4xl font-sora font-extrabold text-white">$50 <span class="text-sm font-normal text-gray-400">USD</span></div>
-              <div class="text-xs text-gray-300 font-mono mt-1">✓ Lifetime Access</div>
+              <div class="text-xs text-gray-300 font-mono mt-1">✓ Lifetime Access Included</div>
             </div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
             <div>
               <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-3">1. All 5 Knowledge Books & Guides ($100 Value Included FREE)</h4>
-              <ul class="space-y-2 text-xs text-gray-300">
-                <li>• <strong>"Vol. 1: The Degen Starter Blueprint"</strong> — From zero crypto knowledge to profitable trader.</li>
-                <li>• <strong>"Vol. 2: The Anti-Scam & Rug Bible"</strong> — Spotting honeypots & drainers in under 60 seconds.</li>
-                <li>• <strong>"Vol. 3: Mastering FOMO & Copy Trading"</strong> — How to follow insider wallets on FOMO.</li>
-                <li>• <strong>"Vol. 4: The 10x Trench & Narrative Hunter"</strong> — Catching viral memecoins before they trend.</li>
-                <li>• <strong>"Vol. 5: The Master Exit & Profit-Taking System"</strong> — Systematic profit ladders & never round-tripping to zero.</li>
+              <ul class="space-y-2.5 text-xs text-gray-300">
+                <li class="flex items-start space-x-2"><span class="text-white font-bold">•</span><span><strong>"Vol. 1: The Degen Starter Blueprint"</strong> — From zero crypto knowledge to profitable trader.</span></li>
+                <li class="flex items-start space-x-2"><span class="text-white font-bold">•</span><span><strong>"Vol. 2: The Anti-Scam & Rug Bible"</strong> — Spotting honeypots & drainers in under 60 seconds.</span></li>
+                <li class="flex items-start space-x-2"><span class="text-white font-bold">•</span><span><strong>"Vol. 3: Mastering FOMO & Copy Trading"</strong> — How to follow insider wallets on FOMO.</span></li>
+                <li class="flex items-start space-x-2"><span class="text-white font-bold">•</span><span><strong>"Vol. 4: The 10x Trench & Narrative Hunter"</strong> — Catching viral memecoins before they trend.</span></li>
+                <li class="flex items-start space-x-2"><span class="text-white font-bold">•</span><span><strong>"Vol. 5: The Master Exit & Profit-Taking System"</strong> — Systematic profit ladders & never round-tripping to zero.</span></li>
               </ul>
             </div>
             <div>
               <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-3">2. Private Trading Tools & Trench Setup</h4>
-              <ul class="space-y-2 text-xs text-gray-300">
-                <li>• <strong>Axiom Best Trenching Setup:</strong> Custom setup specifically tuned to scan tokens fast and find winning runners early in the memecoin trenches.</li>
-                <li>• <strong>Private Anti-Rug Protection Tools:</strong> Scanners that check smart contracts and liquidity locks so you never get rugged or trapped.</li>
-                <li>• <strong>Always Buy The Right Ticker:</strong> Tools and filters that verify the real token contract address instantly so you never buy fake scam copycats.</li>
+              <ul class="space-y-2.5 text-xs text-gray-300">
+                <li class="flex items-start space-x-2"><span class="text-white font-bold">•</span><span><strong>Axiom Best Trenching Setup:</strong> Custom setup specifically tuned to scan tokens fast and find winning runners early in the memecoin trenches.</span></li>
+                <li class="flex items-start space-x-2"><span class="text-white font-bold">•</span><span><strong>Private Anti-Rug Protection Tools:</strong> Scanners that check smart contracts and liquidity locks so you never get rugged or trapped.</span></li>
+                <li class="flex items-start space-x-2"><span class="text-white font-bold">•</span><span><strong>Always Buy The Right Ticker:</strong> Tools and filters that verify the real token contract address instantly so you never buy fake scam copycats.</span></li>
               </ul>
             </div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-white/10 mb-8">
-            <div>
+            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10">
               <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">3. Coins We Personally Buy</h4>
               <p class="text-xs text-gray-400 leading-relaxed">Direct access to our private '#vip-alpha' channel where we share the exact coins we are personally buying with our own capital, backed by heavy research, market experience, and clear entry/exit plans.</p>
             </div>
-            <div>
-              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">4. 1-on-1 Step-by-Step Setup</h4>
+            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10">
+              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">4. Direct Line with Founders Claxy & Mozzari</h4>
               <p class="text-xs text-gray-400 leading-relaxed">Founders Claxy & Mozzari personally guide you in a private ticket to set up your wallet, trading tools, and the FOMO trading platform so you are ready to trade with confidence.</p>
             </div>
           </div>
 
           <div class="text-center">
-            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block px-10 py-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-xl shadow-white/10">
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block px-10 py-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition shadow-xl shadow-white/10">
               Get Lifetime VIP Pass For $50
             </a>
           </div>
@@ -1390,7 +1454,7 @@
             <!-- Founder 1: Claxy -->
             <div class="luxury-card rounded-2xl p-7 border border-white/15 hover:border-white/40 transition">
               <div class="flex items-center space-x-4 mb-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-black border border-white/30 flex items-center justify-center font-sora font-extrabold text-xl text-white">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-black border border-white/30 flex items-center justify-center font-sora font-extrabold text-xl text-white shadow-md">
                   C
                 </div>
                 <div>
@@ -1406,7 +1470,7 @@
             <!-- Founder 2: Mozzari -->
             <div class="luxury-card rounded-2xl p-7 border border-white/15 hover:border-white/40 transition">
               <div class="flex items-center space-x-4 mb-4">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-black border border-white/30 flex items-center justify-center font-sora font-extrabold text-xl text-white">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-black border border-white/30 flex items-center justify-center font-sora font-extrabold text-xl text-white shadow-md">
                   M
                 </div>
                 <div>
@@ -1424,19 +1488,19 @@
         <!-- 4 Pillars of Mozzex Capital -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="luxury-card p-6 rounded-2xl">
-            <div class="text-white font-mono text-lg font-bold mb-2">01. Live Proof</div>
+            <div class="text-white font-mono text-base font-bold mb-2">01. Live Proof</div>
             <p class="text-xs text-gray-400 leading-relaxed">Every trade is viewable in real-time on your private FOMO profile. Never guess where your funds are.</p>
           </div>
           <div class="luxury-card p-6 rounded-2xl">
-            <div class="text-white font-mono text-lg font-bold mb-2">02. 50/50 Split</div>
+            <div class="text-white font-mono text-base font-bold mb-2">02. 50/50 Split</div>
             <p class="text-xs text-gray-400 leading-relaxed">We only earn when you earn. Zero management fees, zero hidden percentage cuts.</p>
           </div>
           <div class="luxury-card p-6 rounded-2xl">
-            <div class="text-white font-mono text-lg font-bold mb-2">03. Stop-Loss Floor</div>
+            <div class="text-white font-mono text-base font-bold mb-2">03. Stop-Loss Floor</div>
             <p class="text-xs text-gray-400 leading-relaxed">Strict mathematical limits per trade prevent portfolio drawdowns and preserve client principal.</p>
           </div>
           <div class="luxury-card p-6 rounded-2xl">
-            <div class="text-white font-mono text-lg font-bold mb-2">04. Direct Access</div>
+            <div class="text-white font-mono text-base font-bold mb-2">04. Direct Access</div>
             <p class="text-xs text-gray-400 leading-relaxed">Speak directly with Claxy & Mozzari inside encrypted private Discord tickets 24/7.</p>
           </div>
         </div>
@@ -1537,14 +1601,14 @@
           <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
             <h3 class="text-base font-sora font-bold text-white mb-2">8. Digital Product & E-Book Delivery Terms</h3>
             <p>
-              All purchases of proprietary Mozzex E-Books (Volume 01, Volume 02, Volume 03, or Trilogy Bundle) and Lifetime VIP Passes are intangible digital goods. Upon delivery of PDF download links or Notion workspaces inside the client's private Discord ticket, all sales are complete and non-refundable.
+              All purchases of proprietary Mozzex E-Books (Volume 01, Volume 02, Volume 03, Volume 04, Volume 05, or Pentology Bundle) and Lifetime VIP Passes are intangible digital goods. Upon delivery of PDF download links or Notion workspaces inside the client's private Discord ticket, all sales are complete and non-refundable.
             </p>
           </div>
 
         </div>
 
         <div class="text-center mt-12">
-          <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-lg shadow-white/10">
+          <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-slate-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.25)] transition shadow-lg shadow-white/10">
             I Understand & Agree • Enter Discord
           </a>
         </div>
@@ -1634,7 +1698,7 @@
 
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
             <h4 class="font-sora font-bold text-white text-sm">What happens if a trade experiences a loss?</h4>
-            <p class="text-gray-400 text-xs mt-2 leading-relaxed">We always cut the trade at a maximum predefined loss to protect capital. Unlike emotional retail traders who hold dumping tokens down to zero, our desk executes cold risk cuts so your portfolio survives.</p>
+            <p class="text-gray-400 text-xs mt-2 leading-relaxed">We always cut the trade at our maximum 30% stop-loss floor to protect capital. Unlike emotional retail traders who hold dumping tokens down to zero, our desk executes cold risk cuts so your portfolio survives.</p>
           </div>
 
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
@@ -1685,7 +1749,7 @@
 
     <div class="mt-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-gray-600 font-mono text-[10px]">
       <div>© 2026 Mozzex Capital. All rights reserved.</div>
-      <div class="mt-2 sm:mt-0">Powered by Zylg Mart Design Engine</div>
+      <div class="mt-2 sm:mt-0">Institutional Trading Desk Architecture</div>
     </div>
   </footer>
 
@@ -1735,6 +1799,14 @@
       if (investView && investView.classList.contains('hidden')) {
         switchTab('invest');
       }
+      
+      validTabs.forEach(id => {
+        const btn = document.getElementById('tab-btn-' + id);
+        if (btn) btn.classList.remove('active');
+      });
+      const whyUsBtn = document.getElementById('tab-btn-why-us');
+      if (whyUsBtn) whyUsBtn.classList.add('active');
+
       setTimeout(() => {
         const el = document.getElementById('why-us');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -1783,6 +1855,30 @@
     window.addEventListener('DOMContentLoaded', initNav);
     window.addEventListener('hashchange', initNav);
 
+    // Intersection Observer to smoothly highlight Why Us vs Invest
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const investView = document.getElementById('view-invest');
+          if (!investView || investView.classList.contains('hidden')) return;
+          const whyBtn = document.getElementById('tab-btn-why-us');
+          const investBtn = document.getElementById('tab-btn-invest');
+          if (entry.isIntersecting && entry.intersectionRatio > 0.35) {
+            if (whyBtn) whyBtn.classList.add('active');
+            if (investBtn) investBtn.classList.remove('active');
+          } else if (window.scrollY < 300) {
+            if (investBtn) investBtn.classList.add('active');
+            if (whyBtn) whyBtn.classList.remove('active');
+          }
+        });
+      }, { threshold: [0.35, 0.6] });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const whyUsEl = document.getElementById('why-us');
+        if (whyUsEl) observer.observe(whyUsEl);
+      });
+    }
+
     // 2. Interactive Variable Profit Calculator
     const slider = document.getElementById('depositSlider');
     const sliderValueText = document.getElementById('sliderValueText');
@@ -1794,9 +1890,22 @@
 
     let currentProfitRate = 0.20; // Default 20%
 
+    function updatePresetHighlight(val) {
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.classList.remove('bg-white', 'text-black', 'border-white', 'font-bold');
+        btn.classList.add('bg-white/5', 'text-gray-300', 'border-white/10');
+      });
+      const matchBtn = document.getElementById('preset-btn-' + val);
+      if (matchBtn) {
+        matchBtn.classList.remove('bg-white/5', 'text-gray-300', 'border-white/10');
+        matchBtn.classList.add('bg-white', 'text-black', 'border-white', 'font-bold');
+      }
+    }
+
     function setSliderValue(val) {
       if (!slider) return;
       slider.value = val;
+      updatePresetHighlight(val);
       updateCalculator();
     }
 
@@ -1831,6 +1940,8 @@
       if (estMozzexShare) estMozzexShare.textContent = '+$' + mozzexShare.toFixed(2);
       if (estClientNetProfit) estClientNetProfit.textContent = '+$' + clientProfitShare.toFixed(2);
       if (estClientPayout) estClientPayout.textContent = '$' + totalPayout.toFixed(2);
+
+      updatePresetHighlight(principal);
     }
 
     if (slider) {
@@ -1838,7 +1949,7 @@
       updateCalculator();
     }
 
-    // 3. Ambient Silver Cursor Follower Canvas (Zylgmart Styling)
+    // 3. Ambient Silver Cursor Follower Canvas
     const canvas = document.getElementById('spotlight-canvas');
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -1866,8 +1977,8 @@
           currentMouse.x, currentMouse.y, 0,
           currentMouse.x, currentMouse.y, 500
         );
-        gradient.addColorStop(0, 'rgba(192, 192, 192, 0.07)');
-        gradient.addColorStop(0.5, 'rgba(192, 192, 192, 0.02)');
+        gradient.addColorStop(0, 'rgba(192, 192, 192, 0.06)');
+        gradient.addColorStop(0.5, 'rgba(192, 192, 192, 0.015)');
         gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
         ctx.fillStyle = gradient;
