@@ -213,11 +213,11 @@
       animation: tabFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Dedicated Desktop Navigation: Integrated directly into header (No pill around buttons) */
+    /* Dedicated Desktop Navigation: Integrated directly into header (Twin Lines Design) */
     .desktop-nav-bar {
       display: flex !important;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       background: transparent !important;
       border: none !important;
       border-radius: 0 !important;
@@ -230,28 +230,109 @@
     }
 
     .tab-button {
-      padding: 8px 14px;
-      border-radius: 8px;
+      position: relative;
+      padding: 10px 14px 14px 14px;
       font-family: 'Sora', sans-serif;
       font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.02em;
       color: #9CA3AF;
-      background: transparent;
-      border: 1px solid transparent;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      background: transparent !important;
+      border: none !important;
+      transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
       cursor: pointer;
       white-space: nowrap;
     }
     .tab-button:hover {
       color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-1px);
     }
     .tab-button.active, .tab-button.tab-active {
       color: #FFFFFF !important;
-      background: rgba(255, 255, 255, 0.12) !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-      font-weight: 600;
+      font-weight: 700;
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.45);
+    }
+
+    /* Twin Lines Underline Design (Twin White Lines With Luminous Spread) */
+    .tab-button::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #FFFFFF;
+      border-radius: 2px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 4px #FFFFFF;
+      transform: translateX(-50%);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .tab-button::before {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 1px;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.35);
+      transform: translateX(-50%);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .tab-button.active::after, .tab-button.tab-active::after {
+      width: calc(100% - 16px);
+      opacity: 1;
+    }
+    .tab-button.active::before, .tab-button.tab-active::before {
+      width: calc(100% - 8px);
+      opacity: 0.8;
+    }
+    .tab-button:hover:not(.active)::after {
+      width: calc(100% - 24px);
+      opacity: 0.35;
+    }
+
+    /* Sitewide Smooth Motion & Micro-Interactions */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @keyframes tabFadeSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .tab-view:not(.hidden) {
+      animation: tabFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .luxury-card {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .luxury-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 255, 255, 0.08);
+    }
+
+    button, a {
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    button:active, a:active {
+      transform: scale(0.97) !important;
     }
 
     /* Mobile Responsive Breakpoint (Hide desktop bar, show burger button) */
@@ -649,22 +730,23 @@
         </div>
       </section>
 
-            <!-- PITCH 1: THE MOZZEX KNOWLEDGE E-BOOKS (5 MASTER VOLUMES) -->
+            <!-- PITCH 1: THE MOZZEX KNOWLEDGE E-BOOKS (5 MASTER VOLUMES + PDFS) -->
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10 border-t border-white/10">
         <div class="text-center mb-12">
           <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
-            The Complete 5-Volume Knowledge Vault
+            The Complete 5-Volume Knowledge Vault (PDF Downloads Included)
           </span>
           <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-3">
             The Mozzex Knowledge Vault
           </h2>
           <p class="text-gray-400 text-sm max-w-xl mx-auto mt-2">
-            Five comprehensive master handbooks authored by founders Claxy & Mozzari. Master wallet safety, 60-second rug audits, smart money copy trading, trench meta hunting, and disciplined profit-taking.
+            Five comprehensive master handbooks authored by founders Claxy & Mozzari. Download the official print-ready PDF files directly to your device or read online.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          <!-- Book 1 -->
+
+          <!-- Book 01 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
               <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
@@ -676,14 +758,19 @@
                 From complete beginner to confident daily on-chain trader. Hardware wallet defense, Raydium AMM pools, DexScreener layouts, and 2% position sizing rules.
               </p>
             </div>
-            <div class="space-y-2 pt-2 border-t border-white/10">
-              <a href="ebooks/vol1-degen-starter-blueprint.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/5">
-                Read Vol. 01 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol1-degen-starter-blueprint.pdf" download="Mozzex-Vol01-The-Degen-Starter-Blueprint.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 01)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              </a>
+              <a href="ebooks/vol1-degen-starter-blueprint.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
 
-          <!-- Book 2 -->
+          <!-- Book 02 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
               <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
@@ -695,14 +782,19 @@
                 Spotting honeypots, freeze traps & dev drainers in under 60 seconds. Mint/freeze audits, BubbleMaps wallet clustering, and unmasking bundled dev snipers.
               </p>
             </div>
-            <div class="space-y-2 pt-2 border-t border-white/10">
-              <a href="ebooks/vol2-anti-scam-rug-bible.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/5">
-                Read Vol. 02 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol2-anti-scam-rug-bible.pdf" download="Mozzex-Vol02-The-Anti-Scam---Rug-Bible.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 02)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              </a>
+              <a href="ebooks/vol2-anti-scam-rug-bible.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
 
-          <!-- Book 3 -->
+          <!-- Book 03 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
               <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
@@ -714,14 +806,19 @@
                 How to find, filter, and mirror winning insider wallets. Using the FOMO trading platform, Solscan smart money profiling, and avoiding copy-trade slippage traps.
               </p>
             </div>
-            <div class="space-y-2 pt-2 border-t border-white/10">
-              <a href="ebooks/vol3-mastering-fomo-copy-trading.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/5">
-                Read Vol. 03 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol3-mastering-fomo-copy-trading.pdf" download="Mozzex-Vol03-Mastering-FOMO---Copy-Trading.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 03)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              </a>
+              <a href="ebooks/vol3-mastering-fomo-copy-trading.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
 
-          <!-- Book 4 -->
+          <!-- Book 04 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
               <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
@@ -733,14 +830,19 @@
                 How to catch viral memecoins early before they hit trending lists. 4-stage trench lifecycle, cultural metas, Axiom volume presets, and Community Takeover (CTO) signals.
               </p>
             </div>
-            <div class="space-y-2 pt-2 border-t border-white/10">
-              <a href="ebooks/vol4-trench-narrative-hunter.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/5">
-                Read Vol. 04 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol4-trench-narrative-hunter.pdf" download="Mozzex-Vol04-The-10x-Trench---Narrative-Hunter.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 04)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              </a>
+              <a href="ebooks/vol4-trench-narrative-hunter.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
 
-          <!-- Book 5 -->
+          <!-- Book 05 -->
           <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
               <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
@@ -752,13 +854,17 @@
                 Stop round-tripping gains to zero. The 2x Initial Out rule, systematic profit-scaling ladders (2x/5x/10x/moonbags), trailing stops, and Friday cash-out discipline.
               </p>
             </div>
-            <div class="space-y-2 pt-2 border-t border-white/10">
-              <a href="ebooks/vol5-master-exit-profit-system.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/5">
-                Read Vol. 05 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol5-master-exit-profit-system.pdf" download="Mozzex-Vol05-The-Master-Exit---Profit-Taking-System.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 05)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              </a>
+              <a href="ebooks/vol5-master-exit-profit-system.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
-
+  
           <!-- 5-Book Master Bundle Card -->
           <div class="luxury-card rounded-2xl p-6 border-2 border-white/30 flex flex-col justify-between bg-gradient-to-b from-white/[0.08] to-transparent">
             <div>
@@ -767,16 +873,21 @@
               </div>
               <h3 class="font-sora font-extrabold text-xl text-white mb-2">The Complete 5-Book Pentology</h3>
               <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                Get all 5 volumes, printable PDF editions, private Notion workspaces, and future updates in one discounted package.
+                Get all 5 volumes (30 chapters, 45 printable editorial pages), private Notion workspaces, and future editions in one grand compendium.
               </p>
             </div>
-            <div>
-              <div class="text-2xl font-sora font-extrabold text-white mb-3">$40 <span class="text-xs font-normal text-gray-500 line-through">$100</span></div>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/10">
-                Order 5-Book Bundle ($40)
+            <div class="space-y-2 pt-2">
+              <div class="text-2xl font-sora font-extrabold text-white mb-2">$40 <span class="text-xs font-normal text-gray-500 line-through">$100</span></div>
+              <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Master Vault PDF (45 Pages)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              </a>
+              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-300 hover:text-white transition text-center block">
+                Order Pentology Ticket on Discord ($40) →
               </a>
             </div>
           </div>
+  
         </div>
 
         <div class="text-center">
@@ -994,177 +1105,191 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 3: PROPRIETARY E-BOOKS & MANUALS (5 MASTER VOLUMES) -->
-    <!-- ========================================== -->
+    <!-- TAB 3: PROPRIETARY E-BOOKS & MANUALS (ALL 5 VOLUMES + MASTER PDF) -->
     <div id="view-books" class="tab-view hidden">
-      <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+      <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
         <div class="text-center mb-16">
           <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
-            Official Mozzex Knowledge Vault • 2026 Edition
+            Proprietary Mozzex Knowledge Vault (Official PDF Library)
           </span>
-          <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-4 tracking-tight">
-            The Complete 5-Volume Master Library
+          <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-3">
+            The Complete 5-Volume Master Vault
           </h2>
-          <p class="text-gray-400 text-sm max-w-2xl mx-auto mt-3">
-            Five comprehensive on-chain handbooks written by founders Claxy & Mozzari. Master wallet security, 60-second rug audits, copy-trading forensics, trench meta hunting, and disciplined profit-taking.
+          <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-3">
+            Written by founders Claxy & Mozzari from years in the Solana and EVM trenches. Download publication-grade PDF documents or read online.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          <!-- Vol 1 -->
-          <div class="luxury-card rounded-3xl p-7 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
-            <div>
-              <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-3">
-                <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-bold">VOLUME 01</span>
-                <span class="text-white font-bold text-sm">$20 USD</span>
-              </div>
-              <h3 class="font-sora font-extrabold text-xl text-white mb-2 leading-snug">The Degen Starter Blueprint</h3>
-              <div class="text-xs text-gray-400 font-mono mb-3">From Complete Zero to Confident Daily On-Chain Trader</div>
-              <p class="text-xs text-gray-300 leading-relaxed mb-6">
-                Hardware wallet defense, Raydium AMM pools, DexScreener layouts, and 2% position sizing rules.
-              </p>
-            </div>
-            <div class="space-y-2 pt-4 border-t border-white/10">
-              <a href="ebooks/vol1-degen-starter-blueprint.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/10">
-                Read Vol. 01 Online →
-              </a>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2 rounded-xl font-sora text-xs text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition text-center block">
-                Buy PDF via Ticket ($20)
-              </a>
-            </div>
-          </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
 
-          <!-- Vol 2 -->
-          <div class="luxury-card rounded-3xl p-7 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
+          <!-- Book 01 -->
+          <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
-              <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-3">
-                <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-bold">VOLUME 02</span>
-                <span class="text-white font-bold text-sm">$20 USD</span>
+              <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
+                <span class="px-2 py-0.5 rounded bg-white/10 text-white font-bold">VOL. 01</span>
+                <span class="text-white font-bold">$20 USD</span>
               </div>
-              <h3 class="font-sora font-extrabold text-xl text-white mb-2 leading-snug">The Anti-Scam & Rug Bible</h3>
-              <div class="text-xs text-gray-400 font-mono mb-3">Spotting Honeypots, Freeze Traps & Dev Drainers in Under 60 Seconds</div>
-              <p class="text-xs text-gray-300 leading-relaxed mb-6">
-                The 60-second contract audit checklist, BubbleMaps wallet clustering, unmasking bundled dev snipers, and emergency rug exit protocols.
+              <h3 class="font-sora font-bold text-lg text-white mb-2">The Degen Starter Blueprint</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                From complete beginner to confident daily on-chain trader. Hardware wallet defense, Raydium AMM pools, DexScreener layouts, and 2% position sizing rules.
               </p>
             </div>
-            <div class="space-y-2 pt-4 border-t border-white/10">
-              <a href="ebooks/vol2-anti-scam-rug-bible.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/10">
-                Read Vol. 02 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol1-degen-starter-blueprint.pdf" download="Mozzex-Vol01-The-Degen-Starter-Blueprint.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 01)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2 rounded-xl font-sora text-xs text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition text-center block">
-                Buy PDF via Ticket ($20)
+              <a href="ebooks/vol1-degen-starter-blueprint.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
 
-          <!-- Vol 3 -->
-          <div class="luxury-card rounded-3xl p-7 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
+          <!-- Book 02 -->
+          <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
-              <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-3">
-                <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-bold">VOLUME 03</span>
-                <span class="text-white font-bold text-sm">$20 USD</span>
+              <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
+                <span class="px-2 py-0.5 rounded bg-white/10 text-white font-bold">VOL. 02</span>
+                <span class="text-white font-bold">$20 USD</span>
               </div>
-              <h3 class="font-sora font-extrabold text-xl text-white mb-2 leading-snug">Mastering FOMO & Copy Trading</h3>
-              <div class="text-xs text-gray-400 font-mono mb-3">How to Find, Filter, and Mirror Winning Insider Wallets</div>
-              <p class="text-xs text-gray-300 leading-relaxed mb-6">
-                Tracking verified trades on the FOMO trading platform (fomo.fund), Solscan smart money profiling, avoiding copy-trade slippage traps, and exit timing.
+              <h3 class="font-sora font-bold text-lg text-white mb-2">The Anti-Scam & Rug Bible</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                Spotting honeypots, freeze traps & dev drainers in under 60 seconds. Mint/freeze audits, BubbleMaps wallet clustering, and unmasking bundled dev snipers.
               </p>
             </div>
-            <div class="space-y-2 pt-4 border-t border-white/10">
-              <a href="ebooks/vol3-mastering-fomo-copy-trading.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/10">
-                Read Vol. 03 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol2-anti-scam-rug-bible.pdf" download="Mozzex-Vol02-The-Anti-Scam---Rug-Bible.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 02)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2 rounded-xl font-sora text-xs text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition text-center block">
-                Buy PDF via Ticket ($20)
+              <a href="ebooks/vol2-anti-scam-rug-bible.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
 
-          <!-- Vol 4 -->
-          <div class="luxury-card rounded-3xl p-7 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
+          <!-- Book 03 -->
+          <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
-              <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-3">
-                <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-bold">VOLUME 04</span>
-                <span class="text-white font-bold text-sm">$20 USD</span>
+              <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
+                <span class="px-2 py-0.5 rounded bg-white/10 text-white font-bold">VOL. 03</span>
+                <span class="text-white font-bold">$20 USD</span>
               </div>
-              <h3 class="font-sora font-extrabold text-xl text-white mb-2 leading-snug">The 10x Trench & Narrative Hunter</h3>
-              <div class="text-xs text-gray-400 font-mono mb-3">How to Catch Viral Memecoins Early Before They Hit Trending Lists</div>
-              <p class="text-xs text-gray-300 leading-relaxed mb-6">
-                The 4-stage trench lifecycle, identifying cultural metas, Axiom & DexScreener custom volume presets, and Community Takeover (CTO) signals.
+              <h3 class="font-sora font-bold text-lg text-white mb-2">Mastering FOMO & Copy Trading</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                How to find, filter, and mirror winning insider wallets. Using the FOMO trading platform, Solscan smart money profiling, and avoiding copy-trade slippage traps.
               </p>
             </div>
-            <div class="space-y-2 pt-4 border-t border-white/10">
-              <a href="ebooks/vol4-trench-narrative-hunter.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/10">
-                Read Vol. 04 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol3-mastering-fomo-copy-trading.pdf" download="Mozzex-Vol03-Mastering-FOMO---Copy-Trading.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 03)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2 rounded-xl font-sora text-xs text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition text-center block">
-                Buy PDF via Ticket ($20)
+              <a href="ebooks/vol3-mastering-fomo-copy-trading.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
 
-          <!-- Vol 5 -->
-          <div class="luxury-card rounded-3xl p-7 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
+          <!-- Book 04 -->
+          <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
-              <div class="flex items-center justify-between text-xs font-mono text-gray-400 mb-3">
-                <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white font-bold">VOLUME 05</span>
-                <span class="text-white font-bold text-sm">$20 USD</span>
+              <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
+                <span class="px-2 py-0.5 rounded bg-white/10 text-white font-bold">VOL. 04</span>
+                <span class="text-white font-bold">$20 USD</span>
               </div>
-              <h3 class="font-sora font-extrabold text-xl text-white mb-2 leading-snug">The Master Exit & Profit-Taking System</h3>
-              <div class="text-xs text-gray-400 font-mono mb-3">How to Stop Round-Tripping Gains and Keep Your Profits</div>
-              <p class="text-xs text-gray-300 leading-relaxed mb-6">
-                Overcoming the round-trip curse, the 2x Initial Out rule, systematic profit-scaling ladders (2x/5x/10x/moonbags), trailing stops, and Friday cash-outs.
+              <h3 class="font-sora font-bold text-lg text-white mb-2">The 10x Trench & Narrative Hunter</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                How to catch viral memecoins early before they hit trending lists. 4-stage trench lifecycle, cultural metas, Axiom volume presets, and Community Takeover (CTO) signals.
               </p>
             </div>
-            <div class="space-y-2 pt-4 border-t border-white/10">
-              <a href="ebooks/vol5-master-exit-profit-system.html" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-md shadow-white/10">
-                Read Vol. 05 Online →
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol4-trench-narrative-hunter.pdf" download="Mozzex-Vol04-The-10x-Trench---Narrative-Hunter.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 04)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
               </a>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2 rounded-xl font-sora text-xs text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition text-center block">
-                Buy PDF via Ticket ($20)
+              <a href="ebooks/vol4-trench-narrative-hunter.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
 
-          <!-- Master 5-Book Bundle Box -->
-          <div class="luxury-card rounded-3xl p-7 border-2 border-white/30 flex flex-col justify-between bg-gradient-to-b from-white/[0.08] to-transparent">
+          <!-- Book 05 -->
+          <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between hover:border-white/40 transition">
             <div>
-              <div class="inline-block px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider mb-2">
-                COMPLETE 5-BOOK BUNDLE • SAVE $60
+              <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
+                <span class="px-2 py-0.5 rounded bg-white/10 text-white font-bold">VOL. 05</span>
+                <span class="text-white font-bold">$20 USD</span>
               </div>
-              <h3 class="font-sora font-extrabold text-2xl text-white mb-2">The Complete Pentology</h3>
-              <p class="text-xs text-gray-300 leading-relaxed mb-6">
-                Get all 5 volumes, printable PDF editions, private Notion workspaces, and future 2026 updates delivered directly in your private Discord ticket.
+              <h3 class="font-sora font-bold text-lg text-white mb-2">The Master Exit & Profit-Taking System</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                Stop round-tripping gains to zero. The 2x Initial Out rule, systematic profit-scaling ladders (2x/5x/10x/moonbags), trailing stops, and Friday cash-out discipline.
               </p>
             </div>
-            <div class="space-y-2 pt-4 border-t border-white/10">
-              <div class="text-3xl font-sora font-extrabold text-white mb-2">$40 <span class="text-sm font-normal text-gray-500 line-through">$100</span></div>
-              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-lg shadow-white/10">
-                Order 5-Book Bundle ($40)
+            <div class="space-y-2 pt-3 border-t border-white/10">
+              <a href="ebooks/vol5-master-exit-profit-system.pdf" download="Mozzex-Vol05-The-Master-Exit---Profit-Taking-System.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Official PDF (Vol. 05)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              </a>
+              <a href="ebooks/vol5-master-exit-profit-system.html" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-400 hover:text-white transition text-center block">
+                Or Read Online In Browser →
               </a>
             </div>
           </div>
+  
+          <!-- 5-Book Master Bundle Card -->
+          <div class="luxury-card rounded-2xl p-6 border-2 border-white/30 flex flex-col justify-between bg-gradient-to-b from-white/[0.08] to-transparent">
+            <div>
+              <div class="inline-block px-2.5 py-0.5 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider mb-2">
+                BEST SELLER • SAVE $60
+              </div>
+              <h3 class="font-sora font-extrabold text-xl text-white mb-2">The Complete 5-Book Pentology</h3>
+              <p class="text-xs text-gray-300 leading-relaxed mb-4">
+                Get all 5 volumes (30 chapters, 45 printable editorial pages), private Notion workspaces, and future editions in one grand compendium.
+              </p>
+            </div>
+            <div class="space-y-2 pt-2">
+              <div class="text-2xl font-sora font-extrabold text-white mb-2">$40 <span class="text-xs font-normal text-gray-500 line-through">$100</span></div>
+              <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full py-2.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center flex items-center justify-center space-x-2 shadow-lg shadow-white/10">
+                <span>Download Master Vault PDF (45 Pages)</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              </a>
+              <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-1.5 rounded-lg text-[11px] font-mono text-gray-300 hover:text-white transition text-center block">
+                Order Pentology Ticket on Discord ($40) →
+              </a>
+            </div>
+          </div>
+  
         </div>
 
-        <!-- VIP Decoy Callout -->
-        <div class="luxury-card rounded-3xl p-8 border-2 border-white/40 text-center max-w-4xl mx-auto">
+        <!-- Master Vault Compendium Feature Banner -->
+        <div class="luxury-card rounded-3xl p-8 sm:p-12 border-2 border-white/30 text-center relative overflow-hidden bg-gradient-to-b from-white/[0.05] to-transparent">
           <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
-            RECOMMENDED UPGRADE
+            All-In-One Master Download (45 Pages • 30 Chapters)
           </span>
-          <h3 class="text-2xl font-sora font-bold text-white mt-2 mb-2">
-            Get All 5 Books FREE with the $50 Lifetime VIP Pass
+          <h3 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mt-3 mb-2">
+            The Complete Mozzex Pentology Archive
           </h3>
-          <p class="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto mb-4">
-            Why pay $40 just for the books? For only $10 more ($50 total), you get all 5 volumes FREE, plus the Axiom trench setup, private anti-rug tools, coins we personally buy, and 1-on-1 setup with founders Claxy & Mozzari.
+          <p class="text-gray-300 text-xs sm:text-sm max-w-2xl mx-auto mb-6">
+            Looking to have the entire desk syllabus in one file to study offline or share? Download the official 45-page master PDF compendium covering all 5 volumes.
           </p>
-          <button onclick="switchTab('vip')" class="px-8 py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-lg shadow-white/10">
-            View Lifetime VIP Pass ($50) →
-          </button>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="ebooks/mozzex-5-book-master-vault.pdf" download="Mozzex-5-Book-Master-Vault.pdf" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-xl shadow-white/10 flex items-center justify-center space-x-2">
+              <span>Download 45-Page Master Vault PDF</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            </a>
+            <a href="ebooks/" class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-sora font-semibold text-xs border border-white/20 hover:border-white text-white bg-white/5 transition">
+              Open Interactive Web Portal →
+            </a>
+          </div>
         </div>
       </section>
     </div>
 
-    <!-- ========================================== -->
     <!-- TAB 4: LIFETIME VIP MEMBERSHIP ($50 USD)   -->
     <!-- ========================================== -->
     <div id="view-vip" class="tab-view hidden">
