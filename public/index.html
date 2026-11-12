@@ -101,7 +101,7 @@
       background-size: 32px 32px;
     }
 
-    /* Zylgmart Comparison Widget Styling */
+    /* Zylgmart Comparison Widget Styling (Clean Desktop & Mobile VS Placement) */
     .zm-diff-grid-wrap {
       position: relative;
       max-width: 960px;
@@ -109,20 +109,22 @@
     }
     .zm-diff-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
       position: relative;
-      align-items: stretch;
+      align-items: center;
+    }
+    .zm-vs-badge-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 25;
     }
     .zm-vs-badge {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ffffff 0%, #d4d4d8 100%);
+      background: #FFFFFF;
       border: 3px solid #07070A;
       color: #07070A;
       font-size: 13px;
@@ -131,21 +133,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 32px rgba(255, 255, 255, 0.45), 0 10px 25px rgba(0, 0, 0, 0.8);
-      z-index: 15;
+      box-shadow: 0 0 32px rgba(255, 255, 255, 0.5), 0 10px 25px rgba(0, 0, 0, 0.8);
       user-select: none;
+      flex-shrink: 0;
     }
     @media (max-width: 860px) {
       .zm-diff-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
       }
-      .zm-vs-badge {
+      .zm-vs-badge-wrap {
+        margin: -26px auto;
         position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        margin: -18px auto;
+        z-index: 30;
       }
     }
 
@@ -390,10 +391,7 @@
           </p>
         </div>
 
-        <div class="zm-diff-grid-wrap relative max-w-4xl mx-auto">
-          <!-- Center Floating VS Badge (Exact Zylgmart Styling) -->
-          <div class="zm-vs-badge">VS</div>
-
+        <div class="zm-diff-grid-wrap relative max-w-5xl mx-auto">
           <div class="zm-diff-grid">
             
             <!-- Recommended Card: Mozzex Capital -->
@@ -442,6 +440,11 @@
                   Choose Your Allocation Package
                 </button>
               </div>
+            </div>
+
+            <!-- Floating Center VS Badge (Strictly Between Cards) -->
+            <div class="zm-vs-badge-wrap">
+              <div class="zm-vs-badge">VS</div>
             </div>
 
             <!-- Avoid Card: Others / Trading Alone -->
@@ -596,74 +599,194 @@
         </div>
       </section>
 
-      <!-- Live FOMO Transparency Widget -->
+            <!-- PITCH 1: THE MOZZEX KNOWLEDGE E-BOOKS ($20 / $35 TRILOGY) -->
       <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10 border-t border-white/10">
-        <div class="luxury-card rounded-3xl p-8 sm:p-12 border border-white/20">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div class="lg:col-span-5">
-              <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
-                100% On-Chain Proof
-              </span>
-              <h2 class="text-3xl font-sora font-bold text-white mt-3 leading-snug">
-                Your Personal FOMO Profile. <br>
-                <span class="chrome-gradient">Zero Black Boxes.</span>
-              </h2>
-              <p class="text-gray-400 text-xs sm:text-sm mt-3 leading-relaxed">
-                Most funds take your money and hide their screens. At Mozzex Capital, <strong>we create a private FOMO profile exclusively for you</strong>. You get a live link you can check from your smartphone 24/7.
+        <div class="text-center mb-12">
+          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
+            Trading Knowledge Playbooks
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-3">
+            The Mozzex Knowledge Vault
+          </h2>
+          <p class="text-gray-400 text-sm max-w-xl mx-auto mt-2">
+            Master on-chain mechanics before risking real capital. Or let our desk execute for you.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <!-- Book 1 -->
+          <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
+                <span>VOL. 01</span>
+                <span class="text-white font-bold">$20 USD</span>
+              </div>
+              <h3 class="font-sora font-bold text-lg text-white mb-2">The Degen Starter Blueprint</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                From zero crypto knowledge to executing profitable on-chain swaps. Covers non-custodial wallet security, DEX mechanics, and sizing rules.
               </p>
-              <div class="space-y-3 mt-6 text-xs text-gray-300">
-                <div class="flex items-center space-x-2">
-                  <span class="text-white font-mono">✓</span>
-                  <span>See exact entry Market Cap, token name & contract</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                  <span class="text-white font-mono">✓</span>
-                  <span>Watch live Take-Profit and Stop-Loss triggers execute</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                  <span class="text-white font-mono">✓</span>
-                  <span>100% auditable blockchain tx signatures on Solscan</span>
-                </div>
+            </div>
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2.5 rounded-xl font-sora font-semibold text-xs border border-white/20 hover:border-white text-center text-white bg-white/5 hover:bg-white/10 transition block">
+              Buy Vol. 01 ($20)
+            </a>
+          </div>
+
+          <!-- Book 2 -->
+          <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
+                <span>VOL. 02</span>
+                <span class="text-white font-bold">$20 USD</span>
+              </div>
+              <h3 class="font-sora font-bold text-lg text-white mb-2">The Anti-Scam & Rug Bible</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                Detect 99% of honeypots, developer drainers, and fake liquidity locks in under 60 seconds before you click buy.
+              </p>
+            </div>
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2.5 rounded-xl font-sora font-semibold text-xs border border-white/20 hover:border-white text-center text-white bg-white/5 hover:bg-white/10 transition block">
+              Buy Vol. 02 ($20)
+            </a>
+          </div>
+
+          <!-- Book 3 -->
+          <div class="luxury-card rounded-2xl p-6 border border-white/15 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-center text-xs font-mono text-gray-400 mb-2">
+                <span>VOL. 03</span>
+                <span class="text-white font-bold">$20 USD</span>
+              </div>
+              <h3 class="font-sora font-bold text-lg text-white mb-2">Mastering FOMO & Copy Trading</h3>
+              <p class="text-xs text-gray-400 leading-relaxed mb-4">
+                How to find, analyze, and ethically mirror top-performing insider wallets on Solscan without getting dumped on.
+              </p>
+            </div>
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-2.5 rounded-xl font-sora font-semibold text-xs border border-white/20 hover:border-white text-center text-white bg-white/5 hover:bg-white/10 transition block">
+              Buy Vol. 03 ($20)
+            </a>
+          </div>
+        </div>
+
+        <!-- Featured Trilogy Bundle Card -->
+        <div class="luxury-card rounded-3xl p-8 border-2 border-white/30 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <div class="inline-block px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider mb-2">
+              BEST VALUE TRILOGY • SAVE $25
+            </div>
+            <h3 class="text-2xl font-sora font-extrabold text-white">The Complete Mozzex Trilogy (Vols 1, 2 & 3)</h3>
+            <p class="text-xs sm:text-sm text-gray-400 mt-1 max-w-xl">
+              Get all three volumes in one discounted package. Delivered instantly as high-res PDFs and private Notion workspaces via your private Discord ticket.
+            </p>
+          </div>
+          <div class="text-center sm:text-right flex-shrink-0">
+            <div class="text-3xl font-sora font-extrabold text-white mb-2">$35 <span class="text-xs font-normal text-gray-400 line-through">$60</span></div>
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="px-7 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-lg shadow-white/10 block">
+              Order Trilogy ($35)
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PITCH 2: LIFETIME VIP MEMBERSHIP PASS ($50 USD) -->
+      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10 border-t border-white/10">
+        <div class="luxury-card rounded-3xl p-8 sm:p-12 border-2 border-white/40 shadow-2xl relative overflow-hidden">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
+            <div>
+              <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
+                ONE-TIME PAYMENT • LIFETIME ACCESS • NO SUBSCRIPTIONS
+              </span>
+              <h2 class="text-3xl sm:text-4xl font-sora font-extrabold text-white mt-3">
+                Mozzex VIP Lifetime Pass
+              </h2>
+              <p class="text-gray-400 text-sm mt-1 max-w-xl">
+                Trade independently with the exact tools, bots, and real-time alerts our desk uses daily.
+              </p>
+            </div>
+            <div class="text-left md:text-right flex-shrink-0">
+              <div class="text-4xl font-sora font-extrabold text-white">$50 <span class="text-sm font-normal text-gray-400">USD</span></div>
+              <div class="text-xs text-gray-300 font-mono mt-1">✓ Includes All 3 Books Free</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 text-xs text-gray-300">
+            <div class="space-y-3">
+              <div class="flex items-start space-x-2.5">
+                <span class="text-white font-bold font-mono">✓</span>
+                <span><strong>All 3 Mozzex Books Included FREE:</strong> $60 standalone value delivered immediately.</span>
+              </div>
+              <div class="flex items-start space-x-2.5">
+                <span class="text-white font-bold font-mono">✓</span>
+                <span><strong>Photon & BullX Sniper Presets:</strong> Pre-tuned anti-MEV bribe parameters for sub-second fills.</span>
+              </div>
+              <div class="flex items-start space-x-2.5">
+                <span class="text-white font-bold font-mono">✓</span>
+                <span><strong>Axiom & DexScreener Filters:</strong> Private parameters that eliminate 99% of dead tokens.</span>
               </div>
             </div>
-
-            <!-- Simulated FOMO Terminal Card -->
-            <div class="lg:col-span-7 bg-[#07070A] p-6 rounded-2xl border border-white/20 font-mono text-xs">
-              <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
-                <div class="flex items-center space-x-2">
-                  <span class="w-3 h-3 rounded-full bg-white/20"></span>
-                  <span class="w-3 h-3 rounded-full bg-white/40"></span>
-                  <span class="w-3 h-3 rounded-full bg-white/80"></span>
-                  <span class="text-xs font-mono text-gray-300 ml-2">fomo.fund/@mozzex_portfolio_live</span>
-                </div>
-                <span class="px-2 py-0.5 rounded text-[10px] bg-white/10 text-white font-bold animate-pulse">● LIVE</span>
+            <div class="space-y-3">
+              <div class="flex items-start space-x-2.5">
+                <span class="text-white font-bold font-mono">✓</span>
+                <span><strong>Real-Time VIP Alpha Calls:</strong> Access to '#vip-alpha' with recommended entry MC, TP and SL.</span>
               </div>
-
-              <div class="space-y-3">
-                <div class="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex justify-between items-center">
-                  <div>
-                    <div class="text-white font-bold">BOUGHT $CHOPPER (Solana)</div>
-                    <div class="text-[10px] text-gray-400">Entry @ $62K MC • 8.4 SOL</div>
-                  </div>
-                  <span class="text-gray-300">EXECUTED</span>
-                </div>
-                <div class="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex justify-between items-center">
-                  <div>
-                    <div class="text-white font-bold">TAKE PROFIT (TP1) • $SOLAR</div>
-                    <div class="text-[10px] text-gray-400">Sold 50% @ $185K MC</div>
-                  </div>
-                  <span class="text-white font-bold">+2.98x (+198%)</span>
-                </div>
-                <div class="p-3.5 rounded-xl bg-white/10 border border-white/30 flex justify-between items-center">
-                  <div>
-                    <div class="text-white font-bold">CLIENT PROFIT REALIZED</div>
-                    <div class="text-[10px] text-gray-300">50% Net Client Allocation</div>
-                  </div>
-                  <span class="text-white font-extrabold">+$124.80 USD</span>
-                </div>
+              <div class="flex items-start space-x-2.5">
+                <span class="text-white font-bold font-mono">✓</span>
+                <span><strong>Private Low-Latency RPCs:</strong> Dedicated endpoints so your transactions never fail in congestion.</span>
+              </div>
+              <div class="flex items-start space-x-2.5">
+                <span class="text-white font-bold font-mono">✓</span>
+                <span><strong>1-on-1 Step-by-Step Mentorship:</strong> Direct walkthroughs with founders Claxy & Mozzari.</span>
               </div>
             </div>
           </div>
+
+          <div class="text-center pt-4">
+            <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full sm:w-auto inline-block px-10 py-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-xl shadow-white/10">
+              Claim VIP Lifetime Pass ($50)
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PITCH 3: MANAGED CAPITAL ALLOCATION OVERVIEW -->
+      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10 border-t border-white/10">
+        <div class="text-center mb-12">
+          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
+            Hands-Free Execution Desks
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-3">
+            Managed Capital Pools
+          </h2>
+          <p class="text-gray-400 text-sm max-w-xl mx-auto mt-2">
+            Prefer not to trade yourself? Allocate capital and let our desk execute. 50/50 profit split, strict stop-loss rules, and client cashout autonomy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="luxury-card rounded-2xl p-5 text-center">
+            <div class="text-[10px] font-mono uppercase text-gray-400">STARTER</div>
+            <div class="text-xl font-sora font-bold text-white mt-1">$10 – $100</div>
+            <div class="text-[11px] text-gray-400 mt-2">Test desk execution</div>
+          </div>
+          <div class="luxury-card rounded-2xl p-5 text-center">
+            <div class="text-[10px] font-mono uppercase text-gray-400">GROWTH</div>
+            <div class="text-xl font-sora font-bold text-white mt-1">$100 – $500</div>
+            <div class="text-[11px] text-gray-400 mt-2">Multi-trade diversification</div>
+          </div>
+          <div class="luxury-card rounded-2xl p-5 text-center border border-white/30">
+            <div class="text-[10px] font-mono uppercase text-white font-bold">PRO DESK</div>
+            <div class="text-xl font-sora font-bold text-white mt-1">$500 – $1,000</div>
+            <div class="text-[11px] text-gray-300 mt-2">Dedicated trade channel</div>
+          </div>
+          <div class="luxury-card rounded-2xl p-5 text-center">
+            <div class="text-[10px] font-mono uppercase text-gray-400">WHALE</div>
+            <div class="text-xl font-sora font-bold text-white mt-1">$1,000+</div>
+            <div class="text-[11px] text-gray-400 mt-2">Direct line with founders</div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button onclick="switchTab('packages')" class="px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 hover:border-white transition">
+            View Full Package Details & Allocations →
+          </button>
         </div>
       </section>
     </div>
