@@ -14,6 +14,9 @@ module.exports = {
       if (customId === 'buy_vip_ticket') {
         return handleTicketCreate(interaction, 'vip');
       }
+      if (customId === 'buy_books_ticket') {
+        return handleTicketCreate(interaction, 'books');
+      }
       if (customId === 'open_invest_ticket') {
         return handleTicketCreate(interaction, 'investment');
       }

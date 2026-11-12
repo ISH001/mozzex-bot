@@ -103,6 +103,7 @@ async function handleTicketCreate(interaction, type = 'general') {
     const ticketData = db.createTicket(ticketChannel.id, user.id, type);
 
     const typeTitle = type === 'vip' ? '👑 Mozzex Lifetime VIP Onboarding ($50 USD)'
+      : type === 'books' ? '📚 Mozzex E-Books & Knowledge Vault Order'
       : type === 'investment' ? '💰 Mozzex Capital Investment Ticket'
       : type === 'mentorship' ? '💎 Mentorship & Capital Application'
       : type === 'client' ? '💼 Client Capital Priority Ticket'
@@ -113,8 +114,19 @@ async function handleTicketCreate(interaction, type = 'general') {
       instructions += `**👑 You have requested the Lifetime VIP Membership ($50 USD):**\n\n` +
         `• **What You Get:** Lifetime VIP Role, all 3 Mozzex Knowledge Books, curated trading tools configuration, step-by-step 1-on-1 tool setup, and VIP alpha calls.\n` +
         `• **Price:** **$50 USD** (One-time, no subscriptions)\n` +
-        `• **Payment Accepted:** SOL, LTC, USDT, or BTC\n\n` +
+        `• **Payment Accepted:** SOL, LTC, USDT, BTC (0% fee) or Card/PayPal (+10% surcharge)\n\n` +
         `*Please reply with your preferred payment currency (e.g. LTC or SOL) and our staff will provide your secure deposit address.*`;
+    } else if (type === 'books') {
+      instructions += `**📚 Mozzex Proprietary E-Books Order Desk:**\n\n` +
+        `• **Book 1: "The Degen Starter Blueprint"** — **$20 USD**\n` +
+        `• **Book 2: "The Anti-Scam & Rug Bible"** — **$20 USD**\n` +
+        `• **Book 3: "Mastering FOMO & Copy Trading"** — **$20 USD**\n` +
+        `• **Complete 3-Book Trilogy Bundle** — **$35 USD** *(Save $25)*\n` +
+        `• **VIP Lifetime Pass (Best Value)** — **$50 USD** *(Gets all 3 books FREE + trading tools suite + alpha calls + 1-on-1 setup)*\n\n` +
+        `**Please reply with:**\n` +
+        `1. Which book or bundle you want to purchase.\n` +
+        `2. Preferred payment method: **Crypto (SOL, LTC, USDT, BTC - 0% fee)** or **PayPal/Card (+10% surcharge)**.\n\n` +
+        `*Founders Claxy & Mozzari will send your payment invoice and deliver your instant high-res PDF and Notion library links right here!*`;
     } else if (type === 'investment') {
       instructions += `**Please provide your investment details below:**\n` +
         `• **Chosen Package:** ($10 / $30 / $50 / $100 / $250 / $500+)\n` +
