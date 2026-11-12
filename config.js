@@ -13,14 +13,12 @@ module.exports = {
   },
 
   channels: {
-    welcome: process.env.WELCOME_CHANNEL || 'introductions',
-    rules: process.env.RULES_CHANNEL || 'server-rules',
+    welcome: process.env.WELCOME_CHANNEL || 'welcome',
+    rules: process.env.RULES_CHANNEL || 'rules-and-safety',
     announcements: process.env.ANNOUNCEMENTS_CHANNEL || 'announcements',
-    mentorship: process.env.MENTORSHIP_CHANNEL || 'trading-mentorship',
+    packages: process.env.PACKAGES_CHANNEL || 'investment-packages',
     support: process.env.SUPPORT_CHANNEL || 'support-desk',
-    importantInfo: process.env.IMPORTANT_INFO_CHANNEL || 'important-info',
-    vouches: process.env.VOUCHES_CHANNEL || 'vouches',
-    clientSupport: process.env.CLIENT_SUPPORT_CHANNEL || 'client-support',
+    payouts: process.env.PAYOUTS_CHANNEL || 'payouts-and-vouches',
     modLogs: process.env.MOD_LOGS_CHANNEL || 'mod-logs',
   },
 

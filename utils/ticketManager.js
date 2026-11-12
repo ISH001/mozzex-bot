@@ -102,20 +102,29 @@ async function handleTicketCreate(interaction, type = 'general') {
 
     const ticketData = db.createTicket(ticketChannel.id, user.id, type);
 
-    const typeTitle = type === 'mentorship' ? '💎 Mentorship & Capital Application'
+    const typeTitle = type === 'investment' ? '💰 Mozzex Capital Investment Ticket'
+      : type === 'mentorship' ? '💎 Mentorship & Capital Application'
       : type === 'client' ? '💼 Client Capital Priority Ticket'
       : '🎫 Support Ticket';
 
+    let instructions = `Welcome <@${user.id}>! A member of the **Mozzex Team** will be with you shortly.\n\n`;
+    if (type === 'investment') {
+      instructions += `**Please provide your investment details below:**\n` +
+        `• **Chosen Package:** ($10 / $30 / $50 / $100 / $250 / $500+)\n` +
+        `• **Duration Term:** (24-48 Hours / 3-5 Days / 7 Days)\n` +
+        `• **Deposit Method:** (SOL / LTC / USDT / BTC)\n` +
+        `• **Your Payout Wallet:** (Address where principal + 50% profit returns)\n\n` +
+        `*Our managing partner will generate your private deposit address and lock in your duration.*`;
+    } else {
+      instructions += `**Please describe your inquiry with as much detail as possible:**\n` +
+        `• If general support: State your question clearly.\n` +
+        `• If reporting an issue: Provide relevant transaction or member IDs.`;
+    }
+
     const embed = new EmbedBuilder()
-      .setColor(config.colors.primary)
+      .setColor(0xD4AF37) // Metallic Gold
       .setTitle(`${typeTitle} #${ticketData.ticketNumber}`)
-      .setDescription(
-        `Welcome <@${user.id}>! A member of the **Mozzex Team** has been notified and will be with you shortly.\n\n` +
-        `**Please describe your inquiry with as much detail as possible:**\n` +
-        `• If applying for Mentorship: Share your trading experience, typical volume, and trading goals.\n` +
-        `• If Client Capital: Specify target allocation size and trading track record.\n` +
-        `• If General Support: State the issue or question clearly.`
-      )
+      .setDescription(instructions)
       .addFields(
         { name: '👤 Member', value: `<@${user.id}>`, inline: true },
         { name: '📂 Type', value: `\`${type.toUpperCase()}\``, inline: true },

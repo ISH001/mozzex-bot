@@ -48,17 +48,18 @@ module.exports = {
     }
 
     const embed = new EmbedBuilder()
-      .setColor(config.colors.primary)
-      .setTitle(`⚡ WELCOME TO MOZZEX, ${member.user.username.toUpperCase()}!`)
+      .setColor(0xD4AF37) // Metallic Gold
+      .setTitle(`⚡ WELCOME TO MOZZEX CAPITAL, ${member.user.username.toUpperCase()}!`)
       .setDescription(
-        `Welcome to the **Mozzex Trading Community** — home of alpha calls, high-speed memecoin scanners, and disciplined trading.\n\n` +
-        `• **Member**: <@${member.id}>\n` +
-        `• **Source**: ${inviterText}\n` +
-        `• **Total Degens**: **#${guild.memberCount}**\n\n` +
-        `🔥 **Get Started:**\n` +
-        `1. Read the rules in <#${guild.channels.cache.find(c => c.name.includes('rules'))?.id || 'rules'}>\n` +
-        `2. Introduce yourself and what tokens you trade right here!\n` +
-        `3. Start scanning tokens with \`/scan <contract_address>\``
+        `> **Welcome to Mozzex Capital** — your gateway to managed on-chain wealth and high-conviction memecoin trading.\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+        `• **Member:** <@${member.id}>\n` +
+        `• **Source:** ${inviterText}\n` +
+        `• **Member Count:** **#${guild.memberCount}**\n\n` +
+        `💎 **How To Get Started:**\n` +
+        `1. Read our rules in <#${guild.channels.cache.find(c => c.name.includes('rules'))?.id || 'rules'}>\n` +
+        `2. Check our 50/50 profit packages ($10, $30, $50, $100+) in <#${guild.channels.cache.find(c => c.name.includes('investment-packages'))?.id || 'packages'}>\n` +
+        `3. Say hello to fellow traders in <#${guild.channels.cache.find(c => c.name.includes('general'))?.id || 'general'}>!`
       )
       .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 256 }))
       .setImage('https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80')
