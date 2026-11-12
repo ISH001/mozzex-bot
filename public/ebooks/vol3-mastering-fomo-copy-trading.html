@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vol. 3: Mastering FOMO & Copy Trading — Mozzex Capital Official Master Guide</title>
+  <link rel="icon" type="image/png" href="../assets/server-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #07070A;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.7;
+    }
+    h1, h2, h3, h4, .font-sora {
+      font-family: 'Sora', sans-serif;
+    }
+    .chrome-gradient {
+      background: linear-gradient(180deg, #FFFFFF 0%, #C0C0C0 60%, #7A7A85 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .luxury-card {
+      background: rgba(14, 14, 18, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .callout-box {
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid #FFFFFF;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+    .callout-warning {
+      background: rgba(239, 68, 68, 0.08);
+      border-left: 3px solid #EF4444;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+    .callout-rule {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 3px solid #10B981;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.875rem;
+    }
+    th, td {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    th {
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+    }
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #111111 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .book-chapter {
+        page-break-before: always;
+        color: #111111 !important;
+      }
+      .prose {
+        color: #111111 !important;
+      }
+      h1, h2, h3, h4, strong {
+        color: #000000 !important;
+      }
+      .chrome-gradient {
+        -webkit-text-fill-color: #000000 !important;
+        background: none !important;
+      }
+      .luxury-card, .callout-box, .callout-warning, .callout-rule {
+        border-color: #CCCCCC !important;
+        background: #F9F9F9 !important;
+        color: #111111 !important;
+      }
+      th {
+        background: #EEEEEE !important;
+        color: #000000 !important;
+      }
+      th, td {
+        border-color: #CCCCCC !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-white selection:text-black">
+
+  <!-- TOP HEADER (Mozzex Capital Official Bar) -->
+  <header class="sticky top-0 z-50 bg-[#07070A]/90 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-4 no-print">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="../#books" class="flex items-center space-x-3 group">
+          <img src="../assets/server-logo.png" alt="Mozzex Logo" class="w-9 h-9 rounded-xl border border-white/20 object-cover">
+          <div>
+            <div class="font-sora font-extrabold text-white text-sm tracking-wide">MOZZEX <span class="text-gray-400 font-light">CAPITAL</span></div>
+            <div class="text-[10px] font-mono text-gray-400 uppercase">Knowledge Vault • Vol. 3</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button onclick="window.print()" class="px-4 py-2 rounded-xl text-xs font-sora font-bold bg-white text-black hover:bg-gray-200 transition shadow-sm flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+          <span class="hidden sm:inline">Print / Save as PDF</span>
+          <span class="sm:hidden">PDF</span>
+        </button>
+        <a href="../#books" class="px-3.5 py-2 rounded-xl text-xs font-sora text-gray-300 hover:text-white bg-white/5 border border-white/10 transition">
+          Library
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN BOOK CONTENT CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-8 py-12">
+    
+    <!-- COVER / TITLE BLOCK -->
+    <header class="mb-14 pb-12 border-b border-white/10">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 text-[10px] font-mono uppercase tracking-widest text-gray-300 mb-6">
+        <span>MOZZEX CAPITAL PUBLISHING</span>
+        <span>•</span>
+        <span>OFFICIAL TRADER EDITION 2026</span>
+      </div>
+
+      <div class="text-xs font-mono font-bold text-gray-400 tracking-widest uppercase mb-2">VOLUME 03</div>
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-sora font-extrabold text-white tracking-tight leading-tight mb-4">
+        Mastering FOMO & Copy Trading
+      </h1>
+      <p class="text-lg sm:text-xl text-gray-300 font-normal leading-relaxed mb-6">
+        How to Find, Filter, and Mirror Winning Insider Wallets
+      </p>
+
+      <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-gray-400">
+        <div>
+          <span class="block text-[10px] text-gray-500 uppercase">Authored By</span>
+          <span class="text-white font-bold font-sora">Claxy & Mozzari</span> (Mozzex Capital Founders)
+        </div>
+        <div>
+          <span class="block text-[10px] text-gray-500 uppercase">Target Audience</span>
+          <span class="text-white font-semibold">On-Chain Solana & Memecoin Traders</span>
+        </div>
+        <div>
+          <span class="block text-[10px] text-gray-500 uppercase">Format</span>
+          <span class="text-white font-semibold">Master Handbook (6 Core Modules)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- TABLE OF CONTENTS -->
+    <section class="mb-16 p-6 sm:p-8 rounded-3xl luxury-card border border-white/15">
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+        <h3 class="font-sora font-extrabold text-lg text-white">Table of Contents</h3>
+        <span class="text-xs font-mono text-gray-400">6 Chapters • Full Syllabus</span>
+      </div>
+      <div class="grid grid-cols-1 gap-2.5">
+        
+    <a href="#ch-1" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">01.</span>
+        <span class="font-sora font-semibold text-white">The FOMO Trading Platform & On-Chain Transparency</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 01 →</span>
+    </a>
+  
+    <a href="#ch-2" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">02.</span>
+        <span class="font-sora font-semibold text-white">Finding True Smart Money Wallets on Solscan</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 02 →</span>
+    </a>
+  
+    <a href="#ch-3" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">03.</span>
+        <span class="font-sora font-semibold text-white">The Copy-Trading Slippage Trap</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 03 →</span>
+    </a>
+  
+    <a href="#ch-4" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">04.</span>
+        <span class="font-sora font-semibold text-white">Setting Up Your Tracking & Alert Feeds</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 04 →</span>
+    </a>
+  
+    <a href="#ch-5" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">05.</span>
+        <span class="font-sora font-semibold text-white">Front-Running the Whale Exit</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 05 →</span>
+    </a>
+  
+    <a href="#ch-6" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">06.</span>
+        <span class="font-sora font-semibold text-white">The Whale Tracker Daily Log Template</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 06 →</span>
+    </a>
+  
+      </div>
+    </section>
+
+    <!-- CHAPTERS -->
+    <section class="book-body">
+      
+    <article id="ch-1" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 01</span>
+        <span>•</span>
+        <span>Mastering FOMO & Copy Trading</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        The FOMO Trading Platform & On-Chain Transparency
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>In traditional finance and shadowy crypto groups, fund managers hide behind closed doors. They post selective screenshots of their 10x wins while quietly deleting their 90% losses. You never know their real track record or execution price.</p>
+
+        <p>The <strong>FOMO trading platform (fomo.fund)</strong> was built to destroy this black box. In this chapter, we break down how on-chain transparency changes the game:</p>
+
+        <div class="callout-box">
+          <strong class="text-white block mb-1">💡 What is the FOMO Platform?</strong>
+          FOMO is an on-chain execution and portfolio verification network. When a trader connects their profile, every single buy, sell, entry market cap, exit multiplier, and net PnL is permanently signed and verified on the Solana blockchain. You cannot fake a screenshot on FOMO. If someone claims a 10x win, you can click their Solscan transaction signature and verify the exact millisecond, token amount, and profit.
+        </div>
+
+        <p>At Mozzex Capital, every client allocation is managed with a dedicated, live public profile on the FOMO platform. You never have to wonder if your capital is being traded or sitting idle — you watch the live execution directly from your smartphone.</p>
+      
+      </div>
+    </article>
+  
+    <article id="ch-2" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 02</span>
+        <span>•</span>
+        <span>Mastering FOMO & Copy Trading</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        Finding True Smart Money Wallets on Solscan
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>Solana is a public ledger. When a token pumps from $50,000 to $5,000,000 market cap, you can easily open Solscan or DexScreener and look at the "Top Traders" list. However, 8 out of 10 wallets on that list are NOT smart traders — they are developer insiders, sniper bots, or wash-traders.</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">The 3-Step Wallet Quality Filter</h3>
+        <p>Before adding any wallet to your tracking list, check these three non-negotiable metrics:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>High-Quality Alpha Wallet</th>
+              <th>Dev / Sniper Trap Wallet (Ignore)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Wallet Age</strong></td>
+              <td>Older than 30–60 days with diverse history</td>
+              <td>Created 1 hour before the coin launched</td>
+            </tr>
+            <tr>
+              <td><strong>Trade Distribution</strong></td>
+              <td>Traded 20+ different unrelated tokens</td>
+              <td>Only ever traded 1 or 2 tokens connected to same dev</td>
+            </tr>
+            <tr>
+              <td><strong>Win Rate & Multiple</strong></td>
+              <td>50%–65% win rate, consistent 2x–5x gains</td>
+              <td>99% win rate with 100x gains (Insider/Team dev)</td>
+            </tr>
+            <tr>
+              <td><strong>Loss Management</strong></td>
+              <td>Cuts losses quickly at -20% to -35%</td>
+              <td>Never sells at a loss (because they hold free tokens)</td>
+            </tr>
+          </tbody>
+        </table>
+      
+      </div>
+    </article>
+  
+    <article id="ch-3" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 03</span>
+        <span>•</span>
+        <span>Mastering FOMO & Copy Trading</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        The Copy-Trading Slippage Trap
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>The most common mistake amateur traders make is setting up an automated bot to blindly copy every single buy of a tracked whale wallet. In reality, blind copy-trading usually results in steady losses due to two hidden factors:</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">1. Execution Latency & MEV Sandwiching</h3>
+        <p>When an insider wallet buys $10,000 of a low-liquidity token, their buy alone moves the price up by 25%. Your copy bot detects the transaction on the blockchain, submits your buy 2 seconds later, and enters at the top of their candle. You immediately start at -25% unrealized loss.</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">2. The "Dump-on-Followers" Scam</h3>
+        <p>Certain influencers intentionally leak their "alpha wallet" to their followers. Once 200 copy-trading bots are tracking that wallet, the influencer buys $500 of a worthless coin. The 200 bots immediately buy $15,000 total, pumping the coin 400%. The influencer sells instantly, dumping their bag directly into their own followers' bots.</p>
+
+        <div class="callout-warning">
+          <strong class="text-white block mb-1">⚠️ The Golden Rule of Copy Trading</strong>
+          Never copy-trade automatically with zero manual discretion. Use wallet tracking as an <strong>early alert system</strong>, not an auto-pilot execution script. When an alert fires, spend 45 seconds verifying the contract and liquidity before deciding whether to enter.
+        </div>
+      
+      </div>
+    </article>
+  
+    <article id="ch-4" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 04</span>
+        <span>•</span>
+        <span>Mastering FOMO & Copy Trading</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        Setting Up Your Tracking & Alert Feeds
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>To monitor insider wallets without staring at Solscan all day, you need clean notification pipelines:</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">Recommended Tracking Setup</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Cielo Finance / Ray Bot:</strong> Free or low-cost Telegram bot trackers that send instant push notifications when a watched wallet buys or sells on Solana.</li>
+          <li><strong>Organizing Your Wallet Tiers:</strong> Group your watched wallets into three folders:
+            <ul class="list-circle pl-5 mt-1 space-y-1">
+              <li><em>Tier 1 (High Conviction Insiders):</em> Wallets with proven 3-month profitability and $5k+ average sizing.</li>
+              <li><em>Tier 2 (Trench Snipers):</em> Wallets that specialize in sub-$100k Pump.fun launches.</li>
+              <li><em>Tier 3 (Kol / Influencer Wallets):</em> Tracked purely to know when marketing campaigns are about to launch.</li>
+            </ul>
+          </li>
+        </ul>
+      
+      </div>
+    </article>
+  
+    <article id="ch-5" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 05</span>
+        <span>•</span>
+        <span>Mastering FOMO & Copy Trading</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        Front-Running the Whale Exit
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>Knowing when an insider buys is only half the battle. Knowing when they are preparing to sell is what protects your profits.</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">Whale Exit Signals</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Splitting Tokens to Fresh Wallets:</strong> If a whale wallet holds 5% of the supply and suddenly transfers 1% to three fresh, un-indexed wallets, they are preparing to sell across multiple transactions to avoid showing large red sells on the chart.</li>
+          <li><strong>Initial Capital Extraction:</strong> When a tracked whale sells 50% of their bag, they have extracted their initial investment and are now playing with house money. You should immediately follow suit and sell at least 50% of your position.</li>
+          <li><strong>Declining Buy Velocity:</strong> When new unique wallet buyers drop while sell volume begins to outpace buy volume, the run is concluding. Never try to squeeze the last 5% out of a pump.</li>
+        </ul>
+      
+      </div>
+    </article>
+  
+    <article id="ch-6" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 06</span>
+        <span>•</span>
+        <span>Mastering FOMO & Copy Trading</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        The Whale Tracker Daily Log Template
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>Keep a dedicated spreadsheet or Notion table to track the win-rate of your watched wallets:</p>
+
+        <div class="luxury-card p-6 rounded-2xl space-y-2 font-mono text-xs">
+          <div class="text-white font-bold text-sm mb-2 font-sora">Daily Wallet Log Template:</div>
+          <div>• Wallet Label / Name: [e.g., Whale_04_Solana]</div>
+          <div>• Public Address: [Paste 44-character base58 address]</div>
+          <div>• Observed Token Pick: [Ticker & Contract Address]</div>
+          <div>• Entry Market Cap: [$___K]</div>
+          <div>• Peak Market Cap Reached: [$___K]</div>
+          <div>• Exit Multiplier Achieved: [___x]</div>
+          <div>• Total Win / Loss Status: [WIN / LOSS]</div>
+          <div>• Notes: [Did they dump all at once or ladder out?]</div>
+        </div>
+
+        <p class="mt-4">If a tracked wallet has three consecutive losing picks where they lose more than 50% of their entry, remove them from your active Tier 1 watchlist immediately.</p>
+      
+      </div>
+    </article>
+  
+    </section>
+
+    <!-- FOUNDERS CLOSING & LEGAL DISCLAIMER -->
+    <footer class="mt-20 pt-12 border-t border-white/15 text-center text-xs text-gray-400">
+      <div class="max-w-xl mx-auto mb-8">
+        <img src="../assets/server-logo.png" alt="Mozzex Logo" class="w-12 h-12 rounded-2xl border border-white/20 mx-auto mb-4 object-cover">
+        <h4 class="text-base font-sora font-bold text-white mb-2">Trade With Discipline. Protect Your Principal.</h4>
+        <p class="leading-relaxed text-gray-400 text-xs">
+          This volume is part of the proprietary <strong>Mozzex Capital Knowledge Vault</strong>. Authored by founders Claxy & Mozzari to build disciplined, profitable on-chain traders who never gamble blindly.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 text-[11px] font-mono text-gray-500 text-left max-w-2xl mx-auto leading-relaxed mb-8">
+        <strong>Risk Disclosure:</strong> Cryptocurrency and on-chain token trading involve market risk and volatility. Nothing in this guide constitutes financial advice or guarantees profits. Always manage risk, never trade with funds you cannot afford to lose, and adhere strictly to position sizing rules.
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-white/10 text-[11px] font-mono text-gray-500">
+        <div>© 2026 Mozzex Capital. All rights reserved.</div>
+        <div class="mt-2 sm:mt-0 flex items-center space-x-4">
+          <a href="../#books" class="hover:text-white transition">Library</a>
+          <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="hover:text-white transition">Discord Support Desk</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

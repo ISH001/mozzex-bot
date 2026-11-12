@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vol. 1: The Degen Starter Blueprint — Mozzex Capital Official Master Guide</title>
+  <link rel="icon" type="image/png" href="../assets/server-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #07070A;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.7;
+    }
+    h1, h2, h3, h4, .font-sora {
+      font-family: 'Sora', sans-serif;
+    }
+    .chrome-gradient {
+      background: linear-gradient(180deg, #FFFFFF 0%, #C0C0C0 60%, #7A7A85 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .luxury-card {
+      background: rgba(14, 14, 18, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .callout-box {
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid #FFFFFF;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+    .callout-warning {
+      background: rgba(239, 68, 68, 0.08);
+      border-left: 3px solid #EF4444;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+    .callout-rule {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 3px solid #10B981;
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 20px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.875rem;
+    }
+    th, td {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    th {
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+    }
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #111111 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .book-chapter {
+        page-break-before: always;
+        color: #111111 !important;
+      }
+      .prose {
+        color: #111111 !important;
+      }
+      h1, h2, h3, h4, strong {
+        color: #000000 !important;
+      }
+      .chrome-gradient {
+        -webkit-text-fill-color: #000000 !important;
+        background: none !important;
+      }
+      .luxury-card, .callout-box, .callout-warning, .callout-rule {
+        border-color: #CCCCCC !important;
+        background: #F9F9F9 !important;
+        color: #111111 !important;
+      }
+      th {
+        background: #EEEEEE !important;
+        color: #000000 !important;
+      }
+      th, td {
+        border-color: #CCCCCC !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-white selection:text-black">
+
+  <!-- TOP HEADER (Mozzex Capital Official Bar) -->
+  <header class="sticky top-0 z-50 bg-[#07070A]/90 backdrop-blur-xl border-b border-white/10 px-4 sm:px-8 py-4 no-print">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="../#books" class="flex items-center space-x-3 group">
+          <img src="../assets/server-logo.png" alt="Mozzex Logo" class="w-9 h-9 rounded-xl border border-white/20 object-cover">
+          <div>
+            <div class="font-sora font-extrabold text-white text-sm tracking-wide">MOZZEX <span class="text-gray-400 font-light">CAPITAL</span></div>
+            <div class="text-[10px] font-mono text-gray-400 uppercase">Knowledge Vault • Vol. 1</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button onclick="window.print()" class="px-4 py-2 rounded-xl text-xs font-sora font-bold bg-white text-black hover:bg-gray-200 transition shadow-sm flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+          <span class="hidden sm:inline">Print / Save as PDF</span>
+          <span class="sm:hidden">PDF</span>
+        </button>
+        <a href="../#books" class="px-3.5 py-2 rounded-xl text-xs font-sora text-gray-300 hover:text-white bg-white/5 border border-white/10 transition">
+          Library
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN BOOK CONTENT CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-8 py-12">
+    
+    <!-- COVER / TITLE BLOCK -->
+    <header class="mb-14 pb-12 border-b border-white/10">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 text-[10px] font-mono uppercase tracking-widest text-gray-300 mb-6">
+        <span>MOZZEX CAPITAL PUBLISHING</span>
+        <span>•</span>
+        <span>OFFICIAL TRADER EDITION 2026</span>
+      </div>
+
+      <div class="text-xs font-mono font-bold text-gray-400 tracking-widest uppercase mb-2">VOLUME 01</div>
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-sora font-extrabold text-white tracking-tight leading-tight mb-4">
+        The Degen Starter Blueprint
+      </h1>
+      <p class="text-lg sm:text-xl text-gray-300 font-normal leading-relaxed mb-6">
+        From Complete Zero to Confident Daily On-Chain Trader
+      </p>
+
+      <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-gray-400">
+        <div>
+          <span class="block text-[10px] text-gray-500 uppercase">Authored By</span>
+          <span class="text-white font-bold font-sora">Claxy & Mozzari</span> (Mozzex Capital Founders)
+        </div>
+        <div>
+          <span class="block text-[10px] text-gray-500 uppercase">Target Audience</span>
+          <span class="text-white font-semibold">On-Chain Solana & Memecoin Traders</span>
+        </div>
+        <div>
+          <span class="block text-[10px] text-gray-500 uppercase">Format</span>
+          <span class="text-white font-semibold">Master Handbook (6 Core Modules)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- TABLE OF CONTENTS -->
+    <section class="mb-16 p-6 sm:p-8 rounded-3xl luxury-card border border-white/15">
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+        <h3 class="font-sora font-extrabold text-lg text-white">Table of Contents</h3>
+        <span class="text-xs font-mono text-gray-400">6 Chapters • Full Syllabus</span>
+      </div>
+      <div class="grid grid-cols-1 gap-2.5">
+        
+    <a href="#ch-1" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">01.</span>
+        <span class="font-sora font-semibold text-white">The On-Chain Landscape & DEX Mechanics</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 01 →</span>
+    </a>
+  
+    <a href="#ch-2" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">02.</span>
+        <span class="font-sora font-semibold text-white">Wallet Setup & Security Hardening</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 02 →</span>
+    </a>
+  
+    <a href="#ch-3" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">03.</span>
+        <span class="font-sora font-semibold text-white">The Professional Trader Workspace</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 03 →</span>
+    </a>
+  
+    <a href="#ch-4" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">04.</span>
+        <span class="font-sora font-semibold text-white">Bankroll Management & Position Sizing Rules</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 04 →</span>
+    </a>
+  
+    <a href="#ch-5" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">05.</span>
+        <span class="font-sora font-semibold text-white">Executing Your First Trade: Slippage & Gas</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 05 →</span>
+    </a>
+  
+    <a href="#ch-6" class="toc-item flex items-center justify-between p-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition text-sm">
+      <div class="flex items-center space-x-3">
+        <span class="font-mono text-xs text-gray-400 font-bold">06.</span>
+        <span class="font-sora font-semibold text-white">The Daily Trading Checklist & Journal</span>
+      </div>
+      <span class="text-xs text-gray-500 font-mono">Chapter 06 →</span>
+    </a>
+  
+      </div>
+    </section>
+
+    <!-- CHAPTERS -->
+    <section class="book-body">
+      
+    <article id="ch-1" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 01</span>
+        <span>•</span>
+        <span>The Degen Starter Blueprint</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        The On-Chain Landscape & DEX Mechanics
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>Most retail traders enter crypto through centralized exchanges (CEXs) like Binance, Coinbase, or Kraken. They deposit fiat, click buy on Bitcoin or Ethereum, and wait weeks for a 5% move. When they discover decentralized memecoins where tokens do 10x, 50x, or 100x in hours, they jump in blindly — and lose everything within 48 hours.</p>
+
+        <p>To succeed on-chain, you must understand the mechanical difference between a Centralized Exchange and a Decentralized Exchange (DEX):</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Factor</th>
+              <th>Centralized Exchange (CEX)</th>
+              <th>On-Chain DEX (Solana / Raydium)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Custody</strong></td>
+              <td>Exchange holds your private keys</td>
+              <td>You hold 100% self-custody in your wallet</td>
+            </tr>
+            <tr>
+              <td><strong>Listing Speed</strong></td>
+              <td>Weeks/months of vetting</td>
+              <td>Instant. Anyone can create a token in 30 seconds</td>
+            </tr>
+            <tr>
+              <td><strong>Execution</strong></td>
+              <td>Central order book matching bids/asks</td>
+              <td>Automated Market Makers (AMM) via Liquidity Pools</td>
+            </tr>
+            <tr>
+              <td><strong>Price Volatility</strong></td>
+              <td>Low to Moderate (±3% to ±10% daily)</td>
+              <td>Extreme (±50% to 1,000%+ in minutes)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout-box">
+          <strong class="text-white block mb-1">💡 The AMM Constant Product Formula (x * y = k)</strong>
+          When you buy a token on Raydium or Meteora, you aren't buying from a seller waiting with an order. You are depositing SOL into a liquidity pool and extracting token supply. The fewer tokens left in the pool, the exponentially higher each subsequent token costs. This is why small market cap tokens pump violently when volume arrives — and collapse just as violently when liquidity is drained.
+        </div>
+      
+      </div>
+    </article>
+  
+    <article id="ch-2" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 02</span>
+        <span>•</span>
+        <span>The Degen Starter Blueprint</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        Wallet Setup & Security Hardening
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>Your wallet is your bank vault. In on-chain trading, if you sign a malicious transaction, no customer support can reverse it. The blockchain is permanent.</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">The Two-Wallet Rule (Vault vs. Trench Burner)</h3>
+        <p>Never trade directly from a wallet holding your life savings or long-term investments. You must operate with a strict two-wallet architecture:</p>
+        
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Wallet 1: The Cold Vault:</strong> Stored on a hardware device (Ledger) or a clean browser profile. This wallet NEVER interacts with new token contracts, unknown dApps, or Telegram bots. It only sends SOL to your burner wallet and receives settled profits.</li>
+          <li><strong>Wallet 2: The Trench Burner Wallet:</strong> The only wallet connected to DEXs and trading bots. You only fund this wallet with the exact trading capital you plan to risk for the week. If a contract is compromised, your maximum loss is strictly limited to the burner balance.</li>
+        </ul>
+
+        <div class="callout-warning">
+          <strong class="text-white block mb-1">⚠️ The Seed Phrase Rule of Steel</strong>
+          Never screenshot your 12 or 24-word recovery phrase. Never type it into Discord, Telegram, or any "support desk" website. Founders Claxy & Mozzari will NEVER ask for your seed phrase. Anyone asking for private keys is 100% an impersonator attempting to drain your funds.
+        </div>
+      
+      </div>
+    </article>
+  
+    <article id="ch-3" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 03</span>
+        <span>•</span>
+        <span>The Degen Starter Blueprint</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        The Professional Trader Workspace
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>Trading from a mobile phone with a lagging browser is a guaranteed way to become exit liquidity. To trade effectively, you must configure a streamlined desktop and mobile monitoring setup:</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">Essential Toolkit Stack</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>DexScreener:</strong> The primary charting interface for real-time Solana token price action, volume velocity, liquidity depth, and holder distribution.</li>
+          <li><strong>Axiom / Birdeye:</strong> In-depth token security analysis, transaction feeds, and wallet profiling.</li>
+          <li><strong>Solscan:</strong> The Solana blockchain explorer used to verify actual token supply, developer transactions, and contract creation signatures.</li>
+          <li><strong>RugCheck.xyz:</strong> Instant smart contract security scans to check mint authorities, freeze flags, and top 10 holder percentage concentration.</li>
+        </ul>
+
+        <div class="callout-box">
+          <strong class="text-white block mb-1">💡 DexScreener Workspace Layout</strong>
+          Set your DexScreener chart to 1-minute and 5-minute candles. Add Volume and VWAP indicators. Keep the live transaction stream visible on the right panel so you can see buy sizes and whale wallet activity in real time.
+        </div>
+      
+      </div>
+    </article>
+  
+    <article id="ch-4" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 04</span>
+        <span>•</span>
+        <span>The Degen Starter Blueprint</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        Bankroll Management & Position Sizing Rules
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>Amateur traders think trading is about picking winning coins. Professional desks know that trading is 90% bankroll preservation. Even if you have a 70% win rate, poor sizing will liquidate you during a 3-trade losing streak.</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">The 2% Capital Allocation Model</h3>
+        <p>Never allocate more than 2% to 5% of your total trading bankroll into any single trade. Here is how professional allocation works:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Total Bankroll</th>
+              <th>Max Position Size (2% - 5%)</th>
+              <th>Allowed Open Trades</th>
+              <th>Stop-Loss Risk Per Trade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$100 USD</td>
+              <td>$5.00</td>
+              <td>3 trades ($15 max exposure)</td>
+              <td>-$1.50 (30% stop-loss)</td>
+            </tr>
+            <tr>
+              <td>$500 USD</td>
+              <td>$15.00 – $25.00</td>
+              <td>4 trades ($80 max exposure)</td>
+              <td>-$5.00 – -$7.50</td>
+            </tr>
+            <tr>
+              <td>$1,000 USD</td>
+              <td>$30.00 – $50.00</td>
+              <td>5 trades ($200 max exposure)</td>
+              <td>-$9.00 – -$15.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout-rule">
+          <strong class="text-white block mb-1">🛡️ The Mozzex Golden Sizing Rule</strong>
+          If losing a single trade makes you emotional or angry, your position size was too big. Sizing down allows you to execute trades with robotic discipline, following the plan without panic selling at the bottom.
+        </div>
+      
+      </div>
+    </article>
+  
+    <article id="ch-5" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 05</span>
+        <span>•</span>
+        <span>The Degen Starter Blueprint</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        Executing Your First Trade: Slippage & Gas
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>When you click swap on Solana, two critical variables determine whether your transaction confirms or fails:</p>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">1. Slippage Tolerance</h3>
+        <p>Slippage is the maximum price change you allow between submitting your transaction and its confirmation on the blockchain. In high-speed memecoin launches, price can jump 15% in two seconds.</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Normal Market Conditions:</strong> Set slippage between 1.5% and 3.0%.</li>
+          <li><strong>High-Speed Trench Launches:</strong> Set slippage between 5.0% and 10.0%.</li>
+          <li><strong>Danger Zone:</strong> Never set slippage to 50%+ or "Unlimited" unless you want MEV bots to sandwich your order and steal your profit.</li>
+        </ul>
+
+        <h3 class="text-xl font-sora font-bold text-white mt-6 mb-3">2. Priority Fees (Gas Bribes)</h3>
+        <p>Solana processes thousands of transactions per second. During high network congestion, validators prioritize transactions paying higher compute unit priority fees. Set a modest priority fee (0.001 - 0.005 SOL) to ensure your transactions never get dropped.</p>
+      
+      </div>
+    </article>
+  
+    <article id="ch-6" class="book-chapter mb-16 pt-12 border-t border-white/10">
+      <div class="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+        <span>Chapter 06</span>
+        <span>•</span>
+        <span>The Degen Starter Blueprint</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-sora font-extrabold text-white mb-6 tracking-tight">
+        The Daily Trading Checklist & Journal
+      </h2>
+      <div class="prose prose-invert max-w-none text-gray-300 space-y-5 text-sm sm:text-base leading-relaxed">
+        
+        <p>Top traders follow a strict pre-flight routine before entering any trade. Print this checklist or keep it open beside your charts:</p>
+
+        <div class="luxury-card p-6 rounded-2xl space-y-3 font-mono text-xs">
+          <div class="text-white font-bold text-sm mb-3 font-sora">Pre-Trade Entry Checklist:</div>
+          <div>[ ] 1. Contract audited on RugCheck.xyz: Mint & Freeze authorities are disabled.</div>
+          <div>[ ] 2. Liquidity Pool (LP) is 100% burned or locked.</div>
+          <div>[ ] 3. Top 10 holders control less than 20% of total supply (excluding LP).</div>
+          <div>[ ] 4. Sizing verified: This trade does not exceed 3% of my total trading balance.</div>
+          <div>[ ] 5. Hard stop-loss planned: If position drops 30%, I cut it immediately with zero hesitation.</div>
+          <div>[ ] 6. Take-profit plan set: 50% sold at 2x to secure initial capital.</div>
+        </div>
+
+        <p class="mt-6">Never enter a trade without knowing your exact exit points before clicking buy. Discipline is what separates profitable operators from retail donors.</p>
+      
+      </div>
+    </article>
+  
+    </section>
+
+    <!-- FOUNDERS CLOSING & LEGAL DISCLAIMER -->
+    <footer class="mt-20 pt-12 border-t border-white/15 text-center text-xs text-gray-400">
+      <div class="max-w-xl mx-auto mb-8">
+        <img src="../assets/server-logo.png" alt="Mozzex Logo" class="w-12 h-12 rounded-2xl border border-white/20 mx-auto mb-4 object-cover">
+        <h4 class="text-base font-sora font-bold text-white mb-2">Trade With Discipline. Protect Your Principal.</h4>
+        <p class="leading-relaxed text-gray-400 text-xs">
+          This volume is part of the proprietary <strong>Mozzex Capital Knowledge Vault</strong>. Authored by founders Claxy & Mozzari to build disciplined, profitable on-chain traders who never gamble blindly.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-xl bg-white/[0.02] border border-white/10 text-[11px] font-mono text-gray-500 text-left max-w-2xl mx-auto leading-relaxed mb-8">
+        <strong>Risk Disclosure:</strong> Cryptocurrency and on-chain token trading involve market risk and volatility. Nothing in this guide constitutes financial advice or guarantees profits. Always manage risk, never trade with funds you cannot afford to lose, and adhere strictly to position sizing rules.
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between pt-6 border-t border-white/10 text-[11px] font-mono text-gray-500">
+        <div>© 2026 Mozzex Capital. All rights reserved.</div>
+        <div class="mt-2 sm:mt-0 flex items-center space-x-4">
+          <a href="../#books" class="hover:text-white transition">Library</a>
+          <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="hover:text-white transition">Discord Support Desk</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>
