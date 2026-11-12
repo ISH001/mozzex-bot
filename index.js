@@ -66,23 +66,64 @@ process.on('uncaughtException', error => {
   console.error('[Uncaught Exception]', error);
 });
 
-// Native HTTP keep-alive health check server for Render / Cloud hosting
+// Native HTTP server for Mozzex Capital Official Website & Render 24/7 Hosting
 const http = require('http');
 const port = process.env.PORT || 3000;
 
+const mimeTypes = {
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css',
+  '.js': 'application/javascript',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.json': 'application/json',
+  '.svg': 'image/svg+xml'
+};
+
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({
-    service: 'Mozzex Official Discord Bot',
-    status: 'ONLINE',
-    uptime: Math.floor(process.uptime()),
-    timestamp: new Date().toISOString(),
-    guilds: client.guilds.cache.size
-  }));
+  if (req.url === '/healthz' || req.url === '/status') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({
+      service: 'Mozzex Capital Official Platform',
+      status: 'ONLINE',
+      uptime: Math.floor(process.uptime()),
+      guilds: client.guilds.cache.size
+    }));
+  }
+
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  let safePath = path.normalize(parsedUrl.pathname).replace(/^(\.\.[\/\\])+/, '');
+  if (safePath === '/' || safePath === '\\') safePath = '/index.html';
+
+  const filePath = path.join(__dirname, 'public', safePath);
+  const ext = path.extname(filePath).toLowerCase();
+  const contentType = mimeTypes[ext] || 'application/octet-stream';
+
+  fs.readFile(filePath, (err, content) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        const fallbackPath = path.join(__dirname, 'public', 'index.html');
+        fs.readFile(fallbackPath, (fallbackErr, fallbackContent) => {
+          if (fallbackErr) {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            return res.end('404 Not Found');
+          }
+          res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+          return res.end(fallbackContent);
+        });
+      } else {
+        res.writeHead(500);
+        return res.end('Server Error: ' + err.code);
+      }
+    } else {
+      res.writeHead(200, { 'Content-Type': contentType });
+      res.end(content);
+    }
+  });
 });
 
 server.listen(port, () => {
-  console.log(`🌐 [Render Cloud] Health-check HTTP server listening on port ${port}`);
+  console.log(`🌐 [Mozzex Capital Web] Website & Health-check listening on port ${port}`);
 });
 
 // Login

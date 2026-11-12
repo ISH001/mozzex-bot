@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mozzex Capital — Hands-Free Memecoin Wealth & On-Chain Alpha</title>
+  <meta name="description" content="Mozzex Capital trades high-conviction memecoins on your behalf with 100% live transparency on FOMO. 50/50 profit split. Zero experience required.">
+  <link rel="icon" type="image/png" href="assets/MOZZEX_Discord_PFP_Big_M.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN for fast utility styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#00FFA3',
+              gold: '#D4AF37',
+              dark: '#080B11',
+              card: '#0F1420',
+              border: '#1A2333'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #080B11;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .gradient-text-green {
+      background: linear-gradient(135deg, #00FFA3 0%, #00E5FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-text-gold {
+      background: linear-gradient(135deg, #FFDF70 0%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glass-card {
+      background: rgba(15, 20, 32, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 255, 163, 0.3);
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 255, 163, 0.12) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 70%);
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="relative">
+
+  <!-- Glow Background -->
+  <div class="hero-glow"></div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 glass-card border-b border-brand-border/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="assets/MOZZEX_Discord_PFP_Big_M.png" alt="Mozzex Logo" class="w-10 h-10 rounded-xl shadow-lg border border-brand-green/30">
+        <span class="font-heading font-bold text-xl tracking-wider text-white">MOZZEX <span class="gradient-text-gold">CAPITAL</span></span>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+        <a href="#packages" class="hover:text-brand-green transition">Investment Tiers</a>
+        <a href="#calculator" class="hover:text-brand-green transition">Profit Calculator</a>
+        <a href="#transparency" class="hover:text-brand-green transition">FOMO Transparency</a>
+        <a href="#vip" class="hover:text-brand-gold transition">Lifetime VIP ($50)</a>
+        <a href="#faq" class="hover:text-brand-green transition">FAQ</a>
+      </nav>
+
+      <a href="https://discord.gg/" target="_blank" class="px-5 py-2.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-brand-green to-emerald-400 text-black hover:opacity-95 shadow-lg shadow-brand-green/20 transition flex items-center space-x-2">
+        <span>🚀 Join Community</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-20 pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center z-10">
+    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-brand-green/30 text-xs font-semibold text-brand-green mb-8 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+      <span>MANAGED MEMECOIN POOL • ZERO EXPERIENCE REQUIRED</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-white tracking-tight leading-tight max-w-5xl mx-auto">
+      Hands-Free Crypto Wealth. <br>
+      <span class="gradient-text-green">Traded For You.</span> <span class="gradient-text-gold">100% Live On FOMO.</span>
+    </h1>
+
+    <p class="mt-6 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+      You pick a package and duration. Our elite desk trades high-conviction memecoin snipes on your behalf. Watch every trade live on your phone, and keep <strong class="text-white">your full capital + 50% of the profits</strong>.
+    </p>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#packages" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base bg-gradient-to-r from-brand-green to-emerald-400 text-black hover:scale-105 shadow-xl shadow-brand-green/20 transition">
+        🚀 Start Investing ($10 - $1,000+)
+      </a>
+      <a href="#vip" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base glass-card border border-brand-gold/40 text-brand-gold hover:border-brand-gold transition flex items-center justify-center space-x-2">
+        <span>👑 Lifetime VIP Pass ($50)</span>
+      </a>
+    </div>
+
+    <!-- Trust Stats -->
+    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8 border-t border-brand-border/60">
+      <div class="p-4 rounded-xl glass-card">
+        <div class="text-3xl font-heading font-bold text-brand-green">100%</div>
+        <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider">FOMO Transparency</div>
+      </div>
+      <div class="p-4 rounded-xl glass-card">
+        <div class="text-3xl font-heading font-bold text-brand-gold">50 / 50</div>
+        <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Profit Split</div>
+      </div>
+      <div class="p-4 rounded-xl glass-card">
+        <div class="text-3xl font-heading font-bold text-white">$10 Min</div>
+        <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Accessible To All</div>
+      </div>
+      <div class="p-4 rounded-xl glass-card">
+        <div class="text-3xl font-heading font-bold text-cyan-400">Direct</div>
+        <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Wallet Payouts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Profit Calculator -->
+  <section id="calculator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="glass-card rounded-3xl p-8 sm:p-12 border border-brand-border relative overflow-hidden">
+      <div class="text-center mb-10">
+        <span class="text-xs font-semibold text-brand-gold uppercase tracking-widest">Interactive Calculator</span>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white mt-2">See How Much You Earn</h2>
+        <p class="text-gray-400 text-sm mt-2">Adjust your deposit to view projected returns based on our historical cycles.</p>
+      </div>
+
+      <!-- Deposit Slider -->
+      <div class="mb-8">
+        <div class="flex justify-between items-center mb-3">
+          <label class="text-sm font-semibold text-gray-300">Your Initial Investment:</label>
+          <span id="depositDisplay" class="text-2xl font-bold font-heading text-brand-green">$100 USD</span>
+        </div>
+        <input type="range" id="depositSlider" min="10" max="1000" step="10" value="100" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-brand-green">
+        <div class="flex justify-between text-xs text-gray-500 mt-2">
+          <span>$10 Starter</span>
+          <span>$250 Pro</span>
+          <span>$500</span>
+          <span>$1,000 Whale</span>
+        </div>
+      </div>
+
+      <!-- Calculation Breakdown Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <div class="p-4 rounded-2xl bg-black/40 border border-brand-border text-center">
+          <div class="text-xs text-gray-400 uppercase">Estimated Cycle Gain</div>
+          <div id="profitDisplay" class="text-xl font-bold text-emerald-400 mt-1">+$50 USD</div>
+          <div class="text-[10px] text-gray-500 mt-1">Based on ~50% scalp ROI</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-black/40 border border-brand-border text-center">
+          <div class="text-xs text-gray-400 uppercase">Your 50% Profit Share</div>
+          <div id="shareDisplay" class="text-xl font-bold text-brand-gold mt-1">+$25 USD</div>
+          <div class="text-[10px] text-gray-500 mt-1">50% Mozzex / 50% You</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-brand-green/10 border border-brand-green/40 text-center">
+          <div class="text-xs text-brand-green uppercase font-semibold">Total Returned Payout</div>
+          <div id="totalDisplay" class="text-2xl font-bold font-heading text-brand-green mt-1">$125 USD</div>
+          <div class="text-[10px] text-emerald-300 mt-1">Principal + Profit Return</div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="#packages" class="inline-block px-8 py-3.5 rounded-xl font-bold bg-gradient-to-r from-brand-green to-emerald-400 text-black hover:opacity-95 shadow-lg shadow-brand-green/20 transition">
+          🚀 Lock In This Package Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment Packages -->
+  <section id="packages" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-xs font-semibold text-brand-green uppercase tracking-widest">Choose Your Strategy</span>
+      <h2 class="text-3xl sm:text-5xl font-heading font-bold text-white mt-2">Transparent Investment Tiers</h2>
+      <p class="text-gray-400 text-base max-w-xl mx-auto mt-3">Select your deposit and duration. We handle the research, execution, and risk management.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Tier 1: Starter -->
+      <div class="glass-card rounded-3xl p-6 border border-brand-border flex flex-col justify-between">
+        <div>
+          <div class="text-2xl mb-2">🥉</div>
+          <h3 class="font-heading font-bold text-xl text-white">Starter Tier</h3>
+          <div class="mt-4 flex items-baseline">
+            <span class="text-3xl font-extrabold text-white">$10 - $25</span>
+          </div>
+          <p class="text-xs text-gray-400 mt-2">Perfect for complete beginners testing the waters.</p>
+          <ul class="mt-6 space-y-3 text-xs text-gray-300">
+            <li class="flex items-center">✓ <strong>Duration:</strong> <span class="ml-1 text-white">24 - 48 Hours</span></li>
+            <li class="flex items-center">✓ <strong>Profit Split:</strong> <span class="ml-1 text-brand-gold">50% You / 50% Mozzex</span></li>
+            <li class="flex items-center">✓ <strong>Tracking:</strong> <span class="ml-1 text-brand-green">Live FOMO Profile</span></li>
+            <li class="flex items-center">✓ <strong>Payout:</strong> <span class="ml-1 text-white">Direct Non-Custodial</span></li>
+          </ul>
+        </div>
+        <a href="https://discord.gg/" target="_blank" class="mt-8 block text-center py-3 rounded-xl font-bold text-xs bg-white/10 hover:bg-brand-green hover:text-black transition text-white">
+          Invest $10 - $25
+        </a>
+      </div>
+
+      <!-- Tier 2: Growth -->
+      <div class="glass-card rounded-3xl p-6 border border-brand-border flex flex-col justify-between">
+        <div>
+          <div class="text-2xl mb-2">🥈</div>
+          <h3 class="font-heading font-bold text-xl text-white">Growth Tier</h3>
+          <div class="mt-4 flex items-baseline">
+            <span class="text-3xl font-extrabold text-white">$30 - $75</span>
+          </div>
+          <p class="text-xs text-gray-400 mt-2">Steady compounding across vetted breakouts.</p>
+          <ul class="mt-6 space-y-3 text-xs text-gray-300">
+            <li class="flex items-center">✓ <strong>Duration:</strong> <span class="ml-1 text-white">3 - 5 Days</span></li>
+            <li class="flex items-center">✓ <strong>Profit Split:</strong> <span class="ml-1 text-brand-gold">50% You / 50% Mozzex</span></li>
+            <li class="flex items-center">✓ <strong>Tracking:</strong> <span class="ml-1 text-brand-green">Live FOMO Profile</span></li>
+            <li class="flex items-center">✓ <strong>Bonus:</strong> <span class="ml-1 text-white">Beginner E-Book</span></li>
+          </ul>
+        </div>
+        <a href="https://discord.gg/" target="_blank" class="mt-8 block text-center py-3 rounded-xl font-bold text-xs bg-white/10 hover:bg-brand-green hover:text-black transition text-white">
+          Invest $30 - $75
+        </a>
+      </div>
+
+      <!-- Tier 3: Pro (Featured) -->
+      <div class="glass-card rounded-3xl p-6 border-2 border-brand-green/60 shadow-xl shadow-brand-green/10 flex flex-col justify-between relative">
+        <span class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-brand-green text-black font-extrabold text-[10px] rounded-full uppercase tracking-wider">
+          Most Popular
+        </span>
+        <div>
+          <div class="text-2xl mb-2">🥇</div>
+          <h3 class="font-heading font-bold text-xl text-white">Pro Trader</h3>
+          <div class="mt-4 flex items-baseline">
+            <span class="text-3xl font-extrabold text-brand-green">$100 - $250</span>
+          </div>
+          <p class="text-xs text-gray-400 mt-2">Multi-token diversification for serious ROI.</p>
+          <ul class="mt-6 space-y-3 text-xs text-gray-300">
+            <li class="flex items-center">✓ <strong>Duration:</strong> <span class="ml-1 text-white">5 - 7 Days</span></li>
+            <li class="flex items-center">✓ <strong>Profit Split:</strong> <span class="ml-1 text-brand-gold">50% You / 50% Mozzex</span></li>
+            <li class="flex items-center">✓ <strong>Tracking:</strong> <span class="ml-1 text-brand-green">Live FOMO Profile</span></li>
+            <li class="flex items-center">✓ <strong>Bonus:</strong> <span class="ml-1 text-white">VIP Alpha Chat Access</span></li>
+          </ul>
+        </div>
+        <a href="https://discord.gg/" target="_blank" class="mt-8 block text-center py-3 rounded-xl font-bold text-xs bg-gradient-to-r from-brand-green to-emerald-400 text-black hover:opacity-90 transition shadow-md shadow-brand-green/20">
+          Invest $100 - $250
+        </a>
+      </div>
+
+      <!-- Tier 4: Whale -->
+      <div class="glass-card rounded-3xl p-6 border border-brand-gold/40 flex flex-col justify-between">
+        <div>
+          <div class="text-2xl mb-2">💎</div>
+          <h3 class="font-heading font-bold text-xl text-brand-gold">Elite Whale</h3>
+          <div class="mt-4 flex items-baseline">
+            <span class="text-3xl font-extrabold text-white">$500 - $1K+</span>
+          </div>
+          <p class="text-xs text-gray-400 mt-2">Institutional-grade execution with private RPCs.</p>
+          <ul class="mt-6 space-y-3 text-xs text-gray-300">
+            <li class="flex items-center">✓ <strong>Duration:</strong> <span class="ml-1 text-white">7 - 14 Days</span></li>
+            <li class="flex items-center">✓ <strong>Profit Split:</strong> <span class="ml-1 text-brand-gold">50% You / 50% Mozzex</span></li>
+            <li class="flex items-center">✓ <strong>Tracking:</strong> <span class="ml-1 text-brand-green">Dedicated FOMO Desk</span></li>
+            <li class="flex items-center">✓ <strong>Support:</strong> <span class="ml-1 text-white">1-on-1 Founder Line</span></li>
+          </ul>
+        </div>
+        <a href="https://discord.gg/" target="_blank" class="mt-8 block text-center py-3 rounded-xl font-bold text-xs bg-brand-gold/20 border border-brand-gold/50 text-brand-gold hover:bg-brand-gold hover:text-black transition">
+          Invest $500 - $1K+
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live FOMO Transparency Feature -->
+  <section id="transparency" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="glass-card rounded-3xl p-8 sm:p-14 border border-brand-border grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-brand-green/10 text-brand-green text-xs font-semibold mb-4">
+          <span>📱 100% LIVE ON-CHAIN TRANSPARENCY</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white leading-tight">
+          We Set Up Your Personal FOMO Profile. <br>
+          <span class="gradient-text-green">You Watch Every Trade Live.</span>
+        </h2>
+        <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+          The biggest fear in crypto is handing money to an anonymous person and having no idea what happens next. At Mozzex Capital, <strong>we eliminate the black box completely</strong>.
+        </p>
+
+        <div class="mt-6 space-y-4 text-sm text-gray-300">
+          <div class="flex items-start space-x-3">
+            <div class="text-brand-green font-bold text-lg">✓</div>
+            <div><strong class="text-white">Your Dedicated Link:</strong> A personalized FOMO dashboard showing your capital balance and open positions.</div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="text-brand-green font-bold text-lg">✓</div>
+            <div><strong class="text-white">Live Fills & Timestamps:</strong> See token entry prices, take-profit executions, and real-time PnL.</div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="text-brand-green font-bold text-lg">✓</div>
+            <div><strong class="text-white">Direct Wallet Payout:</strong> Once your duration ends, capital + your 50% profit are sent straight to your non-custodial wallet.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-black/60 rounded-2xl p-6 border border-brand-border/80 shadow-2xl">
+        <div class="flex items-center justify-between border-b border-brand-border/60 pb-4 mb-4">
+          <div class="flex items-center space-x-2">
+            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+            <span class="text-xs text-gray-400 font-mono ml-2">fomo.fund/@mozzex_client_481</span>
+          </div>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded bg-brand-green/20 text-brand-green">LIVE TRACKING</span>
+        </div>
+
+        <div class="space-y-3 font-mono text-xs">
+          <div class="p-3 rounded-xl bg-white/5 flex justify-between items-center">
+            <div>
+              <span class="text-emerald-400 font-bold">BUY FILL</span>
+              <span class="text-white ml-2">$PUMP • Entry @ $84K MC</span>
+            </div>
+            <span class="text-gray-400">+12.4 SOL</span>
+          </div>
+          <div class="p-3 rounded-xl bg-white/5 flex justify-between items-center">
+            <div>
+              <span class="text-amber-400 font-bold">TAKE PROFIT (TP1)</span>
+              <span class="text-white ml-2">$PUMP • Exit @ $195K MC</span>
+            </div>
+            <span class="text-emerald-400 font-bold">+2.32x (+132%)</span>
+          </div>
+          <div class="p-3 rounded-xl bg-white/5 flex justify-between items-center">
+            <div>
+              <span class="text-cyan-400 font-bold">CLIENT PROFIT</span>
+              <span class="text-white ml-2">50% Net Allocation</span>
+            </div>
+            <span class="text-brand-gold font-bold">+$142.50 USD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifetime VIP Pass ($50 USD) -->
+  <section id="vip" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="glass-card rounded-3xl p-8 sm:p-14 border-2 border-brand-gold/60 shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 pb-8 border-b border-brand-border">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider">
+            One-Time Payment • No Monthly Subscriptions
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-white mt-3">
+            👑 Mozzex VIP Lifetime Pass
+          </h2>
+          <p class="text-gray-400 text-sm mt-1">Want to learn to trade yourself? Unlock our entire proprietary ecosystem for life.</p>
+        </div>
+        <div class="text-left md:text-right">
+          <div class="text-4xl font-heading font-extrabold text-brand-gold">$50 <span class="text-sm font-normal text-gray-400">USD</span></div>
+          <div class="text-xs text-emerald-400 font-semibold mt-1">✓ Lifetime Access</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-brand-gold mb-3">📚 1. All Knowledge Books & Guides</h4>
+          <ul class="space-y-2 text-xs text-gray-300">
+            <li>• <strong>"The Degen Starter Blueprint"</strong> — From complete beginner to profitable on-chain trader.</li>
+            <li>• <strong>"The Anti-Scam & Rug Bible"</strong> — How to identify honeypots & drainers in under 60 seconds.</li>
+            <li>• <strong>"Mastering FOMO & Copy Trading"</strong> — How to follow profitable insider wallets.</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-brand-gold mb-3">🛠️ 2. The Best Trading Tools Suite</h4>
+          <ul class="space-y-2 text-xs text-gray-300">
+            <li>• <strong>Photon & BullX Presets:</strong> Pre-tuned anti-MEV bribe settings for sub-second fills.</li>
+            <li>• <strong>Axiom & DexScreener Filters:</strong> Private filters to filter out 99% of dead tokens.</li>
+            <li>• <strong>Private Low-Latency RPCs:</strong> Direct endpoints so transactions never fail.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 pt-6 border-t border-brand-border/60">
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-brand-gold mb-2">🎯 3. VIP Insider Alpha Calls</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Direct access to `#👑・vip-alpha` channel with real-time early alerts before tokens pump, complete with targets and stop-loss levels.</p>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-wider text-brand-gold mb-2">🤝 4. 1-on-1 Step-by-Step Setup</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Our mentors personally walk you through setting up your wallets, trading bots, and FOMO profile so you can trade with confidence.</p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="https://discord.gg/" target="_blank" class="inline-block px-10 py-4 rounded-xl font-bold bg-gradient-to-r from-brand-gold via-amber-400 to-yellow-500 text-black hover:opacity-90 shadow-xl shadow-brand-gold/20 transition">
+          👑 Get Lifetime VIP Pass For $50
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beginner FAQ -->
+  <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="text-center mb-14">
+      <span class="text-xs font-semibold text-brand-green uppercase tracking-widest">Questions & Answers</span>
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white mt-2">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="space-y-4 text-sm">
+      <div class="glass-card rounded-2xl p-6 border border-brand-border">
+        <h4 class="font-bold text-white">Do I need any trading experience to join?</h4>
+        <p class="text-gray-400 text-xs mt-2 leading-relaxed">None whatsoever. For our managed packages ($10 - $1,000+), our trading desk executes the trades for you. You simply watch live on your FOMO profile link.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 border border-brand-border">
+        <h4 class="font-bold text-white">How does the 50/50 profit split work?</h4>
+        <p class="text-gray-400 text-xs mt-2 leading-relaxed">If you invest $100 and we make $50 profit during your duration, you receive $125 back ($100 initial deposit 100% returned + $25 profit). Mozzex keeps $25. If there is no profit, Mozzex charges $0.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 border border-brand-border">
+        <h4 class="font-bold text-white">How do I track my money?</h4>
+        <p class="text-gray-400 text-xs mt-2 leading-relaxed">We assign you a personal FOMO profile link. You can open it on your phone anytime to see token holdings, buy/sell executions, and balances updated in real time.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 border border-brand-border">
+        <h4 class="font-bold text-white">What payment methods are accepted?</h4>
+        <p class="text-gray-400 text-xs mt-2 leading-relaxed">We accept Solana (SOL), Litecoin (LTC), USDT (TRC20/BEP20), and Bitcoin (BTC). All payouts are sent directly to your personal crypto wallet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-brand-border py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center text-xs text-gray-500">
+    <div class="flex items-center justify-center space-x-3 mb-4">
+      <img src="assets/MOZZEX_Discord_PFP_Big_M.png" alt="Logo" class="w-8 h-8 rounded-lg">
+      <span class="font-heading font-bold text-white text-base">MOZZEX CAPITAL</span>
+    </div>
+    <p class="max-w-xl mx-auto text-gray-400">
+      Disclaimer: Cryptocurrency and memecoin trading involve market volatility. All investments are managed with strict stop-losses. Always trade with risk capital.
+    </p>
+    <p class="mt-6 text-gray-600">© 2026 Mozzex Capital. All rights reserved.</p>
+  </footer>
+
+  <!-- Script for Interactive Calculator -->
+  <script>
+    const slider = document.getElementById('depositSlider');
+    const depositDisplay = document.getElementById('depositDisplay');
+    const profitDisplay = document.getElementById('profitDisplay');
+    const shareDisplay = document.getElementById('shareDisplay');
+    const totalDisplay = document.getElementById('totalDisplay');
+
+    function updateCalculator() {
+      const val = parseInt(slider.value);
+      depositDisplay.innerText = `$${val} USD`;
+
+      // Conservative 50% average profit projection
+      const estProfit = Math.round(val * 0.50);
+      const clientShare = Math.round(estProfit * 0.50);
+      const totalPayout = val + clientShare;
+
+      profitDisplay.innerText = `+$${estProfit} USD`;
+      shareDisplay.innerText = `+$${clientShare} USD`;
+      totalDisplay.innerText = `$${totalPayout} USD`;
+    }
+
+    slider.addEventListener('input', updateCalculator);
+    updateCalculator();
+  </script>
+</body>
+</html>
