@@ -16,28 +16,30 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            platinum: {
-              DEFAULT: '#C0C0C0',
-              light: '#E2E8F0',
-              dark: '#718096',
-              border: 'rgba(255, 255, 255, 0.12)'
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              platinum: {
+                DEFAULT: '#C0C0C0',
+                light: '#E2E8F0',
+                dark: '#718096',
+                border: 'rgba(255, 255, 255, 0.12)'
+              },
+              dark: {
+                DEFAULT: '#07070A',
+                card: '#0C0C10',
+                elevated: '#111117'
+              }
             },
-            dark: {
-              DEFAULT: '#07070A',
-              card: '#0C0C10',
-              elevated: '#111117'
+            fontFamily: {
+              sora: ['"Sora"', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', 'sans-serif']
             }
-          },
-          fontFamily: {
-            sora: ['"Sora"', 'sans-serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif']
           }
         }
-      }
+      };
     }
   </script>
 
@@ -201,7 +203,11 @@
       background: rgba(255, 255, 255, 0.38);
     }
 
+    .hidden {
+      display: none !important;
+    }
     .tab-view {
+      opacity: 1 !important;
       animation: tabFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     @keyframes tabFadeIn {
@@ -1543,26 +1549,19 @@
       }
     }
 
-    // Initialize from URL Hash on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      const hash = location.hash.replace('#', '');
+    // Initialize navigation immediately and on events
+    function initNav() {
+      const hash = (location.hash || '').replace('#', '');
       if (hash === 'why-us') {
         switchTab('invest');
         scrollToWhyUs();
       } else {
         switchTab(hash || 'invest');
       }
-    });
-
-    window.addEventListener('hashchange', () => {
-      const hash = location.hash.replace('#', '');
-      if (hash === 'why-us') {
-        switchTab('invest');
-        scrollToWhyUs();
-      } else {
-        switchTab(hash || 'invest');
-      }
-    });
+    }
+    initNav();
+    window.addEventListener('DOMContentLoaded', initNav);
+    window.addEventListener('hashchange', initNav);
 
     // 2. Interactive Variable Profit Calculator
     const slider = document.getElementById('depositSlider');
