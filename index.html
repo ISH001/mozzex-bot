@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mozzex Capital — Institutional On-Chain Wealth & Managed Trading</title>
-  <meta name="description" content="Mozzex Capital provides hands-free memecoin trading pools with 100% live transparency on FOMO, strict 30% stop-loss protection, and client cashout autonomy. Founded by Claxy & Mozzari.">
+  <meta name="description" content="Mozzex Capital provides hands-free on-chain trading pools with 100% live transparency on FOMO, disciplined risk controls, and client cashout autonomy. Founded by Claxy & Mozzari.">
   <link rel="icon" type="image/png" href="assets/server-logo.png">
   <meta name="theme-color" content="#C0C0C0">
 
@@ -99,6 +99,98 @@
       background-size: 32px 32px;
     }
 
+    /* Zylgmart Comparison Widget Styling */
+    .zm-diff-grid-wrap {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .zm-diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      position: relative;
+      align-items: stretch;
+    }
+    .zm-vs-badge {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffffff 0%, #d4d4d8 100%);
+      border: 3px solid #07070A;
+      color: #07070A;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 32px rgba(255, 255, 255, 0.45), 0 10px 25px rgba(0, 0, 0, 0.8);
+      z-index: 15;
+      user-select: none;
+    }
+    @media (max-width: 860px) {
+      .zm-diff-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .zm-vs-badge {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin: -18px auto;
+      }
+    }
+
+    .zm-diff-card-recommended {
+      background: linear-gradient(180deg, rgba(20, 20, 26, 0.95) 0%, rgba(13, 13, 16, 0.95) 100%);
+      border: 1.5px solid rgba(192, 192, 192, 0.40);
+      border-radius: 24px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 35px rgba(192, 192, 192, 0.08), 0 20px 50px rgba(0, 0, 0, 0.65);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .zm-diff-card-recommended::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    }
+    .zm-diff-card-recommended:hover {
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 50px rgba(192, 192, 192, 0.15), 0 24px 60px rgba(0, 0, 0, 0.75);
+      transform: translateY(-2px);
+    }
+
+    .zm-diff-card-avoid {
+      background: rgba(12, 12, 14, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+    .zm-diff-card-avoid:hover {
+      opacity: 0.95;
+    }
+
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #07070A; }
     ::-webkit-scrollbar-thumb {
@@ -109,16 +201,13 @@
       background: rgba(255, 255, 255, 0.38);
     }
 
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
     .tab-view {
       animation: tabFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     @keyframes tabFadeIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
       }
       to {
         opacity: 1;
@@ -132,7 +221,7 @@
   <!-- Interactive Silver Ambient Canvas -->
   <canvas id="spotlight-canvas"></canvas>
 
-  <!-- Sticky Navbar -->
+  <!-- Sticky Navbar (Clean, Zero Emojis, Pure Luxury Typography) -->
   <header class="sticky top-0 z-50 bg-[#07070A]/90 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
@@ -142,80 +231,101 @@
         <span class="font-sora font-extrabold text-xl tracking-wider text-white">MOZZEX <span class="text-gray-400 font-light">CAPITAL</span></span>
       </a>
 
-      <!-- Desktop Tab Bar (Clean Discrete Tabs) -->
-      <nav class="hidden xl:flex items-center space-x-1.5 p-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold tracking-wider font-sora">
-        <button onclick="switchTab('invest')" id="tab-btn-invest" class="tab-button px-3.5 py-2 rounded-full transition-all text-white bg-white/10 border border-white/20 shadow-sm">
+      <!-- Desktop Tab Bar (STRICTLY NO EMOJIS, Elegant Luxury Typography) -->
+      <nav class="hidden lg:flex items-center space-x-1 p-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold tracking-wider font-sora">
+        <button onclick="switchTab('invest')" id="tab-btn-invest" class="tab-button px-4 py-2 rounded-full transition-all text-white bg-white/10 border border-white/20 shadow-sm">
           Invest
         </button>
-        <button onclick="switchTab('risk')" id="tab-btn-risk" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white flex items-center space-x-1.5">
-          <span>🛡️ Safety & Rules</span>
-          <span class="px-1.5 py-0.2 rounded text-[9px] bg-white/10 text-gray-300 font-mono">30% CAP</span>
+        <button onclick="scrollToWhyUs()" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+          Why Us
         </button>
-        <button onclick="switchTab('packages')" id="tab-btn-packages" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+        <button onclick="switchTab('packages')" id="tab-btn-packages" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
           Packages
         </button>
-        <button onclick="switchTab('books')" id="tab-btn-books" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white flex items-center space-x-1.5">
-          <span>📚 Books</span>
+        <button onclick="switchTab('books')" id="tab-btn-books" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+          Books
         </button>
-        <button onclick="switchTab('vip')" id="tab-btn-vip" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
-          VIP ($50)
+        <button onclick="switchTab('vip')" id="tab-btn-vip" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+          VIP Pass
         </button>
-        <button onclick="switchTab('about')" id="tab-btn-about" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
-          About Us
+        <button onclick="switchTab('about')" id="tab-btn-about" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+          About
         </button>
-        <button onclick="switchTab('terms')" id="tab-btn-terms" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
-          Terms & Dispute
+        <button onclick="switchTab('terms')" id="tab-btn-terms" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+          Terms
         </button>
-        <button onclick="switchTab('faq')" id="tab-btn-faq" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
-          Payments & FAQ
+        <button onclick="switchTab('faq')" id="tab-btn-faq" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+          FAQ
         </button>
       </nav>
 
-      <!-- Right Discord CTA -->
-      <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="px-5 py-2.5 rounded-full font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 hover:scale-105 shadow-lg shadow-white/10 transition flex items-center space-x-2">
-        <span>Enter Discord</span>
-        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-      </a>
+      <!-- Right Action & Hamburger for Mobile -->
+      <div class="flex items-center space-x-3">
+        <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="hidden sm:flex px-5 py-2.5 rounded-full font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 hover:scale-105 shadow-lg shadow-white/10 transition items-center space-x-2">
+          <span>Enter Discord</span>
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </a>
+
+        <!-- Luxury Mobile Burger Button -->
+        <button onclick="toggleMobileMenu()" aria-label="Toggle Navigation" class="lg:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition focus:outline-none">
+          <svg id="burger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Slide-Down Menu Overlay (Zero Emojis, Pure Obsidian Glass) -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#07070A]/98 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all duration-300">
+      <div class="flex flex-col space-y-3 font-sora text-sm font-semibold tracking-wider">
+        <button onclick="mobileNav('invest')" class="text-left py-2.5 px-3 rounded-lg text-white hover:bg-white/5 transition">
+          Invest
+        </button>
+        <button onclick="mobileNav('why-us')" class="text-left py-2.5 px-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">
+          Why Us
+        </button>
+        <button onclick="mobileNav('packages')" class="text-left py-2.5 px-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">
+          Packages
+        </button>
+        <button onclick="mobileNav('books')" class="text-left py-2.5 px-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">
+          Books
+        </button>
+        <button onclick="mobileNav('vip')" class="text-left py-2.5 px-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">
+          VIP Pass
+        </button>
+        <button onclick="mobileNav('about')" class="text-left py-2.5 px-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">
+          About
+        </button>
+        <button onclick="mobileNav('terms')" class="text-left py-2.5 px-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">
+          Terms
+        </button>
+        <button onclick="mobileNav('faq')" class="text-left py-2.5 px-3 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition">
+          FAQ
+        </button>
+        
+        <div class="pt-4 border-t border-white/10">
+          <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-lg shadow-white/10">
+            Enter Discord
+          </a>
+        </div>
+      </div>
     </div>
   </header>
-
-  <!-- Mobile Horizontal Tab Bar (Quick Access on Phone) -->
-  <div class="xl:hidden sticky top-20 z-40 bg-[#07070A]/95 backdrop-blur-xl border-b border-white/10 px-4 py-2.5 overflow-x-auto no-scrollbar flex space-x-2">
-    <button onclick="switchTab('invest')" id="mob-tab-invest" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white text-black">
-      Invest
-    </button>
-    <button onclick="switchTab('risk')" id="mob-tab-risk" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
-      🛡️ 30% Safety Floor
-    </button>
-    <button onclick="switchTab('packages')" id="mob-tab-packages" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
-      Packages
-    </button>
-    <button onclick="switchTab('books')" id="mob-tab-books" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
-      📚 Books
-    </button>
-    <button onclick="switchTab('vip')" id="mob-tab-vip" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
-      VIP ($50)
-    </button>
-    <button onclick="switchTab('about')" id="mob-tab-about" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
-      About Us
-    </button>
-    <button onclick="switchTab('terms')" id="mob-tab-terms" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
-      Terms & Legal
-    </button>
-    <button onclick="switchTab('faq')" id="mob-tab-faq" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
-      FAQ
-    </button>
-  </div>
 
   <!-- MAIN TAB CONTENT CONTAINER -->
   <main class="min-h-screen">
 
     <!-- ========================================== -->
-    <!-- TAB 1: INVEST & OVERVIEW                   -->
+    <!-- TAB 1: INVEST, WHY US & SIMULATOR          -->
     <!-- ========================================== -->
     <div id="view-invest" class="tab-view">
+      
       <!-- Hero Section -->
-      <section class="relative pt-20 pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center z-10">
+      <section class="relative pt-20 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center z-10">
         <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full silver-badge text-xs font-semibold tracking-wider uppercase mb-8">
           <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
           <span>MANAGED CAPITAL • 100% LIVE ON FOMO • ZERO TRADING KNOWLEDGE REQUIRED</span>
@@ -227,44 +337,31 @@
         </h1>
 
         <p class="text-gray-400 text-sm sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed mb-8">
-          You allocate the capital and duration. Our verified desk executes disciplined memecoin trades. Watch every buy and sell live on your private <strong class="text-white">FOMO profile</strong>. We keep our losses strictly capped at 30% and split net profits 50/50.
+          You allocate the capital and duration. Our verified desk executes disciplined on-chain trades. Watch every buy and sell live on your private <strong class="text-white">FOMO profile</strong>. We split net profits 50/50 and keep strict risk controls.
         </p>
-
-        <!-- Highlights Row -->
-        <div class="flex flex-wrap items-center justify-center gap-3 mb-10 text-xs font-mono">
-          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">
-            🛡️ 30% Hard Stop-Loss Guardrail
-          </span>
-          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">
-            💰 You Choose When To Cashout
-          </span>
-          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">
-            📊 100% Transparent FOMO Link
-          </span>
-        </div>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button onclick="switchTab('packages')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-bold text-sm bg-white text-black hover:bg-gray-200 hover:scale-105 shadow-xl shadow-white/10 transition">
-            🚀 View Managed Packages ($10 - $1K+)
+            View Managed Packages ($10 - $1K+)
           </button>
-          <button onclick="switchTab('risk')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-semibold text-sm border border-white/20 hover:border-white/50 text-white bg-white/5 hover:bg-white/10 transition">
-            🛡️ How Our 30% Loss Cap Works
+          <button onclick="scrollToWhyUs()" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-semibold text-sm border border-white/20 hover:border-white/50 text-white bg-white/5 hover:bg-white/10 transition">
+            Why Mozzex Capital?
           </button>
         </div>
 
-        <!-- Metric Badges -->
+        <!-- Metric Badges (Clean, No Emojis, No loud 30% badge) -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-16">
           <div class="luxury-card p-5 rounded-2xl text-center">
             <div class="text-2xl font-sora font-bold text-white tracking-tight">50 / 50</div>
             <div class="text-xs text-gray-400 mt-1 uppercase font-mono">Profit Split</div>
           </div>
           <div class="luxury-card p-5 rounded-2xl text-center">
-            <div class="text-2xl font-sora font-bold text-white tracking-tight">30% Max</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">Capital Loss Cut</div>
-          </div>
-          <div class="luxury-card p-5 rounded-2xl text-center">
             <div class="text-2xl font-sora font-bold text-white tracking-tight">100%</div>
             <div class="text-xs text-gray-400 mt-1 uppercase font-mono">FOMO Tracking</div>
+          </div>
+          <div class="luxury-card p-5 rounded-2xl text-center">
+            <div class="text-2xl font-sora font-bold text-white tracking-tight">Controlled</div>
+            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">Stop-Loss Floor</div>
           </div>
           <div class="luxury-card p-5 rounded-2xl text-center">
             <div class="text-2xl font-sora font-bold text-white tracking-tight">0% Fees</div>
@@ -273,8 +370,126 @@
         </div>
       </section>
 
+      <!-- WHY US (EXACT ZYLGMART COMPARISON WIDGET: US VS OTHERS) -->
+      <section id="why-us" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10 border-t border-white/10">
+        <div class="text-center mb-16">
+          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
+            The Difference
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-4 tracking-tight">
+            Why Mozzex Capital?
+          </h2>
+          <p class="text-gray-400 text-sm max-w-xl mx-auto mt-3">
+            See how disciplined desk execution compares to emotional retail trading and blind signal channels.
+          </p>
+        </div>
+
+        <div class="zm-diff-grid-wrap relative max-w-4xl mx-auto">
+          <!-- Center Floating VS Badge (Exact Zylgmart Styling) -->
+          <div class="zm-vs-badge">VS</div>
+
+          <div class="zm-diff-grid">
+            
+            <!-- Recommended Card: Mozzex Capital -->
+            <div class="zm-diff-card-recommended">
+              <div>
+                <div class="flex items-center space-x-3.5 mb-6">
+                  <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-sora font-black text-sm shadow-lg shadow-white/30 flex-shrink-0">
+                    M
+                  </div>
+                  <div>
+                    <div class="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-300">RECOMMENDED</div>
+                    <h3 class="font-sora font-extrabold text-white text-xl">Mozzex Capital</h3>
+                  </div>
+                </div>
+
+                <div class="space-y-4 text-xs">
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="text-gray-200"><strong>100% Live FOMO Tracking:</strong> Every entry, exit, and PnL verifiable on-chain in real-time.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="text-gray-200"><strong>Zero Emotion Trading:</strong> Disciplined algorithmic execution with pre-calculated risk limits.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="text-gray-200"><strong>Strict Stop-Loss Protection:</strong> Hard risk floor cuts trades during adverse runs to preserve majority of principal.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="text-gray-200"><strong>Customer Cashout Autonomy:</strong> In profit, you choose whether to cash out immediately or let it run.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="text-gray-200"><strong>50/50 Profit Split:</strong> We only earn when you win. Zero upfront management fees.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✓</span>
+                    <span class="text-gray-200"><strong>Direct Founders Line:</strong> Private 1-on-1 Discord tickets with Claxy & Mozzari.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-white/10 text-center">
+                <button onclick="switchTab('packages')" class="w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-lg shadow-white/10">
+                  Choose Your Allocation Package
+                </button>
+              </div>
+            </div>
+
+            <!-- Avoid Card: Others / Trading Alone -->
+            <div class="zm-diff-card-avoid">
+              <div>
+                <div class="flex items-center space-x-3.5 mb-6">
+                  <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-gray-500 flex items-center justify-center font-mono font-bold text-sm flex-shrink-0">
+                    ✕
+                  </div>
+                  <div>
+                    <div class="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500">AVOID</div>
+                    <h3 class="font-sora font-extrabold text-gray-400 text-xl">Trading Alone / Other Groups</h3>
+                  </div>
+                </div>
+
+                <div class="space-y-4 text-xs">
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✕</span>
+                    <span class="text-gray-400"><strong>Emotional FOMO & Panic:</strong> Buying green tops and selling bottoms in panic.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✕</span>
+                    <span class="text-gray-400"><strong>No 24/7 Monitoring:</strong> Sleeping while developers dump or unbind liquidity pools.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✕</span>
+                    <span class="text-gray-400"><strong>Holding to Zero:</strong> Refusing small losses until the wallet drops by -99% or -100%.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✕</span>
+                    <span class="text-gray-400"><strong>Exit Liquidity Traps:</strong> Signal groups dumping their own bags on subscribers.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✕</span>
+                    <span class="text-gray-400"><strong>Black Box Operations:</strong> No verifiable on-chain live portfolio links.</span>
+                  </div>
+                  <div class="flex items-start space-x-3">
+                    <span class="w-5 h-5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5">✕</span>
+                    <span class="text-gray-400"><strong>Unresponsive Support:</strong> Anonymous admins who ghost or delete chats during losses.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-white/5 text-center">
+                <div class="text-[11px] font-mono text-gray-500 uppercase">High Risk • Unregulated • High Failure Rate</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <!-- Variable Profit Milestone Calculator -->
-      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative z-10">
+      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative z-10 border-t border-white/10">
         <div class="luxury-card rounded-3xl p-8 sm:p-12 border border-white/20">
           <div class="text-center mb-8">
             <span class="px-3 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-wider">
@@ -334,7 +549,7 @@
               </button>
             </div>
             <div class="text-[10px] text-gray-400 font-mono text-center mt-2.5">
-              💡 Profit is variable and cannot be guaranteed. When our trades hit your selected milestone, you choose whether to cash out or continue.
+              Profit is variable and cannot be guaranteed. When our trades hit your selected milestone, you choose whether to cash out or continue.
             </div>
           </div>
 
@@ -364,19 +579,19 @@
 
           <!-- Cashout Notice Callout -->
           <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-center text-xs text-gray-300 mb-6 font-mono">
-            ⚖️ <strong>Remember:</strong> We do NOT guarantee profit. If a trade encounters adverse conditions, we cut the trade at our strict <strong>30% stop-loss floor</strong> to protect ~70% of your capital. When in profit, you decide when to cash out.
+            <strong>Remember:</strong> We do NOT guarantee profit. If a trade encounters adverse conditions, we cut the trade at our strict stop-loss floor to protect capital. When in profit, you decide when to cash out.
           </div>
 
           <div class="text-center">
             <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block w-full sm:w-auto px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-lg shadow-white/10">
-              🚀 Start This Allocation on Discord
+              Start This Allocation on Discord
             </a>
           </div>
         </div>
       </section>
 
       <!-- Live FOMO Transparency Widget -->
-      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
+      <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10 border-t border-white/10">
         <div class="luxury-card rounded-3xl p-8 sm:p-12 border border-white/20">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-5">
@@ -448,166 +663,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 2: SAFETY & THE 30% LOSS CAP RULE      -->
-    <!-- ========================================== -->
-    <div id="view-risk" class="tab-view hidden">
-      <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
-        <div class="text-center mb-16">
-          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest inline-flex items-center space-x-2">
-            <span>🛡️</span>
-            <span>Capital Defense Protocol</span>
-          </span>
-          <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-4 tracking-tight">
-            The 30% Hard Stop-Loss Guardrail
-          </h2>
-          <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-3">
-            Why algorithmic discipline and strict rules protect you from losing everything.
-          </p>
-        </div>
-
-        <!-- No Guaranteed Profit Notice -->
-        <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/20 mb-12 bg-white/[0.02]">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div class="flex items-center space-x-3">
-              <span class="text-2xl">⚠️</span>
-              <div>
-                <h3 class="font-sora font-bold text-white text-base">We Do NOT Guarantee Profits</h3>
-                <p class="text-xs text-gray-400 mt-0.5">Any group or channel promising "guaranteed 100% daily returns" in crypto is scamming you. Memecoin trading is volatile.</p>
-              </div>
-            </div>
-            <span class="px-3 py-1 rounded-full bg-white/10 text-gray-300 font-mono text-[10px] uppercase font-bold whitespace-nowrap">
-              Honest Transparency First
-            </span>
-          </div>
-        </div>
-
-        <!-- The 30% Cut Rule Deep Dive -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
-          <div class="luxury-card rounded-3xl p-8 border border-white/20 flex flex-col justify-between">
-            <div>
-              <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
-                Rule #1 • Capital Protection
-              </span>
-              <h3 class="text-2xl font-sora font-extrabold text-white mt-4">We Always Cut Losses at 30%</h3>
-              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mt-3">
-                If a trade encounters an unexpected market downturn or adverse momentum, our desk triggers an automated hard stop: <strong>we cut the initial capital at a maximum 30% loss</strong>.
-              </p>
-              <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 my-6 text-xs space-y-2 font-mono">
-                <div class="flex justify-between text-gray-300">
-                  <span>Your Deposit:</span>
-                  <span class="text-white font-bold">$100 USD</span>
-                </div>
-                <div class="flex justify-between text-red-400">
-                  <span>Maximum Loss Cut (30%):</span>
-                  <span>-$30.00 USD</span>
-                </div>
-                <div class="flex justify-between text-white font-bold border-t border-white/10 pt-2">
-                  <span>Guaranteed Returned Floor:</span>
-                  <span>$70.00 USD (70% Preserved)</span>
-                </div>
-              </div>
-              <p class="text-xs text-gray-400 leading-relaxed">
-                By never letting trades slide deeper, you always keep the vast majority of your capital intact to trade again, instead of watching your wallet drop to zero.
-              </p>
-            </div>
-          </div>
-
-          <div class="luxury-card rounded-3xl p-8 border border-white/20 flex flex-col justify-between">
-            <div>
-              <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
-                Rule #2 • Profit Autonomy
-              </span>
-              <h3 class="text-2xl font-sora font-extrabold text-white mt-4">You Choose When To Cash Out</h3>
-              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mt-3">
-                You are never locked into decisions you don't want. As soon as our desk trades enter profit, <strong>you have complete freedom</strong>:
-              </p>
-              <div class="space-y-4 my-6 text-xs">
-                <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
-                  <div class="font-bold text-white mb-1">Option A: Lock In & Cashout Immediately</div>
-                  <p class="text-gray-400 leading-relaxed">Happy with a +30%, +50%, or +100% gain? Notify the desk, and we immediately execute the payout to your wallet (100% principal + 50% profit share).</p>
-                </div>
-                <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
-                  <div class="font-bold text-white mb-1">Option B: Let The Position Ride Further</div>
-                  <p class="text-gray-400 leading-relaxed">If momentum is aggressive and you want to target higher multipliers (3x, 5x, 10x), you can instruct the desk to trail stops and hold the moonbag.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Emotional Retail vs Mozzex Comparison -->
-        <div class="luxury-card rounded-3xl p-8 sm:p-12 border border-white/20">
-          <div class="text-center max-w-2xl mx-auto mb-10">
-            <span class="text-xs font-mono uppercase tracking-widest text-gray-400">Why Most Traders Fail</span>
-            <h3 class="text-2xl sm:text-3xl font-sora font-bold text-white mt-1">Trading Yourself vs Trading With Mozzex</h3>
-            <p class="text-xs text-gray-400 mt-2">See why emotional trading causes 99% of people to lose their entire portfolio.</p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
-            <!-- Retail -->
-            <div class="p-6 rounded-2xl bg-white/[0.02] border border-red-500/20">
-              <div class="flex items-center space-x-2 text-red-400 font-bold font-mono text-sm mb-4">
-                <span>✕</span>
-                <span>Trading Yourself (Emotional Retail)</span>
-              </div>
-              <ul class="space-y-3 text-gray-300">
-                <li class="flex items-start space-x-2">
-                  <span class="text-red-400 font-mono">•</span>
-                  <span><strong>Emotional FOMO:</strong> Buying tops after green candles, panic selling bottoms on small dips.</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <span class="text-red-400 font-mono">•</span>
-                  <span><strong>No 24/7 Monitoring:</strong> You go to sleep or step away, and the developer unbinds liquidity or dumps.</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <span class="text-red-400 font-mono">•</span>
-                  <span><strong>Refusing Small Losses:</strong> You hold from -20% hoping it recovers, until it reaches -90% or -100%.</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <span class="text-red-400 font-mono">•</span>
-                  <span><strong>Revenge Trading:</strong> Chasing bad trades trying to make money back, wiping out your entire savings.</span>
-                </li>
-                <li class="pt-3 border-t border-white/10 font-bold text-red-400">
-                  Result: Total loss of 100% of your initial portfolio.
-                </li>
-              </ul>
-            </div>
-
-            <!-- Mozzex -->
-            <div class="p-6 rounded-2xl bg-white/[0.04] border border-white/30 shadow-lg">
-              <div class="flex items-center space-x-2 text-white font-bold font-mono text-sm mb-4">
-                <span>✓</span>
-                <span>Trading With Mozzex Capital (Rule-Based)</span>
-              </div>
-              <ul class="space-y-3 text-gray-300">
-                <li class="flex items-start space-x-2">
-                  <span class="text-white font-mono">•</span>
-                  <span><strong>Zero Emotion:</strong> Algorithmic rules, disciplined take-profit ladders, and pre-calculated stops.</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <span class="text-white font-mono">•</span>
-                  <span><strong>Live FOMO Tracking:</strong> Every trade is monitored live on fomo.fund with sub-second execution.</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <span class="text-white font-mono">•</span>
-                  <span><strong>The 30% Hard Cut:</strong> We never hold into a dump. Losses are cut at 30% to preserve your principal.</span>
-                </li>
-                <li class="flex items-start space-x-2">
-                  <span class="text-white font-mono">•</span>
-                  <span><strong>Client Cashout Choice:</strong> In profit, you decide whether to lock in gains now or let it ride.</span>
-                </li>
-                <li class="pt-3 border-t border-white/10 font-bold text-white">
-                  Result: Protected capital, controlled downside, and transparent payouts.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- TAB 3: MANAGED PACKAGES                    -->
+    <!-- TAB 2: MANAGED PACKAGES                    -->
     <!-- ========================================== -->
     <div id="view-packages" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
@@ -631,9 +687,9 @@
               </div>
               <div class="space-y-2 text-xs border-t border-white/10 pt-4">
                 <div class="flex justify-between"><span class="text-gray-400">Profit Split:</span> <strong class="text-white">50% Client / 50% Desk</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Loss Floor:</span> <strong class="text-white">Max 30% Stop-Loss</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">On Profit Milestone</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Capital Returned:</span> <strong class="text-white">100% Principal</strong></div>
                 <div class="flex justify-between"><span class="text-gray-400">Tracking:</span> <strong class="text-gray-200">Live FOMO Profile</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">At Any Profit Milestone</strong></div>
               </div>
             </div>
             <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white/20 transition text-center block">
@@ -652,9 +708,9 @@
               </div>
               <div class="space-y-2 text-xs border-t border-white/10 pt-4">
                 <div class="flex justify-between"><span class="text-gray-400">Profit Split:</span> <strong class="text-white">50% Client / 50% Desk</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Loss Floor:</span> <strong class="text-white">Max 30% Stop-Loss</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">On Profit Milestone</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Capital Returned:</span> <strong class="text-white">100% Principal</strong></div>
                 <div class="flex justify-between"><span class="text-gray-400">Tracking:</span> <strong class="text-gray-200">Live FOMO Profile</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">At Any Profit Milestone</strong></div>
               </div>
             </div>
             <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white/20 transition text-center block">
@@ -674,8 +730,8 @@
               </div>
               <div class="space-y-2 text-xs border-t border-white/10 pt-4">
                 <div class="flex justify-between"><span class="text-gray-400">Profit Split:</span> <strong class="text-white">50% Client / 50% Desk</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Loss Floor:</span> <strong class="text-white">Max 30% Stop-Loss</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">On Profit Milestone</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Capital Returned:</span> <strong class="text-white">100% Principal</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Tracking:</span> <strong class="text-gray-200">Live FOMO Profile</strong></div>
                 <div class="flex justify-between"><span class="text-gray-400">Alpha Calls:</span> <strong class="text-white">VIP Alpha Included</strong></div>
               </div>
             </div>
@@ -695,8 +751,8 @@
               </div>
               <div class="space-y-2 text-xs border-t border-white/10 pt-4">
                 <div class="flex justify-between"><span class="text-gray-400">Profit Split:</span> <strong class="text-white">50% Client / 50% Desk</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Loss Floor:</span> <strong class="text-white">Max 30% Stop-Loss</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">On Profit Milestone</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Capital Returned:</span> <strong class="text-white">100% Principal</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Tracking:</span> <strong class="text-gray-200">Dedicated FOMO Desk</strong></div>
                 <div class="flex justify-between"><span class="text-gray-400">Support:</span> <strong class="text-white">Direct Line to Founders</strong></div>
               </div>
             </div>
@@ -709,14 +765,13 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 4: PROPRIETARY E-BOOKS & MANUALS       -->
+    <!-- TAB 3: PROPRIETARY E-BOOKS & MANUALS       -->
     <!-- ========================================== -->
     <div id="view-books" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
         <div class="text-center mb-16">
-          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest inline-flex items-center space-x-2">
-            <span>📚</span>
-            <span>The Mozzex Knowledge Vault</span>
+          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
+            The Mozzex Knowledge Vault
           </span>
           <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-4 tracking-tight">
             Proprietary Memecoin E-Books & Manuals
@@ -786,9 +841,9 @@
             <div class="pt-5 border-t border-white/10">
               <div class="text-[10px] text-gray-400 font-mono mb-3 text-center">Format: High-Res PDF + Notion Workspace Access</div>
               <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-3.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-lg shadow-white/5">
-                📚 Purchase via Ticket ($20)
+                Purchase via Ticket ($20)
               </a>
-              <span class="block text-center text-[10px] text-gray-500 mt-2 font-mono">Instant delivery via #🎫・support-desk</span>
+              <span class="block text-center text-[10px] text-gray-500 mt-2 font-mono">Instant delivery via #support-desk</span>
             </div>
           </div>
 
@@ -849,9 +904,9 @@
             <div class="pt-5 border-t border-white/10">
               <div class="text-[10px] text-gray-400 font-mono mb-3 text-center">Format: High-Res PDF + Real Rug Case Studies Archive</div>
               <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-3.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-lg shadow-white/5">
-                📚 Purchase via Ticket ($20)
+                Purchase via Ticket ($20)
               </a>
-              <span class="block text-center text-[10px] text-gray-500 mt-2 font-mono">Instant delivery via #🎫・support-desk</span>
+              <span class="block text-center text-[10px] text-gray-500 mt-2 font-mono">Instant delivery via #support-desk</span>
             </div>
           </div>
 
@@ -912,9 +967,9 @@
             <div class="pt-5 border-t border-white/10">
               <div class="text-[10px] text-gray-400 font-mono mb-3 text-center">Format: High-Res PDF + Bot Config Presets & Filter Templates</div>
               <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-3.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-lg shadow-white/5">
-                📚 Purchase via Ticket ($20)
+                Purchase via Ticket ($20)
               </a>
-              <span class="block text-center text-[10px] text-gray-500 mt-2 font-mono">Instant delivery via #🎫・support-desk</span>
+              <span class="block text-center text-[10px] text-gray-500 mt-2 font-mono">Instant delivery via #support-desk</span>
             </div>
           </div>
 
@@ -943,9 +998,9 @@
 
             <div>
               <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="w-full py-3.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white/20 transition text-center block">
-                ⚡ Buy All 3 Books For $35
+                Buy All 3 Books For $35
               </a>
-              <div class="text-[10px] text-gray-500 font-mono text-center mt-2">Open ticket in #🎫・support-desk</div>
+              <div class="text-[10px] text-gray-500 font-mono text-center mt-2">Open ticket in #support-desk</div>
             </div>
           </div>
 
@@ -971,7 +1026,7 @@
 
             <div>
               <button onclick="switchTab('vip')" class="w-full py-3.5 px-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition text-center block shadow-lg shadow-white/10">
-                👑 Explore Lifetime VIP Pass ($50)
+                Explore Lifetime VIP Pass ($50)
               </button>
               <div class="text-[10px] text-gray-400 font-mono text-center mt-2">Includes Tools + Mentorship + Alpha Calls + Books</div>
             </div>
@@ -992,7 +1047,7 @@
             </div>
             <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
               <div class="font-mono text-base font-bold text-white mb-1">02. Open Support Ticket</div>
-              <p class="text-gray-400 leading-relaxed">Go to <code class="text-white">#🎫・support-desk</code> and click <strong>[ 📚 Buy E-Books ]</strong>.</p>
+              <p class="text-gray-400 leading-relaxed">Go to <code class="text-white">#support-desk</code> and click <strong>[ Buy E-Books ]</strong>.</p>
             </div>
             <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
               <div class="font-mono text-base font-bold text-white mb-1">03. Choose Payment</div>
@@ -1008,7 +1063,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 5: LIFETIME VIP MEMBERSHIP ($50 USD)   -->
+    <!-- TAB 4: LIFETIME VIP MEMBERSHIP ($50 USD)   -->
     <!-- ========================================== -->
     <div id="view-vip" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
@@ -1019,7 +1074,7 @@
                 One-Time Payment • No Monthly Fees Ever
               </span>
               <h2 class="text-3xl sm:text-4xl font-sora font-extrabold text-white mt-3">
-                👑 Mozzex VIP Lifetime Pass
+                Mozzex VIP Lifetime Pass
               </h2>
               <p class="text-gray-400 text-sm mt-1">Want to learn to trade yourself? Get our books, trading tools & signals for life.</p>
             </div>
@@ -1031,7 +1086,7 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
             <div>
-              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-3">📚 1. All Knowledge Books & Guides</h4>
+              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-3">1. All Knowledge Books & Guides</h4>
               <ul class="space-y-2 text-xs text-gray-300">
                 <li>• <strong>"The Degen Starter Blueprint"</strong> — From zero crypto knowledge to profitable trader.</li>
                 <li>• <strong>"The Anti-Scam & Rug Bible"</strong> — Spotting honeypots & drainers in under 60 seconds.</li>
@@ -1039,7 +1094,7 @@
               </ul>
             </div>
             <div>
-              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-3">⚡ 2. The Best Trading Tools Suite</h4>
+              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-3">2. The Best Trading Tools Suite</h4>
               <ul class="space-y-2 text-xs text-gray-300">
                 <li>• <strong>Photon & BullX Presets:</strong> Pre-tuned anti-MEV bribe settings for sub-second fills.</li>
                 <li>• <strong>Axiom & DexScreener Filters:</strong> Private filters to eliminate 99% of dead tokens.</li>
@@ -1050,18 +1105,18 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-white/10 mb-8">
             <div>
-              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">🎯 3. VIP Insider Alpha Calls</h4>
-              <p class="text-xs text-gray-400 leading-relaxed">Direct access to '#👑・vip-alpha' channel with real-time early alerts before tokens pump, with recommended entry Market Cap, targets, and stop losses.</p>
+              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">3. VIP Insider Alpha Calls</h4>
+              <p class="text-xs text-gray-400 leading-relaxed">Direct access to '#vip-alpha' channel with real-time early alerts before tokens pump, with recommended entry Market Cap, targets, and stop losses.</p>
             </div>
             <div>
-              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">🤝 4. 1-on-1 Step-by-Step Setup</h4>
+              <h4 class="text-xs font-mono uppercase tracking-widest text-white mb-2">4. 1-on-1 Step-by-Step Setup</h4>
               <p class="text-xs text-gray-400 leading-relaxed">Our mentors personally walk you through setting up your wallets, trading bots, and FOMO profile so you can trade with confidence from day one.</p>
             </div>
           </div>
 
           <div class="text-center">
             <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block px-10 py-4 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-xl shadow-white/10">
-              👑 Get Lifetime VIP Pass For $50
+              Get Lifetime VIP Pass For $50
             </a>
           </div>
         </div>
@@ -1069,7 +1124,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 6: ABOUT US                            -->
+    <!-- TAB 5: ABOUT US                            -->
     <!-- ========================================== -->
     <div id="view-about" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
@@ -1090,7 +1145,7 @@
               The on-chain memecoin market represents the most asymmetric financial opportunity in modern crypto. Yet, more than 95% of newcomers lose their capital due to developer honeypots, emotional panic selling, and predatory sniper bots.
             </p>
             <p class="text-gray-400 text-sm leading-relaxed">
-              <strong>Mozzex Capital was founded to level the playing field.</strong> We manage client capital with ruthless discipline. We don't ask you to stare at charts or learn code. Instead, we deploy our proprietary execution desks, execute trades transparently on FOMO, cut losses strictly at 30%, and split net profits 50/50.
+              <strong>Mozzex Capital was founded to level the playing field.</strong> We manage client capital with ruthless discipline. We don't ask you to stare at charts or learn code. Instead, we deploy our proprietary execution desks, execute trades transparently on FOMO, cut losses strictly at pre-defined risk floors, and split net profits 50/50.
             </p>
           </div>
         </div>
@@ -1148,8 +1203,8 @@
             <p class="text-xs text-gray-400 leading-relaxed">We only earn when you earn. Zero management fees, zero hidden percentage cuts.</p>
           </div>
           <div class="luxury-card p-6 rounded-2xl">
-            <div class="text-white font-mono text-lg font-bold mb-2">03. 30% Hard Floor</div>
-            <p class="text-xs text-gray-400 leading-relaxed">Strict mathematical limits per trade prevent portfolio drawdowns and preserve 70%+ of client principal.</p>
+            <div class="text-white font-mono text-lg font-bold mb-2">03. Stop-Loss Floor</div>
+            <p class="text-xs text-gray-400 leading-relaxed">Strict mathematical limits per trade prevent portfolio drawdowns and preserve client principal.</p>
           </div>
           <div class="luxury-card p-6 rounded-2xl">
             <div class="text-white font-mono text-lg font-bold mb-2">04. Direct Access</div>
@@ -1160,14 +1215,13 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 7: TERMS & CONDITIONS (DISPUTE DEFENSE)-->
+    <!-- TAB 6: TERMS & CONDITIONS                  -->
     <!-- ========================================== -->
     <div id="view-terms" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
         <div class="text-center mb-16">
-          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest inline-flex items-center space-x-2">
-            <span>⚖️</span>
-            <span>Legal Framework & Dispute Protection</span>
+          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest">
+            Legal Framework & Dispute Protection
           </span>
           <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-4 tracking-tight">
             Terms of Service & Risk Disclosure
@@ -1200,12 +1254,12 @@
 
           <!-- Section 3 -->
           <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
-            <h3 class="text-base font-sora font-bold text-white mb-2">3. The 30% Capital Protection & Stop-Loss Floor</h3>
+            <h3 class="text-base font-sora font-bold text-white mb-2">3. Capital Protection & Stop-Loss Floor</h3>
             <p class="mb-3">
-              Client explicitly acknowledges and agrees that in adverse market conditions, developer rug-pulls, or momentum reversals, <strong>Mozzex Capital operates with a strict 30% maximum loss stop-loss cut</strong>.
+              Client explicitly acknowledges and agrees that in adverse market conditions, developer rug-pulls, or momentum reversals, <strong>Mozzex Capital operates with a strict stop-loss cut threshold (cutting losses at approximately 30%)</strong>.
             </p>
             <p>
-              In the event that an allocation incurs losses, the desk will liquidate the position to preserve approximately 70% of the client's initial principal capital. Client confirms that an adverse loss up to 30% is an agreed-upon risk mitigation threshold and does NOT constitute negligence, breach of duty, or financial default by Mozzex Capital.
+              In the event that an allocation incurs losses, the desk will liquidate the position to preserve approximately 70% of the client's initial principal capital. Client confirms that this risk mitigation threshold does NOT constitute negligence, breach of duty, or financial default by Mozzex Capital.
             </p>
           </div>
 
@@ -1232,7 +1286,7 @@
           <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
             <h3 class="text-base font-sora font-bold text-white mb-2">6. Mandatory Informal Dispute Resolution via Discord Support Desk</h3>
             <p class="mb-3">
-              In the event of any disagreement, inquiry, or potential dispute, the client agrees that they <strong>MUST first open a private support ticket in the official Mozzex Capital Discord server (#🎫・support-desk)</strong> and attempt in good faith to resolve the matter directly with founders Claxy & Mozzari.
+              In the event of any disagreement, inquiry, or potential dispute, the client agrees that they <strong>MUST first open a private support ticket in the official Mozzex Capital Discord server (#support-desk)</strong> and attempt in good faith to resolve the matter directly with founders Claxy & Mozzari.
             </p>
             <p>
               Both parties agree to a mandatory 30-day informal negotiation period before initiating any external legal proceedings. Any attempt to file public defamation, harassment, or frivolous claims without completing informal dispute resolution constitutes a material breach of this agreement.
@@ -1269,14 +1323,14 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 8: PAYMENTS & FAQ                      -->
+    <!-- TAB 7: PAYMENTS & FAQ                      -->
     <!-- ========================================== -->
     <div id="view-faq" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
         
         <!-- Payment Methods & Fee Policy -->
         <div class="text-center mb-14">
-          <span class="text-xs font-mono uppercase tracking-widest text-gray-400">Transparent Fee Structure</span>
+          <span class="text-xs font-mono uppercase tracking-widest text-gray-400">Fee Transparency</span>
           <h2 class="text-3xl sm:text-4xl font-sora font-bold text-white mt-2">Accepted Payment Methods</h2>
           <p class="text-gray-400 text-sm max-w-xl mx-auto mt-2">We accept all major cryptocurrencies and fiat methods.</p>
         </div>
@@ -1346,12 +1400,12 @@
         <div class="space-y-4 max-w-3xl mx-auto">
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
             <h4 class="font-sora font-bold text-white text-sm">Do you guarantee trading profit?</h4>
-            <p class="text-gray-400 text-xs mt-2 leading-relaxed">No. We do NOT guarantee profit. Anyone promising guaranteed crypto returns is scamming. What we guarantee is disciplined execution, a strict 30% stop-loss floor, and 100% live on-chain transparency on FOMO.</p>
+            <p class="text-gray-400 text-xs mt-2 leading-relaxed">No. We do NOT guarantee profit. Anyone promising guaranteed crypto returns is scamming. What we guarantee is disciplined execution, a strict stop-loss floor, and 100% live on-chain transparency on FOMO.</p>
           </div>
 
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
             <h4 class="font-sora font-bold text-white text-sm">What happens if a trade experiences a loss?</h4>
-            <p class="text-gray-400 text-xs mt-2 leading-relaxed">We always cut the trade at a maximum 30% loss of initial capital. This protects approximately 70% of your principal. Unlike emotional retail traders who hold dumping tokens to -100%, our desk executes cold risk cuts so your portfolio survives.</p>
+            <p class="text-gray-400 text-xs mt-2 leading-relaxed">We always cut the trade at a maximum predefined loss to protect capital. Unlike emotional retail traders who hold dumping tokens down to zero, our desk executes cold risk cuts so your portfolio survives.</p>
           </div>
 
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
@@ -1366,7 +1420,7 @@
 
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
             <h4 class="font-sora font-bold text-white text-sm">How do I get started right now?</h4>
-            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Click any "Enter Discord" button, head over to <code class="text-white">#🎫・support-desk</code>, and click <strong>[ Deposit / Start Investment ]</strong> or <strong>[ 📚 Buy E-Books ]</strong> to open a private ticket with founders Claxy & Mozzari.</p>
+            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Click any "Enter Discord" button, head over to <code class="text-white">#support-desk</code>, and click <strong>[ Deposit / Start Investment ]</strong> or <strong>[ Buy E-Books ]</strong> to open a private ticket with founders Claxy & Mozzari.</p>
           </div>
         </div>
 
@@ -1375,7 +1429,7 @@
 
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (Zero Emojis, Pure Platinum Typography) -->
   <footer class="border-t border-white/10 py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-xs text-gray-500 relative z-10">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mb-8">
       <div class="flex items-center space-x-3">
@@ -1385,19 +1439,19 @@
 
       <div class="flex flex-wrap items-center justify-center gap-6 font-mono text-[11px] text-gray-400">
         <button onclick="switchTab('invest')" class="hover:text-white transition">Invest</button>
-        <button onclick="switchTab('risk')" class="hover:text-white transition">30% Safety Floor</button>
+        <button onclick="scrollToWhyUs()" class="hover:text-white transition">Why Us</button>
         <button onclick="switchTab('packages')" class="hover:text-white transition">Packages</button>
-        <button onclick="switchTab('books')" class="hover:text-white transition">E-Books</button>
-        <button onclick="switchTab('vip')" class="hover:text-white transition">VIP ($50)</button>
-        <button onclick="switchTab('about')" class="hover:text-white transition">About Us</button>
-        <button onclick="switchTab('terms')" class="hover:text-white transition">Terms & Dispute</button>
-        <button onclick="switchTab('faq')" class="hover:text-white transition">Payments & FAQ</button>
+        <button onclick="switchTab('books')" class="hover:text-white transition">Books</button>
+        <button onclick="switchTab('vip')" class="hover:text-white transition">VIP Pass</button>
+        <button onclick="switchTab('about')" class="hover:text-white transition">About</button>
+        <button onclick="switchTab('terms')" class="hover:text-white transition">Terms</button>
+        <button onclick="switchTab('faq')" class="hover:text-white transition">FAQ</button>
         <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="text-white hover:underline transition">Discord Server</a>
       </div>
     </div>
 
     <p class="max-w-2xl text-gray-500 leading-relaxed">
-      Disclaimer: Cryptocurrency and on-chain memecoin trading involve market volatility. Managed allocations are executed with strict 30% stop-losses and risk controls. Profits are not guaranteed. Past performance does not guarantee future results.
+      Disclaimer: Cryptocurrency and on-chain trading involve market volatility. Managed allocations are executed with strict stop-losses and risk controls. Profits are variable and not guaranteed. Past performance does not guarantee future results.
     </p>
 
     <div class="mt-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-gray-600 font-mono text-[10px]">
@@ -1406,10 +1460,10 @@
     </div>
   </footer>
 
-  <!-- Scripts: Tab Switching, Interactive Calculator & Ambient Spotlight -->
+  <!-- Scripts: Navigation Engine, Mobile Burger, Calculator & Ambient Spotlight -->
   <script>
     // 1. Tab Switching Engine
-    const validTabs = ['invest', 'risk', 'packages', 'books', 'vip', 'about', 'terms', 'faq'];
+    const validTabs = ['invest', 'packages', 'books', 'vip', 'about', 'terms', 'faq'];
 
     function switchTab(tabId) {
       if (!validTabs.includes(tabId)) tabId = 'invest';
@@ -1441,20 +1495,6 @@
         activeBtn.classList.add('text-white', 'bg-white/10', 'border', 'border-white/20', 'shadow-sm');
       }
 
-      // Update Mobile Nav Buttons
-      validTabs.forEach(id => {
-        const mobBtn = document.getElementById('mob-tab-' + id);
-        if (mobBtn) {
-          mobBtn.classList.remove('bg-white', 'text-black');
-          mobBtn.classList.add('bg-white/5', 'text-gray-400');
-        }
-      });
-      const activeMobBtn = document.getElementById('mob-tab-' + tabId);
-      if (activeMobBtn) {
-        activeMobBtn.classList.remove('bg-white/5', 'text-gray-400');
-        activeMobBtn.classList.add('bg-white', 'text-black');
-      }
-
       // Update URL hash
       if (history.pushState) {
         history.pushState(null, null, '#' + tabId);
@@ -1463,15 +1503,65 @@
       }
     }
 
+    // Scroll to "Why Us" widget smoothly
+    function scrollToWhyUs() {
+      const investView = document.getElementById('view-invest');
+      if (investView && investView.classList.contains('hidden')) {
+        switchTab('invest');
+      }
+      setTimeout(() => {
+        const el = document.getElementById('why-us');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 50);
+    }
+
+    // Mobile Hamburger Menu Toggle
+    let isMobileMenuOpen = false;
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const burgerIcon = document.getElementById('burger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      isMobileMenuOpen = !isMobileMenuOpen;
+      if (isMobileMenuOpen) {
+        menu.classList.remove('hidden');
+        burgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+        burgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    }
+
+    function mobileNav(tabId) {
+      toggleMobileMenu();
+      if (tabId === 'why-us') {
+        scrollToWhyUs();
+      } else {
+        switchTab(tabId);
+      }
+    }
+
     // Initialize from URL Hash on page load
     window.addEventListener('DOMContentLoaded', () => {
       const hash = location.hash.replace('#', '');
-      switchTab(hash || 'invest');
+      if (hash === 'why-us') {
+        switchTab('invest');
+        scrollToWhyUs();
+      } else {
+        switchTab(hash || 'invest');
+      }
     });
 
     window.addEventListener('hashchange', () => {
       const hash = location.hash.replace('#', '');
-      switchTab(hash || 'invest');
+      if (hash === 'why-us') {
+        switchTab('invest');
+        scrollToWhyUs();
+      } else {
+        switchTab(hash || 'invest');
+      }
     });
 
     // 2. Interactive Variable Profit Calculator
