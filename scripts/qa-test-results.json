@@ -1,0 +1,591 @@
+{
+  "totalTests": 81,
+  "passedTests": 81,
+  "failedTests": 0,
+  "results": [
+    {
+      "category": "Server",
+      "testName": "Root URL responds with HTTP 200",
+      "passed": true,
+      "details": "Status: 200"
+    },
+    {
+      "category": "Server",
+      "testName": "Root HTML contains Mozzex Capital title",
+      "passed": true,
+      "details": "Found page title"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /assets/server-logo.png",
+      "passed": true,
+      "details": "HTTP 200, Type: image/png"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol1-degen-starter-blueprint.pdf",
+      "passed": true,
+      "details": "HTTP 200, Type: application/pdf"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol1-degen-starter-blueprint.html",
+      "passed": true,
+      "details": "HTTP 200, Type: text/html; charset=utf-8"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol2-anti-scam-rug-bible.pdf",
+      "passed": true,
+      "details": "HTTP 200, Type: application/pdf"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol2-anti-scam-rug-bible.html",
+      "passed": true,
+      "details": "HTTP 200, Type: text/html; charset=utf-8"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol3-mastering-fomo-copy-trading.pdf",
+      "passed": true,
+      "details": "HTTP 200, Type: application/pdf"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol3-mastering-fomo-copy-trading.html",
+      "passed": true,
+      "details": "HTTP 200, Type: text/html; charset=utf-8"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol4-trench-narrative-hunter.pdf",
+      "passed": true,
+      "details": "HTTP 200, Type: application/pdf"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol4-trench-narrative-hunter.html",
+      "passed": true,
+      "details": "HTTP 200, Type: text/html; charset=utf-8"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol5-master-exit-profit-system.pdf",
+      "passed": true,
+      "details": "HTTP 200, Type: application/pdf"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/vol5-master-exit-profit-system.html",
+      "passed": true,
+      "details": "HTTP 200, Type: text/html; charset=utf-8"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/mozzex-5-book-master-vault.pdf",
+      "passed": true,
+      "details": "HTTP 200, Type: application/pdf"
+    },
+    {
+      "category": "Assets",
+      "testName": "Asset load: /ebooks/",
+      "passed": true,
+      "details": "HTTP 200, Type: text/html; charset=utf-8"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File exists: mozzex-5-book-master-vault.pdf",
+      "passed": true,
+      "details": "Path: C:\\Users\\ishan\\.gemini\\antigravity\\scratch\\mozzex-bot\\public\\ebooks\\mozzex-5-book-master-vault.pdf"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File Size & Header: mozzex-5-book-master-vault.pdf",
+      "passed": true,
+      "details": "Size: 1.86 MB (1948869 bytes), Header: %PDF-1.4, EOF: true"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "Page count: mozzex-5-book-master-vault.pdf",
+      "passed": true,
+      "details": "Pages: 45 (Expected >= 45)"
+    },
+    {
+      "category": "PDF HTTP",
+      "testName": "HTTP 200 & MIME type: mozzex-5-book-master-vault.pdf",
+      "passed": true,
+      "details": "Status: 200, Content-Type: application/pdf, Downloaded: 1.86 MB"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File exists: vol1-degen-starter-blueprint.pdf",
+      "passed": true,
+      "details": "Path: C:\\Users\\ishan\\.gemini\\antigravity\\scratch\\mozzex-bot\\public\\ebooks\\vol1-degen-starter-blueprint.pdf"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File Size & Header: vol1-degen-starter-blueprint.pdf",
+      "passed": true,
+      "details": "Size: 1.38 MB (1444266 bytes), Header: %PDF-1.4, EOF: true"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "Page count: vol1-degen-starter-blueprint.pdf",
+      "passed": true,
+      "details": "Pages: 8 (Expected >= 8)"
+    },
+    {
+      "category": "PDF HTTP",
+      "testName": "HTTP 200 & MIME type: vol1-degen-starter-blueprint.pdf",
+      "passed": true,
+      "details": "Status: 200, Content-Type: application/pdf, Downloaded: 1.38 MB"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File exists: vol2-anti-scam-rug-bible.pdf",
+      "passed": true,
+      "details": "Path: C:\\Users\\ishan\\.gemini\\antigravity\\scratch\\mozzex-bot\\public\\ebooks\\vol2-anti-scam-rug-bible.pdf"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File Size & Header: vol2-anti-scam-rug-bible.pdf",
+      "passed": true,
+      "details": "Size: 1.34 MB (1407779 bytes), Header: %PDF-1.4, EOF: true"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "Page count: vol2-anti-scam-rug-bible.pdf",
+      "passed": true,
+      "details": "Pages: 8 (Expected >= 8)"
+    },
+    {
+      "category": "PDF HTTP",
+      "testName": "HTTP 200 & MIME type: vol2-anti-scam-rug-bible.pdf",
+      "passed": true,
+      "details": "Status: 200, Content-Type: application/pdf, Downloaded: 1.34 MB"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File exists: vol3-mastering-fomo-copy-trading.pdf",
+      "passed": true,
+      "details": "Path: C:\\Users\\ishan\\.gemini\\antigravity\\scratch\\mozzex-bot\\public\\ebooks\\vol3-mastering-fomo-copy-trading.pdf"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File Size & Header: vol3-mastering-fomo-copy-trading.pdf",
+      "passed": true,
+      "details": "Size: 1.32 MB (1385712 bytes), Header: %PDF-1.4, EOF: true"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "Page count: vol3-mastering-fomo-copy-trading.pdf",
+      "passed": true,
+      "details": "Pages: 9 (Expected >= 9)"
+    },
+    {
+      "category": "PDF HTTP",
+      "testName": "HTTP 200 & MIME type: vol3-mastering-fomo-copy-trading.pdf",
+      "passed": true,
+      "details": "Status: 200, Content-Type: application/pdf, Downloaded: 1.32 MB"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File exists: vol4-trench-narrative-hunter.pdf",
+      "passed": true,
+      "details": "Path: C:\\Users\\ishan\\.gemini\\antigravity\\scratch\\mozzex-bot\\public\\ebooks\\vol4-trench-narrative-hunter.pdf"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File Size & Header: vol4-trench-narrative-hunter.pdf",
+      "passed": true,
+      "details": "Size: 1.32 MB (1385997 bytes), Header: %PDF-1.4, EOF: true"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "Page count: vol4-trench-narrative-hunter.pdf",
+      "passed": true,
+      "details": "Pages: 8 (Expected >= 8)"
+    },
+    {
+      "category": "PDF HTTP",
+      "testName": "HTTP 200 & MIME type: vol4-trench-narrative-hunter.pdf",
+      "passed": true,
+      "details": "Status: 200, Content-Type: application/pdf, Downloaded: 1.32 MB"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File exists: vol5-master-exit-profit-system.pdf",
+      "passed": true,
+      "details": "Path: C:\\Users\\ishan\\.gemini\\antigravity\\scratch\\mozzex-bot\\public\\ebooks\\vol5-master-exit-profit-system.pdf"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "File Size & Header: vol5-master-exit-profit-system.pdf",
+      "passed": true,
+      "details": "Size: 1.39 MB (1458913 bytes), Header: %PDF-1.4, EOF: true"
+    },
+    {
+      "category": "PDF Filesystem",
+      "testName": "Page count: vol5-master-exit-profit-system.pdf",
+      "passed": true,
+      "details": "Pages: 9 (Expected >= 9)"
+    },
+    {
+      "category": "PDF HTTP",
+      "testName": "HTTP 200 & MIME type: vol5-master-exit-profit-system.pdf",
+      "passed": true,
+      "details": "Status: 200, Content-Type: application/pdf, Downloaded: 1.39 MB"
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "View element exists: view-invest",
+      "passed": true,
+      "details": "Found id=\"view-invest\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Desktop Nav button: tab-btn-invest",
+      "passed": true,
+      "details": "Found id=\"tab-btn-invest\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Mobile Nav button: mobileNav('invest')",
+      "passed": true,
+      "details": "Found onclick=\"mobileNav('invest')\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "View element exists: view-packages",
+      "passed": true,
+      "details": "Found id=\"view-packages\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Desktop Nav button: tab-btn-packages",
+      "passed": true,
+      "details": "Found id=\"tab-btn-packages\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Mobile Nav button: mobileNav('packages')",
+      "passed": true,
+      "details": "Found onclick=\"mobileNav('packages')\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "View element exists: view-books",
+      "passed": true,
+      "details": "Found id=\"view-books\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Desktop Nav button: tab-btn-books",
+      "passed": true,
+      "details": "Found id=\"tab-btn-books\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Mobile Nav button: mobileNav('books')",
+      "passed": true,
+      "details": "Found onclick=\"mobileNav('books')\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "View element exists: view-vip",
+      "passed": true,
+      "details": "Found id=\"view-vip\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Desktop Nav button: tab-btn-vip",
+      "passed": true,
+      "details": "Found id=\"tab-btn-vip\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Mobile Nav button: mobileNav('vip')",
+      "passed": true,
+      "details": "Found onclick=\"mobileNav('vip')\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "View element exists: view-about",
+      "passed": true,
+      "details": "Found id=\"view-about\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Desktop Nav button: tab-btn-about",
+      "passed": true,
+      "details": "Found id=\"tab-btn-about\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Mobile Nav button: mobileNav('about')",
+      "passed": true,
+      "details": "Found onclick=\"mobileNav('about')\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "View element exists: view-terms",
+      "passed": true,
+      "details": "Found id=\"view-terms\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Desktop Nav button: tab-btn-terms",
+      "passed": true,
+      "details": "Found id=\"tab-btn-terms\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Mobile Nav button: mobileNav('terms')",
+      "passed": true,
+      "details": "Found onclick=\"mobileNav('terms')\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "View element exists: view-faq",
+      "passed": true,
+      "details": "Found id=\"view-faq\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Desktop Nav button: tab-btn-faq",
+      "passed": true,
+      "details": "Found id=\"tab-btn-faq\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Mobile Nav button: mobileNav('faq')",
+      "passed": true,
+      "details": "Found onclick=\"mobileNav('faq')\""
+    },
+    {
+      "category": "Tab Markup",
+      "testName": "Why Us navigation button and section exist",
+      "passed": true,
+      "details": "Why-us anchor configured"
+    },
+    {
+      "category": "Tab Logic",
+      "testName": "switchTab('invest') simulation",
+      "passed": true,
+      "details": "Active view: invest, Hidden: packages, books, vip, about, terms, faq"
+    },
+    {
+      "category": "Tab Logic",
+      "testName": "switchTab('packages') simulation",
+      "passed": true,
+      "details": "Active view: packages, Hidden: invest, books, vip, about, terms, faq"
+    },
+    {
+      "category": "Tab Logic",
+      "testName": "switchTab('books') simulation",
+      "passed": true,
+      "details": "Active view: books, Hidden: invest, packages, vip, about, terms, faq"
+    },
+    {
+      "category": "Tab Logic",
+      "testName": "switchTab('vip') simulation",
+      "passed": true,
+      "details": "Active view: vip, Hidden: invest, packages, books, about, terms, faq"
+    },
+    {
+      "category": "Tab Logic",
+      "testName": "switchTab('about') simulation",
+      "passed": true,
+      "details": "Active view: about, Hidden: invest, packages, books, vip, terms, faq"
+    },
+    {
+      "category": "Tab Logic",
+      "testName": "switchTab('terms') simulation",
+      "passed": true,
+      "details": "Active view: terms, Hidden: invest, packages, books, vip, about, faq"
+    },
+    {
+      "category": "Tab Logic",
+      "testName": "switchTab('faq') simulation",
+      "passed": true,
+      "details": "Active view: faq, Hidden: invest, packages, books, vip, about, terms"
+    },
+    {
+      "category": "Tab Logic",
+      "testName": "switchTab('invalid-tab-name') simulation",
+      "passed": true,
+      "details": "Active view: invest, Hidden: packages, books, vip, about, terms, faq"
+    },
+    {
+      "category": "Calculator Markup",
+      "testName": "All Calculator DOM IDs exist",
+      "passed": true,
+      "details": "depositSlider, sliderValueText, estTotalProfit, estMozzexShare, estClientNetProfit, estClientPayout, displayRatePercent present"
+    },
+    {
+      "category": "Calculator Markup",
+      "testName": "Preset pills ($25 to $1000) configured in markup",
+      "passed": true,
+      "details": "$25, $50, $100, $250, $500, $1000"
+    },
+    {
+      "category": "Calculator Markup",
+      "testName": "Milestone buttons (+10% to +50%) configured in markup",
+      "passed": true,
+      "details": "+10%, +20%, +30%, +40%, +50%"
+    },
+    {
+      "category": "Calculator Math",
+      "testName": "Mathematical Invariants & 50/50 Split Verified across all test cases (50 combinations)",
+      "passed": true,
+      "details": "Verified 50 test permutations ($10 - $1000 @ 10% - 50%). All invariants hold."
+    },
+    {
+      "category": "Mobile Nav",
+      "testName": "Burger icon element (#burger-icon)",
+      "passed": true,
+      "details": "Found id=\"burger-icon\""
+    },
+    {
+      "category": "Mobile Nav",
+      "testName": "Close icon element (#close-icon)",
+      "passed": true,
+      "details": "Found id=\"close-icon\""
+    },
+    {
+      "category": "Mobile Nav",
+      "testName": "Mobile menu drawer container (#mobile-menu)",
+      "passed": true,
+      "details": "Found id=\"mobile-menu\""
+    },
+    {
+      "category": "Mobile Nav",
+      "testName": "toggleMobileMenu function defined",
+      "passed": true,
+      "details": "Function present in script"
+    },
+    {
+      "category": "Mobile Nav",
+      "testName": "mobileNav function defined",
+      "passed": true,
+      "details": "Function present in script"
+    },
+    {
+      "category": "Mobile Nav",
+      "testName": "Toggle Menu Open action",
+      "passed": true,
+      "details": "Menu hidden: false, Burger hidden: true, Close hidden: false"
+    },
+    {
+      "category": "Mobile Nav",
+      "testName": "Toggle Menu Close action",
+      "passed": true,
+      "details": "Menu hidden: true, Burger hidden: false, Close hidden: true"
+    },
+    {
+      "category": "Responsive Layout",
+      "testName": "Responsive grid and container breakpoints configured",
+      "passed": true,
+      "details": "max-w-7xl, sm/md/lg breakpoints active"
+    }
+  ],
+  "sampleCalculations": [
+    {
+      "principal": "$25",
+      "milestone": "+10%",
+      "totalProfit": "+$2.50",
+      "mozzexShare": "+$1.25",
+      "clientNet": "+$1.25",
+      "totalPayout": "$26.25"
+    },
+    {
+      "principal": "$25",
+      "milestone": "+20%",
+      "totalProfit": "+$5.00",
+      "mozzexShare": "+$2.50",
+      "clientNet": "+$2.50",
+      "totalPayout": "$27.50"
+    },
+    {
+      "principal": "$25",
+      "milestone": "+50%",
+      "totalProfit": "+$12.50",
+      "mozzexShare": "+$6.25",
+      "clientNet": "+$6.25",
+      "totalPayout": "$31.25"
+    },
+    {
+      "principal": "$100",
+      "milestone": "+10%",
+      "totalProfit": "+$10.00",
+      "mozzexShare": "+$5.00",
+      "clientNet": "+$5.00",
+      "totalPayout": "$105.00"
+    },
+    {
+      "principal": "$100",
+      "milestone": "+20%",
+      "totalProfit": "+$20.00",
+      "mozzexShare": "+$10.00",
+      "clientNet": "+$10.00",
+      "totalPayout": "$110.00"
+    },
+    {
+      "principal": "$100",
+      "milestone": "+50%",
+      "totalProfit": "+$50.00",
+      "mozzexShare": "+$25.00",
+      "clientNet": "+$25.00",
+      "totalPayout": "$125.00"
+    },
+    {
+      "principal": "$500",
+      "milestone": "+10%",
+      "totalProfit": "+$50.00",
+      "mozzexShare": "+$25.00",
+      "clientNet": "+$25.00",
+      "totalPayout": "$525.00"
+    },
+    {
+      "principal": "$500",
+      "milestone": "+20%",
+      "totalProfit": "+$100.00",
+      "mozzexShare": "+$50.00",
+      "clientNet": "+$50.00",
+      "totalPayout": "$550.00"
+    },
+    {
+      "principal": "$500",
+      "milestone": "+50%",
+      "totalProfit": "+$250.00",
+      "mozzexShare": "+$125.00",
+      "clientNet": "+$125.00",
+      "totalPayout": "$625.00"
+    },
+    {
+      "principal": "$1000",
+      "milestone": "+10%",
+      "totalProfit": "+$100.00",
+      "mozzexShare": "+$50.00",
+      "clientNet": "+$50.00",
+      "totalPayout": "$1050.00"
+    },
+    {
+      "principal": "$1000",
+      "milestone": "+20%",
+      "totalProfit": "+$200.00",
+      "mozzexShare": "+$100.00",
+      "clientNet": "+$100.00",
+      "totalPayout": "$1100.00"
+    },
+    {
+      "principal": "$1000",
+      "milestone": "+50%",
+      "totalProfit": "+$500.00",
+      "mozzexShare": "+$250.00",
+      "clientNet": "+$250.00",
+      "totalPayout": "$1250.00"
+    }
+  ]
+}

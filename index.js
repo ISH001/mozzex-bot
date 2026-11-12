@@ -19,7 +19,8 @@ const mimeTypes = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.json': 'application/json',
-  '.svg': 'image/svg+xml'
+  '.svg': 'image/svg+xml',
+  '.pdf': 'application/pdf'
 };
 
 const server = http.createServer((req, res) => {
@@ -37,7 +38,13 @@ const server = http.createServer((req, res) => {
   let safePath = path.normalize(parsedUrl.pathname).replace(/^(\.\.[\/\\])+/, '');
   if (safePath === '/' || safePath === '\\') safePath = '/index.html';
 
-  const filePath = path.join(__dirname, 'public', safePath);
+  let filePath = path.join(__dirname, 'public', safePath);
+  try {
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+      filePath = path.join(filePath, 'index.html');
+    }
+  } catch (e) {}
+
   const ext = path.extname(filePath).toLowerCase();
   const contentType = mimeTypes[ext] || 'application/octet-stream';
 
