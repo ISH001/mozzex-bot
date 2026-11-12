@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mozzex Capital — Institutional On-Chain Wealth & Managed Trading</title>
-  <meta name="description" content="Mozzex Capital provides hands-free memecoin and on-chain capital management with 100% live transparency via FOMO. Founded by Claxy & Mozzari.">
+  <meta name="description" content="Mozzex Capital provides hands-free memecoin trading pools with 100% live transparency on FOMO, strict 30% stop-loss protection, and client cashout autonomy. Founded by Claxy & Mozzari.">
   <link rel="icon" type="image/png" href="assets/server-logo.png">
   <meta name="theme-color" content="#C0C0C0">
 
@@ -59,7 +59,6 @@
       color: #000000;
     }
 
-    /* Ambient Silver Spotlight Follower */
     #spotlight-canvas {
       position: fixed;
       top: 0;
@@ -70,7 +69,6 @@
       z-index: 1;
     }
 
-    /* Glassmorphism Luxury Cards */
     .luxury-card {
       background: rgba(12, 12, 16, 0.75);
       backdrop-filter: blur(16px);
@@ -90,26 +88,17 @@
       color: #FFFFFF;
     }
 
-    /* Chrome Silver Gradient Text */
     .chrome-gradient {
       background: linear-gradient(180deg, #FFFFFF 0%, #C0C0C0 60%, #7A7A85 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .platinum-gradient {
-      background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 50%, #94A3B8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Animated subtle grid */
     .bg-grid-subtle {
       background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
       background-size: 32px 32px;
     }
 
-    /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #07070A; }
     ::-webkit-scrollbar-thumb {
@@ -123,14 +112,13 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Tab Transition Fade */
     .tab-view {
-      animation: tabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: tabFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     @keyframes tabFadeIn {
       from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(10px);
       }
       to {
         opacity: 1;
@@ -145,7 +133,7 @@
   <canvas id="spotlight-canvas"></canvas>
 
   <!-- Sticky Navbar -->
-  <header class="sticky top-0 z-50 bg-[#07070A]/85 backdrop-blur-xl border-b border-white/10">
+  <header class="sticky top-0 z-50 bg-[#07070A]/90 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Top Left: ONLY Logo and MOZZEX CAPITAL (as requested) -->
@@ -154,25 +142,31 @@
         <span class="font-sora font-extrabold text-xl tracking-wider text-white">MOZZEX <span class="text-gray-400 font-light">CAPITAL</span></span>
       </a>
 
-      <!-- Desktop Tab Bar -->
-      <nav class="hidden lg:flex items-center space-x-1.5 p-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold tracking-wider font-sora">
-        <button onclick="switchTab('invest')" id="tab-btn-invest" class="tab-button px-4 py-2 rounded-full transition-all text-white bg-white/10 border border-white/20 shadow-sm">
+      <!-- Desktop Tab Bar (Clean Discrete Tabs) -->
+      <nav class="hidden xl:flex items-center space-x-1.5 p-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold tracking-wider font-sora">
+        <button onclick="switchTab('invest')" id="tab-btn-invest" class="tab-button px-3.5 py-2 rounded-full transition-all text-white bg-white/10 border border-white/20 shadow-sm">
           Invest
         </button>
-        <button onclick="switchTab('packages')" id="tab-btn-packages" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+        <button onclick="switchTab('risk')" id="tab-btn-risk" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white flex items-center space-x-1.5">
+          <span>🛡️ Safety & Rules</span>
+          <span class="px-1.5 py-0.2 rounded text-[9px] bg-white/10 text-gray-300 font-mono">30% CAP</span>
+        </button>
+        <button onclick="switchTab('packages')" id="tab-btn-packages" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
           Packages
         </button>
-        <button onclick="switchTab('books')" id="tab-btn-books" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white flex items-center space-x-1.5">
-          <span>Books</span>
-          <span class="px-1.5 py-0.2 rounded text-[9px] bg-white/10 text-gray-300 font-mono">NEW</span>
+        <button onclick="switchTab('books')" id="tab-btn-books" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white flex items-center space-x-1.5">
+          <span>📚 Books</span>
         </button>
-        <button onclick="switchTab('vip')" id="tab-btn-vip" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+        <button onclick="switchTab('vip')" id="tab-btn-vip" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
           VIP ($50)
         </button>
-        <button onclick="switchTab('about')" id="tab-btn-about" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+        <button onclick="switchTab('about')" id="tab-btn-about" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
           About Us
         </button>
-        <button onclick="switchTab('faq')" id="tab-btn-faq" class="tab-button px-4 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+        <button onclick="switchTab('terms')" id="tab-btn-terms" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
+          Terms & Dispute
+        </button>
+        <button onclick="switchTab('faq')" id="tab-btn-faq" class="tab-button px-3.5 py-2 rounded-full transition-all text-gray-400 hover:text-white">
           Payments & FAQ
         </button>
       </nav>
@@ -186,9 +180,12 @@
   </header>
 
   <!-- Mobile Horizontal Tab Bar (Quick Access on Phone) -->
-  <div class="lg:hidden sticky top-20 z-40 bg-[#07070A]/95 backdrop-blur-xl border-b border-white/10 px-4 py-2.5 overflow-x-auto no-scrollbar flex space-x-2">
+  <div class="xl:hidden sticky top-20 z-40 bg-[#07070A]/95 backdrop-blur-xl border-b border-white/10 px-4 py-2.5 overflow-x-auto no-scrollbar flex space-x-2">
     <button onclick="switchTab('invest')" id="mob-tab-invest" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white text-black">
       Invest
+    </button>
+    <button onclick="switchTab('risk')" id="mob-tab-risk" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
+      🛡️ 30% Safety Floor
     </button>
     <button onclick="switchTab('packages')" id="mob-tab-packages" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
       Packages
@@ -202,6 +199,9 @@
     <button onclick="switchTab('about')" id="mob-tab-about" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
       About Us
     </button>
+    <button onclick="switchTab('terms')" id="mob-tab-terms" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
+      Terms & Legal
+    </button>
     <button onclick="switchTab('faq')" id="mob-tab-faq" class="mob-tab-btn flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-sora font-semibold transition bg-white/5 text-gray-400 hover:text-white">
       FAQ
     </button>
@@ -211,7 +211,7 @@
   <main class="min-h-screen">
 
     <!-- ========================================== -->
-    <!-- TAB 1: INVEST & LIVE TRANSPARENCY          -->
+    <!-- TAB 1: INVEST & OVERVIEW                   -->
     <!-- ========================================== -->
     <div id="view-invest" class="tab-view">
       <!-- Hero Section -->
@@ -226,16 +226,29 @@
           <span class="text-white">Completely Hands-Free.</span>
         </h1>
 
-        <p class="text-gray-400 text-sm sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed mb-10">
-          You allocate the capital and duration. Our verified desk executes disciplined memecoin trades. Watch every buy and sell live on your private <strong class="text-white">FOMO profile</strong>, and receive your <strong class="text-white">full capital back + 50% of the profits</strong> upon completion.
+        <p class="text-gray-400 text-sm sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed mb-8">
+          You allocate the capital and duration. Our verified desk executes disciplined memecoin trades. Watch every buy and sell live on your private <strong class="text-white">FOMO profile</strong>. We keep our losses strictly capped at 30% and split net profits 50/50.
         </p>
+
+        <!-- Highlights Row -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-10 text-xs font-mono">
+          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">
+            🛡️ 30% Hard Stop-Loss Guardrail
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">
+            💰 You Choose When To Cashout
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">
+            📊 100% Transparent FOMO Link
+          </span>
+        </div>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button onclick="switchTab('packages')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-bold text-sm bg-white text-black hover:bg-gray-200 hover:scale-105 shadow-xl shadow-white/10 transition">
             🚀 View Managed Packages ($10 - $1K+)
           </button>
-          <button onclick="switchTab('vip')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-semibold text-sm border border-white/20 hover:border-white/50 text-white bg-white/5 hover:bg-white/10 transition">
-            👑 Lifetime VIP Pass ($50)
+          <button onclick="switchTab('risk')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-sora font-semibold text-sm border border-white/20 hover:border-white/50 text-white bg-white/5 hover:bg-white/10 transition">
+            🛡️ How Our 30% Loss Cap Works
           </button>
         </div>
 
@@ -246,12 +259,12 @@
             <div class="text-xs text-gray-400 mt-1 uppercase font-mono">Profit Split</div>
           </div>
           <div class="luxury-card p-5 rounded-2xl text-center">
-            <div class="text-2xl font-sora font-bold text-white tracking-tight">100%</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">FOMO Tracking</div>
+            <div class="text-2xl font-sora font-bold text-white tracking-tight">30% Max</div>
+            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">Capital Loss Cut</div>
           </div>
           <div class="luxury-card p-5 rounded-2xl text-center">
-            <div class="text-2xl font-sora font-bold text-white tracking-tight">24h - 14d</div>
-            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">Flexible Duration</div>
+            <div class="text-2xl font-sora font-bold text-white tracking-tight">100%</div>
+            <div class="text-xs text-gray-400 mt-1 uppercase font-mono">FOMO Tracking</div>
           </div>
           <div class="luxury-card p-5 rounded-2xl text-center">
             <div class="text-2xl font-sora font-bold text-white tracking-tight">0% Fees</div>
@@ -301,6 +314,11 @@
               <div id="estClientPayout" class="text-2xl font-sora font-extrabold text-white mt-1">$125.00</div>
               <span class="text-[10px] text-gray-300 font-mono">Principal + 50% Profit</span>
             </div>
+          </div>
+
+          <!-- Cashout Notice Callout -->
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center text-xs text-gray-300 mb-6 font-mono">
+            💡 <strong>Your Choice:</strong> When our trades are in profit, you can tell the desk to <strong>cash out immediately</strong> or let the profits ride to target higher multipliers.
           </div>
 
           <div class="text-center">
@@ -384,7 +402,166 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 2: MANAGED PACKAGES                    -->
+    <!-- TAB 2: SAFETY & THE 30% LOSS CAP RULE      -->
+    <!-- ========================================== -->
+    <div id="view-risk" class="tab-view hidden">
+      <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest inline-flex items-center space-x-2">
+            <span>🛡️</span>
+            <span>Capital Defense Protocol</span>
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-4 tracking-tight">
+            The 30% Hard Stop-Loss Guardrail
+          </h2>
+          <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mt-3">
+            Why algorithmic discipline and strict rules protect you from losing everything.
+          </p>
+        </div>
+
+        <!-- No Guaranteed Profit Notice -->
+        <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/20 mb-12 bg-white/[0.02]">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">⚠️</span>
+              <div>
+                <h3 class="font-sora font-bold text-white text-base">We Do NOT Guarantee Profits</h3>
+                <p class="text-xs text-gray-400 mt-0.5">Any group or channel promising "guaranteed 100% daily returns" in crypto is scamming you. Memecoin trading is volatile.</p>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/10 text-gray-300 font-mono text-[10px] uppercase font-bold whitespace-nowrap">
+              Honest Transparency First
+            </span>
+          </div>
+        </div>
+
+        <!-- The 30% Cut Rule Deep Dive -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
+          <div class="luxury-card rounded-3xl p-8 border border-white/20 flex flex-col justify-between">
+            <div>
+              <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
+                Rule #1 • Capital Protection
+              </span>
+              <h3 class="text-2xl font-sora font-extrabold text-white mt-4">We Always Cut Losses at 30%</h3>
+              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mt-3">
+                If a trade encounters an unexpected market downturn or adverse momentum, our desk triggers an automated hard stop: <strong>we cut the initial capital at a maximum 30% loss</strong>.
+              </p>
+              <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 my-6 text-xs space-y-2 font-mono">
+                <div class="flex justify-between text-gray-300">
+                  <span>Your Deposit:</span>
+                  <span class="text-white font-bold">$100 USD</span>
+                </div>
+                <div class="flex justify-between text-red-400">
+                  <span>Maximum Loss Cut (30%):</span>
+                  <span>-$30.00 USD</span>
+                </div>
+                <div class="flex justify-between text-white font-bold border-t border-white/10 pt-2">
+                  <span>Guaranteed Returned Floor:</span>
+                  <span>$70.00 USD (70% Preserved)</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                By never letting trades slide deeper, you always keep the vast majority of your capital intact to trade again, instead of watching your wallet drop to zero.
+              </p>
+            </div>
+          </div>
+
+          <div class="luxury-card rounded-3xl p-8 border border-white/20 flex flex-col justify-between">
+            <div>
+              <span class="px-3 py-1 rounded-full silver-badge text-[10px] font-mono uppercase tracking-wider">
+                Rule #2 • Profit Autonomy
+              </span>
+              <h3 class="text-2xl font-sora font-extrabold text-white mt-4">You Choose When To Cash Out</h3>
+              <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mt-3">
+                You are never locked into decisions you don't want. As soon as our desk trades enter profit, <strong>you have complete freedom</strong>:
+              </p>
+              <div class="space-y-4 my-6 text-xs">
+                <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                  <div class="font-bold text-white mb-1">Option A: Lock In & Cashout Immediately</div>
+                  <p class="text-gray-400 leading-relaxed">Happy with a +30%, +50%, or +100% gain? Notify the desk, and we immediately execute the payout to your wallet (100% principal + 50% profit share).</p>
+                </div>
+                <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                  <div class="font-bold text-white mb-1">Option B: Let The Position Ride Further</div>
+                  <p class="text-gray-400 leading-relaxed">If momentum is aggressive and you want to target higher multipliers (3x, 5x, 10x), you can instruct the desk to trail stops and hold the moonbag.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emotional Retail vs Mozzex Comparison -->
+        <div class="luxury-card rounded-3xl p-8 sm:p-12 border border-white/20">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-xs font-mono uppercase tracking-widest text-gray-400">Why Most Traders Fail</span>
+            <h3 class="text-2xl sm:text-3xl font-sora font-bold text-white mt-1">Trading Yourself vs Trading With Mozzex</h3>
+            <p class="text-xs text-gray-400 mt-2">See why emotional trading causes 99% of people to lose their entire portfolio.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
+            <!-- Retail -->
+            <div class="p-6 rounded-2xl bg-white/[0.02] border border-red-500/20">
+              <div class="flex items-center space-x-2 text-red-400 font-bold font-mono text-sm mb-4">
+                <span>✕</span>
+                <span>Trading Yourself (Emotional Retail)</span>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start space-x-2">
+                  <span class="text-red-400 font-mono">•</span>
+                  <span><strong>Emotional FOMO:</strong> Buying tops after green candles, panic selling bottoms on small dips.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-red-400 font-mono">•</span>
+                  <span><strong>No 24/7 Monitoring:</strong> You go to sleep or step away, and the developer unbinds liquidity or dumps.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-red-400 font-mono">•</span>
+                  <span><strong>Refusing Small Losses:</strong> You hold from -20% hoping it recovers, until it reaches -90% or -100%.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-red-400 font-mono">•</span>
+                  <span><strong>Revenge Trading:</strong> Chasing bad trades trying to make money back, wiping out your entire savings.</span>
+                </li>
+                <li class="pt-3 border-t border-white/10 font-bold text-red-400">
+                  Result: Total loss of 100% of your initial portfolio.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Mozzex -->
+            <div class="p-6 rounded-2xl bg-white/[0.04] border border-white/30 shadow-lg">
+              <div class="flex items-center space-x-2 text-white font-bold font-mono text-sm mb-4">
+                <span>✓</span>
+                <span>Trading With Mozzex Capital (Rule-Based)</span>
+              </div>
+              <ul class="space-y-3 text-gray-300">
+                <li class="flex items-start space-x-2">
+                  <span class="text-white font-mono">•</span>
+                  <span><strong>Zero Emotion:</strong> Algorithmic rules, disciplined take-profit ladders, and pre-calculated stops.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-white font-mono">•</span>
+                  <span><strong>Live FOMO Tracking:</strong> Every trade is monitored live on fomo.fund with sub-second execution.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-white font-mono">•</span>
+                  <span><strong>The 30% Hard Cut:</strong> We never hold into a dump. Losses are cut at 30% to preserve your principal.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-white font-mono">•</span>
+                  <span><strong>Client Cashout Choice:</strong> In profit, you decide whether to lock in gains now or let it ride.</span>
+                </li>
+                <li class="pt-3 border-t border-white/10 font-bold text-white">
+                  Result: Protected capital, controlled downside, and transparent payouts.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: MANAGED PACKAGES                    -->
     <!-- ========================================== -->
     <div id="view-packages" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
@@ -408,9 +585,9 @@
               </div>
               <div class="space-y-2 text-xs border-t border-white/10 pt-4">
                 <div class="flex justify-between"><span class="text-gray-400">Profit Split:</span> <strong class="text-white">50% Client / 50% Desk</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Capital Returned:</span> <strong class="text-white">100% Principal</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Loss Floor:</span> <strong class="text-white">Max 30% Stop-Loss</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">On Profit Milestone</strong></div>
                 <div class="flex justify-between"><span class="text-gray-400">Tracking:</span> <strong class="text-gray-200">Live FOMO Profile</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Risk Profile:</span> <strong class="text-gray-200">Micro Scalps</strong></div>
               </div>
             </div>
             <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white/20 transition text-center block">
@@ -429,9 +606,9 @@
               </div>
               <div class="space-y-2 text-xs border-t border-white/10 pt-4">
                 <div class="flex justify-between"><span class="text-gray-400">Profit Split:</span> <strong class="text-white">50% Client / 50% Desk</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Capital Returned:</span> <strong class="text-white">100% Principal</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Loss Floor:</span> <strong class="text-white">Max 30% Stop-Loss</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">On Profit Milestone</strong></div>
                 <div class="flex justify-between"><span class="text-gray-400">Tracking:</span> <strong class="text-gray-200">Live FOMO Profile</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Risk Profile:</span> <strong class="text-gray-200">Swing & Momentum</strong></div>
               </div>
             </div>
             <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="mt-8 w-full py-3 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white/10 text-white border border-white/20 hover:bg-white/20 transition text-center block">
@@ -451,8 +628,8 @@
               </div>
               <div class="space-y-2 text-xs border-t border-white/10 pt-4">
                 <div class="flex justify-between"><span class="text-gray-400">Profit Split:</span> <strong class="text-white">50% Client / 50% Desk</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Capital Returned:</span> <strong class="text-white">100% Principal</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Tracking:</span> <strong class="text-gray-200">Live FOMO Profile</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Loss Floor:</span> <strong class="text-white">Max 30% Stop-Loss</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">On Profit Milestone</strong></div>
                 <div class="flex justify-between"><span class="text-gray-400">Alpha Calls:</span> <strong class="text-white">VIP Alpha Included</strong></div>
               </div>
             </div>
@@ -472,8 +649,8 @@
               </div>
               <div class="space-y-2 text-xs border-t border-white/10 pt-4">
                 <div class="flex justify-between"><span class="text-gray-400">Profit Split:</span> <strong class="text-white">50% Client / 50% Desk</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Capital Returned:</span> <strong class="text-white">100% Principal</strong></div>
-                <div class="flex justify-between"><span class="text-gray-400">Tracking:</span> <strong class="text-gray-200">Dedicated FOMO Desk</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Loss Floor:</span> <strong class="text-white">Max 30% Stop-Loss</strong></div>
+                <div class="flex justify-between"><span class="text-gray-400">Cashout Choice:</span> <strong class="text-gray-200">On Profit Milestone</strong></div>
                 <div class="flex justify-between"><span class="text-gray-400">Support:</span> <strong class="text-white">Direct Line to Founders</strong></div>
               </div>
             </div>
@@ -486,7 +663,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 3: PROPRIETARY E-BOOKS & MANUALS       -->
+    <!-- TAB 4: PROPRIETARY E-BOOKS & MANUALS       -->
     <!-- ========================================== -->
     <div id="view-books" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
@@ -785,7 +962,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 4: LIFETIME VIP MEMBERSHIP ($50 USD)   -->
+    <!-- TAB 5: LIFETIME VIP MEMBERSHIP ($50 USD)   -->
     <!-- ========================================== -->
     <div id="view-vip" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
@@ -846,7 +1023,7 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 5: ABOUT US (DEDICATED ABOUT TAB)      -->
+    <!-- TAB 6: ABOUT US                            -->
     <!-- ========================================== -->
     <div id="view-about" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
@@ -867,7 +1044,7 @@
               The on-chain memecoin market represents the most asymmetric financial opportunity in modern crypto. Yet, more than 95% of newcomers lose their capital due to developer honeypots, emotional panic selling, and predatory sniper bots.
             </p>
             <p class="text-gray-400 text-sm leading-relaxed">
-              <strong>Mozzex Capital was founded to level the playing field.</strong> We manage client capital with ruthless discipline. We don't ask you to stare at charts or learn code. Instead, we deploy our proprietary execution desks, execute trades transparently on FOMO, and split net profits 50/50.
+              <strong>Mozzex Capital was founded to level the playing field.</strong> We manage client capital with ruthless discipline. We don't ask you to stare at charts or learn code. Instead, we deploy our proprietary execution desks, execute trades transparently on FOMO, cut losses strictly at 30%, and split net profits 50/50.
             </p>
           </div>
         </div>
@@ -925,8 +1102,8 @@
             <p class="text-xs text-gray-400 leading-relaxed">We only earn when you earn. Zero management fees, zero hidden percentage cuts.</p>
           </div>
           <div class="luxury-card p-6 rounded-2xl">
-            <div class="text-white font-mono text-lg font-bold mb-2">03. 2% Bankroll Rule</div>
-            <p class="text-xs text-gray-400 leading-relaxed">Strict mathematical limits per trade prevent portfolio drawdowns and preserve client principal.</p>
+            <div class="text-white font-mono text-lg font-bold mb-2">03. 30% Hard Floor</div>
+            <p class="text-xs text-gray-400 leading-relaxed">Strict mathematical limits per trade prevent portfolio drawdowns and preserve 70%+ of client principal.</p>
           </div>
           <div class="luxury-card p-6 rounded-2xl">
             <div class="text-white font-mono text-lg font-bold mb-2">04. Direct Access</div>
@@ -937,7 +1114,116 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- TAB 6: PAYMENTS & FAQ                      -->
+    <!-- TAB 7: TERMS & CONDITIONS (DISPUTE DEFENSE)-->
+    <!-- ========================================== -->
+    <div id="view-terms" class="tab-view hidden">
+      <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+          <span class="px-3.5 py-1 rounded-full silver-badge text-[11px] font-mono uppercase tracking-widest inline-flex items-center space-x-2">
+            <span>⚖️</span>
+            <span>Legal Framework & Dispute Protection</span>
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-sora font-extrabold text-white mt-4 tracking-tight">
+            Terms of Service & Risk Disclosure
+          </h2>
+          <p class="text-gray-400 text-sm max-w-2xl mx-auto mt-3">
+            Please read these terms carefully. By participating in Mozzex Capital pools, purchasing e-books, or using our tools, you agree to be bound by these binding terms.
+          </p>
+        </div>
+
+        <div class="space-y-6 text-xs text-gray-300 leading-relaxed">
+
+          <!-- Section 1 -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
+            <h3 class="text-base font-sora font-bold text-white mb-2">1. Discretionary On-Chain Execution & Pool Authority</h3>
+            <p>
+              By depositing capital into any Mozzex Capital package (Starter, Growth, Pro, Whale), the client expressly authorizes Mozzex Capital, its founders (Claxy & Mozzari), and assigned execution desks to execute on-chain spot, liquidity pool, and token swap transactions on decentralized exchanges (DEXs) including but not limited to Raydium, Pump.fun, and Meteora on the client's behalf. Mozzex Capital does not custody fiat currency; all allocations are handled via supported cryptocurrencies or authorized conversion gateways.
+            </p>
+          </div>
+
+          <!-- Section 2 -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
+            <h3 class="text-base font-sora font-bold text-white mb-2">2. Absolute Non-Guarantee of Trading Profits</h3>
+            <p class="mb-3">
+              <strong>Mozzex Capital makes NO representation, warranty, or guarantee of positive financial returns.</strong>
+            </p>
+            <p>
+              The cryptocurrency and decentralized memecoin markets are inherently volatile, speculative, and subject to rapid price fluctuations, developer liquidity withdrawals, network latency, and smart contract anomalies. Past performance, historical profit rates, or simulated estimations shown on this site do not guarantee future performance. Client acknowledges that all crypto trading involves financial risk.
+            </p>
+          </div>
+
+          <!-- Section 3 -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
+            <h3 class="text-base font-sora font-bold text-white mb-2">3. The 30% Capital Protection & Stop-Loss Floor</h3>
+            <p class="mb-3">
+              Client explicitly acknowledges and agrees that in adverse market conditions, developer rug-pulls, or momentum reversals, <strong>Mozzex Capital operates with a strict 30% maximum loss stop-loss cut</strong>.
+            </p>
+            <p>
+              In the event that an allocation incurs losses, the desk will liquidate the position to preserve approximately 70% of the client's initial principal capital. Client confirms that an adverse loss up to 30% is an agreed-upon risk mitigation threshold and does NOT constitute negligence, breach of duty, or financial default by Mozzex Capital.
+            </p>
+          </div>
+
+          <!-- Section 4 -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
+            <h3 class="text-base font-sora font-bold text-white mb-2">4. Client Profit Cashout Discretion</h3>
+            <p>
+              When a managed allocation is in profit, the client maintains full autonomy to request immediate cashout or continuation. Upon receiving client cashout confirmation via their Discord ticket, Mozzex Capital will calculate the net realized profit, deduct the 50% performance fee, and disburse 100% of the client's principal plus their 50% net profit share to the payout wallet specified by the client.
+            </p>
+          </div>
+
+          <!-- Section 5 -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
+            <h3 class="text-base font-sora font-bold text-white mb-2">5. Limitation of Liability</h3>
+            <p class="mb-3">
+              To the fullest extent permitted by applicable law, Mozzex Capital, Claxy, Mozzari, and its affiliates shall NOT be held liable for any indirect, special, incidental, punitive, or consequential damages, including loss of profits, loss of data, or blockchain network failures.
+            </p>
+            <p>
+              <strong>The maximum cumulative liability of Mozzex Capital for any dispute or claim arising from any allocation shall strictly NOT exceed the actual principal deposited by the client for that specific allocation.</strong>
+            </p>
+          </div>
+
+          <!-- Section 6 -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
+            <h3 class="text-base font-sora font-bold text-white mb-2">6. Mandatory Informal Dispute Resolution via Discord Support Desk</h3>
+            <p class="mb-3">
+              In the event of any disagreement, inquiry, or potential dispute, the client agrees that they <strong>MUST first open a private support ticket in the official Mozzex Capital Discord server (#🎫・support-desk)</strong> and attempt in good faith to resolve the matter directly with founders Claxy & Mozzari.
+            </p>
+            <p>
+              Both parties agree to a mandatory 30-day informal negotiation period before initiating any external legal proceedings. Any attempt to file public defamation, harassment, or frivolous claims without completing informal dispute resolution constitutes a material breach of this agreement.
+            </p>
+          </div>
+
+          <!-- Section 7 -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
+            <h3 class="text-base font-sora font-bold text-white mb-2">7. Strict Anti-Chargeback & Fraud Policy</h3>
+            <p class="mb-3">
+              Cryptocurrency transactions deployed on-chain are irreversible and immutable. Clients who utilize third-party fiat gateways (PayPal, Debit/Credit Card, Apple Pay) explicitly agree that all payments are final once credited to an allocation or digital book delivery.
+            </p>
+            <p>
+              <strong>Filing a fraudulent chargeback, payment dispute, or reversal request through PayPal or credit card issuers is strictly prohibited.</strong> Any user who initiates an unauthorized chargeback will be permanently blacklisted, have all pending payouts forfeited, and their wallet address, IP, and contact credentials submitted to global crypto fraud databases and relevant merchant collections.
+            </p>
+          </div>
+
+          <!-- Section 8 -->
+          <div class="luxury-card rounded-2xl p-6 sm:p-8 border border-white/15">
+            <h3 class="text-base font-sora font-bold text-white mb-2">8. Digital Product & E-Book Delivery Terms</h3>
+            <p>
+              All purchases of proprietary Mozzex E-Books (Volume 01, Volume 02, Volume 03, or Trilogy Bundle) and Lifetime VIP Passes are intangible digital goods. Upon delivery of PDF download links or Notion workspaces inside the client's private Discord ticket, all sales are complete and non-refundable.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="inline-block px-8 py-3.5 rounded-xl font-sora font-bold text-xs uppercase tracking-wider bg-white text-black hover:bg-gray-200 transition shadow-lg shadow-white/10">
+            I Understand & Agree • Enter Discord
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 8: PAYMENTS & FAQ                      -->
     <!-- ========================================== -->
     <div id="view-faq" class="tab-view hidden">
       <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
@@ -1013,13 +1299,18 @@
 
         <div class="space-y-4 max-w-3xl mx-auto">
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
-            <h4 class="font-sora font-bold text-white text-sm">I have never traded before. Can I still join?</h4>
-            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Yes, 100%. That is the exact purpose of Mozzex Capital. You do not need to look at charts, execute orders, or monitor markets. Our desk trades on your behalf. You simply watch live on your FOMO profile link and collect your payout.</p>
+            <h4 class="font-sora font-bold text-white text-sm">Do you guarantee trading profit?</h4>
+            <p class="text-gray-400 text-xs mt-2 leading-relaxed">No. We do NOT guarantee profit. Anyone promising guaranteed crypto returns is scamming. What we guarantee is disciplined execution, a strict 30% stop-loss floor, and 100% live on-chain transparency on FOMO.</p>
           </div>
 
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
-            <h4 class="font-sora font-bold text-white text-sm">How does the 50/50 profit split work?</h4>
-            <p class="text-gray-400 text-xs mt-2 leading-relaxed">If you invest $100 and our desk generates $50 in profit during your duration, you receive your full $100 principal back plus $25 in net profit (total $125 USD). Mozzex keeps the remaining $25 as our performance fee. If we don't profit, we make nothing.</p>
+            <h4 class="font-sora font-bold text-white text-sm">What happens if a trade experiences a loss?</h4>
+            <p class="text-gray-400 text-xs mt-2 leading-relaxed">We always cut the trade at a maximum 30% loss of initial capital. This protects approximately 70% of your principal. Unlike emotional retail traders who hold dumping tokens to -100%, our desk executes cold risk cuts so your portfolio survives.</p>
+          </div>
+
+          <div class="luxury-card rounded-2xl p-6 border border-white/10">
+            <h4 class="font-sora font-bold text-white text-sm">Can I choose when to cash out my profits?</h4>
+            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Yes. Whenever your allocation is in profit, you can instruct the desk to cash out immediately (receive 100% principal + 50% net profit share) or instruct us to continue trading to target higher runs.</p>
           </div>
 
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
@@ -1029,7 +1320,7 @@
 
           <div class="luxury-card rounded-2xl p-6 border border-white/10">
             <h4 class="font-sora font-bold text-white text-sm">How do I get started right now?</h4>
-            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Click any "Enter Discord" button, head over to <code class="text-white">#🎫・support-desk</code> or <code class="text-white">#💎・investment-packages</code>, and click <strong>[ Deposit / Start Investment ]</strong> or <strong>[ 📚 Buy E-Books ]</strong> to open a private ticket with founders Claxy & Mozzari.</p>
+            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Click any "Enter Discord" button, head over to <code class="text-white">#🎫・support-desk</code>, and click <strong>[ Deposit / Start Investment ]</strong> or <strong>[ 📚 Buy E-Books ]</strong> to open a private ticket with founders Claxy & Mozzari.</p>
           </div>
         </div>
 
@@ -1048,17 +1339,19 @@
 
       <div class="flex flex-wrap items-center justify-center gap-6 font-mono text-[11px] text-gray-400">
         <button onclick="switchTab('invest')" class="hover:text-white transition">Invest</button>
+        <button onclick="switchTab('risk')" class="hover:text-white transition">30% Safety Floor</button>
         <button onclick="switchTab('packages')" class="hover:text-white transition">Packages</button>
         <button onclick="switchTab('books')" class="hover:text-white transition">E-Books</button>
         <button onclick="switchTab('vip')" class="hover:text-white transition">VIP ($50)</button>
         <button onclick="switchTab('about')" class="hover:text-white transition">About Us</button>
+        <button onclick="switchTab('terms')" class="hover:text-white transition">Terms & Dispute</button>
         <button onclick="switchTab('faq')" class="hover:text-white transition">Payments & FAQ</button>
         <a href="https://discord.gg/UMkYk8b25P" target="_blank" class="text-white hover:underline transition">Discord Server</a>
       </div>
     </div>
 
     <p class="max-w-2xl text-gray-500 leading-relaxed">
-      Disclaimer: Cryptocurrency and on-chain memecoin trading involve market volatility. Managed allocations are executed with strict stop-losses and risk controls. Past performance does not guarantee future results.
+      Disclaimer: Cryptocurrency and on-chain memecoin trading involve market volatility. Managed allocations are executed with strict 30% stop-losses and risk controls. Profits are not guaranteed. Past performance does not guarantee future results.
     </p>
 
     <div class="mt-6 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center text-gray-600 font-mono text-[10px]">
@@ -1070,7 +1363,7 @@
   <!-- Scripts: Tab Switching, Interactive Calculator & Ambient Spotlight -->
   <script>
     // 1. Tab Switching Engine
-    const validTabs = ['invest', 'packages', 'books', 'vip', 'about', 'faq'];
+    const validTabs = ['invest', 'risk', 'packages', 'books', 'vip', 'about', 'terms', 'faq'];
 
     function switchTab(tabId) {
       if (!validTabs.includes(tabId)) tabId = 'invest';
