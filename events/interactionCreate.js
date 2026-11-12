@@ -11,6 +11,9 @@ module.exports = {
     if (interaction.isButton()) {
       const { customId } = interaction;
 
+      if (customId === 'buy_vip_ticket') {
+        return handleTicketCreate(interaction, 'vip');
+      }
       if (customId === 'open_invest_ticket') {
         return handleTicketCreate(interaction, 'investment');
       }
@@ -21,7 +24,7 @@ module.exports = {
         return handleTicketCreate(interaction, 'client');
       }
       if (customId === 'open_mentorship_ticket') {
-        return handleTicketCreate(interaction, 'investment');
+        return handleTicketCreate(interaction, 'vip');
       }
       if (customId === 'close_ticket') {
         return handleTicketClose(interaction);

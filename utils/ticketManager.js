@@ -102,19 +102,26 @@ async function handleTicketCreate(interaction, type = 'general') {
 
     const ticketData = db.createTicket(ticketChannel.id, user.id, type);
 
-    const typeTitle = type === 'investment' ? '💰 Mozzex Capital Investment Ticket'
+    const typeTitle = type === 'vip' ? '👑 Mozzex Lifetime VIP Onboarding ($50 USD)'
+      : type === 'investment' ? '💰 Mozzex Capital Investment Ticket'
       : type === 'mentorship' ? '💎 Mentorship & Capital Application'
       : type === 'client' ? '💼 Client Capital Priority Ticket'
       : '🎫 Support Ticket';
 
     let instructions = `Welcome <@${user.id}>! A member of the **Mozzex Team** will be with you shortly.\n\n`;
-    if (type === 'investment') {
+    if (type === 'vip') {
+      instructions += `**👑 You have requested the Lifetime VIP Membership ($50 USD):**\n\n` +
+        `• **What You Get:** Lifetime VIP Role, all 3 Mozzex Knowledge Books, curated trading tools configuration, step-by-step 1-on-1 tool setup, and VIP alpha calls.\n` +
+        `• **Price:** **$50 USD** (One-time, no subscriptions)\n` +
+        `• **Payment Accepted:** SOL, LTC, USDT, or BTC\n\n` +
+        `*Please reply with your preferred payment currency (e.g. LTC or SOL) and our staff will provide your secure deposit address.*`;
+    } else if (type === 'investment') {
       instructions += `**Please provide your investment details below:**\n` +
         `• **Chosen Package:** ($10 / $30 / $50 / $100 / $250 / $500+)\n` +
         `• **Duration Term:** (24-48 Hours / 3-5 Days / 7 Days)\n` +
         `• **Deposit Method:** (SOL / LTC / USDT / BTC)\n` +
         `• **Your Payout Wallet:** (Address where principal + 50% profit returns)\n\n` +
-        `*Our managing partner will generate your private deposit address and lock in your duration.*`;
+        `*Our managing partner will generate your private deposit address and set up your personal FOMO profile.*`;
     } else {
       instructions += `**Please describe your inquiry with as much detail as possible:**\n` +
         `• If general support: State your question clearly.\n` +
