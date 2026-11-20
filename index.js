@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 const {
   Client,
   Collection,
@@ -8,8 +9,52 @@ const {
 } = require('discord.js');
 const config = require('./config');
 
-// Native HTTP server for Mozzex Capital Official Website & Render 24/7 Hosting (Initialized FIRST)
-const http = require('http');
+// 1. Initialize Discord Client
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildInvites,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ],
+  partials: [Partials.Channel, Partials.Message, Partials.GuildMember, Partials.User]
+});
+
+// 2. Load Commands
+client.commands = new Collection();
+const commandsPath = path.join(__dirname, 'commands');
+if (fs.existsSync(commandsPath)) {
+  const commandFiles = fs.readdirSync(commandsPath).filter(f => f.endsWith('.js'));
+  for (const file of commandFiles) {
+    const filePath = path.join(commandsPath, file);
+    const command = require(filePath);
+    if ('data' in command && 'execute' in command) {
+      client.commands.set(command.data.name, command);
+      console.log(`[Command Loaded] /${command.data.name}`);
+    } else {
+      console.warn(`[Warning] Command at ${filePath} is missing "data" or "execute".`);
+    }
+  }
+}
+
+// 3. Load Events
+const eventsPath = path.join(__dirname, 'events');
+if (fs.existsSync(eventsPath)) {
+  const eventFiles = fs.readdirSync(eventsPath).filter(f => f.endsWith('.js'));
+  for (const file of eventFiles) {
+    const filePath = path.join(eventsPath, file);
+    const event = require(filePath);
+    if (event.once) {
+      client.once(event.name, (...args) => event.execute(...args));
+    } else {
+      client.on(event.name, (...args) => event.execute(...args));
+    }
+    console.log(`[Event Loaded] ${event.name}`);
+  }
+}
+
+// 4. Native HTTP server for Mozzex Capital Official Website & 24/7 Hosting Health-check
 const port = process.env.PORT || 3000;
 
 const mimeTypes = {
@@ -75,60 +120,7 @@ server.listen(port, () => {
   console.log(`🌐 [Mozzex Capital Web] Website & Health-check listening on port ${port}`);
 });
 
-if (!config.token) {
-  console.warn('[Warning] DISCORD_TOKEN is missing in .env! Running web server in standalone mode.');
-} else {
-  // Login to Discord Bot
-  client.login(config.token).catch(err => {
-    console.error('[Login Failed]', err);
-  });
-}
-
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildInvites,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ],
-  partials: [Partials.Channel, Partials.Message, Partials.GuildMember, Partials.User]
-});
-
-// Load Commands
-client.commands = new Collection();
-const commandsPath = path.join(__dirname, 'commands');
-if (fs.existsSync(commandsPath)) {
-  const commandFiles = fs.readdirSync(commandsPath).filter(f => f.endsWith('.js'));
-  for (const file of commandFiles) {
-    const filePath = path.join(commandsPath, file);
-    const command = require(filePath);
-    if ('data' in command && 'execute' in command) {
-      client.commands.set(command.data.name, command);
-      console.log(`[Command Loaded] /${command.data.name}`);
-    } else {
-      console.warn(`[Warning] Command at ${filePath} is missing "data" or "execute".`);
-    }
-  }
-}
-
-// Load Events
-const eventsPath = path.join(__dirname, 'events');
-if (fs.existsSync(eventsPath)) {
-  const eventFiles = fs.readdirSync(eventsPath).filter(f => f.endsWith('.js'));
-  for (const file of eventFiles) {
-    const filePath = path.join(eventsPath, file);
-    const event = require(filePath);
-    if (event.once) {
-      client.once(event.name, (...args) => event.execute(...args));
-    } else {
-      client.on(event.name, (...args) => event.execute(...args));
-    }
-    console.log(`[Event Loaded] ${event.name}`);
-  }
-}
-
-// Error Handling
+// 5. Error Handling
 process.on('unhandledRejection', error => {
   console.error('[Unhandled Rejection]', error);
 });
@@ -137,4 +129,11 @@ process.on('uncaughtException', error => {
   console.error('[Uncaught Exception]', error);
 });
 
-
+// 6. Login to Discord
+if (!config.token) {
+  console.warn('[Warning] DISCORD_TOKEN is missing in .env! Running web server in standalone mode.');
+} else {
+  client.login(config.token).catch(err => {
+    console.error('[Login Failed]', err);
+  });
+}
